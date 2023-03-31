@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: best_cocktails_app_production
-  username: best_cocktails_app
-  password: <%= ENV["BEST_COCKTAILS_APP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
