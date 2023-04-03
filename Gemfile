@@ -48,3 +48,8 @@ end
 
 
 gem "active_model_serializers", "~> 0.10.13"
+
+
+## for geokit, for working with location and lat-long data. 
+## essential for the mapbox features
+gem 'geokit-rails'
