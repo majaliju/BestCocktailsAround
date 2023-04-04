@@ -6,7 +6,6 @@ class CreateBars < ActiveRecord::Migration[7.0]
       t.string :state
       t.string :address
       t.string :latitude
-      t.string :decimal
       t.decimal :longitude
 
       t.timestamps
