@@ -1,5 +1,14 @@
 ##~ needs more elaborate seeding, this is just beginner level
 
+puts "---- deleting the old data first"
+Bar.delete_all
+User.delete_all
+Cocktail.delete_all
+BarCocktail.delete_all
+Review.delete_all
+
+puts "---- Now for the re-seeding..."
+
 puts "----- seeding 3 brooklyn bars"
 ore_bar = Bar.create(name: "Ore Bar", address: "277 Graham Ave, Brooklyn, NY 11211")
 basik_bar = Bar.create(name: "Basik", address: "323 Graham Ave, Brooklyn, NY 11211")
@@ -50,9 +59,20 @@ blinkys_bar_mojito = BarCocktail.create(bar_id: blinkys_bar.id, cocktail_id: moj
 blinkys_bar_caipirinha = BarCocktail.create(bar_id: blinkys_bar.id, cocktail_id: caipirinha.id)
 blinkys_bar_long_island_ice_tea = BarCocktail.create(bar_id: blinkys_bar.id, cocktail_id: long_island_ice_tea.id)
 
+puts "----- seeding 5 users"
+user1 = User.create(username: "guy1", password: "123123123123")
+user2 = User.create(username: "guy2", password: "123123123123")
+user3 = User.create(username: "guy3", password: "123123123123")
+user4 = User.create(username: "guy4", password: "123123123123")
+user5 = User.create(username: "guy5", password: "123123123123")
 
-puts "----- seeding 20 reviews"
-
+#### find a faker random comment gem
+puts "----- seeding 5 reviews"
+Review.create(stars: 5, comment: "My favorite one around", user_id: user1, bar_cocktail_id: basik_bar_old_fashioned.id)
+Review.create(stars: 4, comment: "Not the best but very very good", user_id: user2, bar_cocktail_id: ore_bar_mojito.id)
+Review.create(stars: 3, comment: "Eh not good but not bad", user_id: user3, bar_cocktail_id: ore_bar_long_island_ice_tea.id)
+Review.create(stars: 5, comment: "Can't beat this cosmo", user_id: user4, bar_cocktail_id: basik_bar_cosmopolitan.id)
+Review.create(stars: 5, comment: "My favorite one of all!", user_id: user5, bar_cocktail_id: blinkys_bar_caipirinha.id)
 
 
 puts "Seeded well!"
