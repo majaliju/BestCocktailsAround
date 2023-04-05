@@ -48,3 +48,6 @@ end
 
 
 gem "active_model_serializers", "~> 0.10.13"
+
+## for handling location, and map functions 
+gem "geocoder", "~> 1.8"
