@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bars
   resources :bar_cocktails
   resources :cocktails
   resources :users
