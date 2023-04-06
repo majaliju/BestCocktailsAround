@@ -13,16 +13,21 @@ class ReviewsController < ApplicationController
     render json: @review
   end
 
-  # POST /reviews
   def create
-    @review = Review.new(review_params)
-
-    if @review.save
-      render json: @review, status: :created, location: @review
-    else
-      render json: @review.errors, status: :unprocessable_entity
-    end
+    review = Review.create(review_params)
+    render json: review, status: :created
   end
+
+  # # POST /reviews
+  # def create
+  #   @review = Review.new(review_params)
+
+  #   if @review.save
+  #     render json: @review, status: :created, location: @review
+  #   else
+  #     render json: @review.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # PATCH/PUT /reviews/1
   def update

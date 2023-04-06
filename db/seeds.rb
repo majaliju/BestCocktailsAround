@@ -68,11 +68,11 @@ user5 = User.create(username: "guy5", password: "123123123123")
 
 #### find a faker random comment gem
 puts "----- seeding 5 reviews"
-Review.create(stars: 5, comment: "My favorite one around", user_id: user1, bar_cocktail_id: basik_bar_old_fashioned.id)
-Review.create(stars: 4, comment: "Not the best but very very good", user_id: user2, bar_cocktail_id: ore_bar_mojito.id)
-Review.create(stars: 3, comment: "Eh not good but not bad", user_id: user3, bar_cocktail_id: ore_bar_long_island_ice_tea.id)
-Review.create(stars: 5, comment: "Can't beat this cosmo", user_id: user4, bar_cocktail_id: basik_bar_cosmopolitan.id)
-Review.create(stars: 5, comment: "My favorite one of all!", user_id: user5, bar_cocktail_id: blinkys_bar_caipirinha.id)
+r1 = Review.create(stars: 5, comment: "My favorite one around", user_id: user1.id, bar_cocktail_id: basik_bar_old_fashioned.id)
+r2 = Review.create(stars: 4, comment: "Not the best but very very good", user_id: user2.id, bar_cocktail_id: ore_bar_mojito.id)
+r3 = Review.create(stars: 3, comment: "Eh not good but not bad", user_id: user3.id, bar_cocktail_id: ore_bar_long_island_ice_tea.id)
+r4 = Review.create(stars: 5, comment: "Can't beat this cosmo", user_id: user4.id, bar_cocktail_id: basik_bar_cosmopolitan.id)
+r5 = Review.create(stars: 5, comment: "My favorite one of all!", user_id: user5.id, bar_cocktail_id: blinkys_bar_caipirinha.id)
 
 
 puts "Seeded well!"
