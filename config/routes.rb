@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :bars, only: [:index, :show, :create]
   resources :bar_cocktails, only: [:index, :show, :create]
   resources :cocktails, only: [:index, :show, :create]
-  resources :users, only: [:index, :show, :create]
+  resources :users, only: [:create]
   resources :reviews, only: [:index, :create, :update, :destroy]
 
   ## the login, logout, and user-authentication routes
