@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get '/hello', to: 'application#hello_world'
   get '/location', to: 'application#location_finder'
+  get '/where', to: 'application#remote_ip'
 
   # Defines the root path route ("/")
   # root "articles#index"
