@@ -4,12 +4,10 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-    # # Returns the IP address of client as a +String+,
-    # # usually set by the RemoteIp middleware.
-    # def remote_ip
-    #   @remote_ip ||= (get_header("action_dispatch.remote_ip") || ip).to_s
-    # end
 
+  ##! as soon as a user is logged in, or authenticated
+  ##! -- their IP_address is saved to the user[:ip_address]
+  ##! -- their location is geocoded
 
   ##! this model is for finding the user's location via IP or location allowed
   def location_finder
