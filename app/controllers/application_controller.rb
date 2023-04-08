@@ -8,13 +8,13 @@ class ApplicationController < ActionController::API
     # # usually set by the RemoteIp middleware.
     # def remote_ip
     #   @remote_ip ||= (get_header("action_dispatch.remote_ip") || ip).to_s
-    #   render json: @remote_ip
     # end
 
 
   ##! this model is for finding the user's location via IP or location allowed
   def location_finder
-    ## writing the method out
+    session[:ip] ||= request.remote_ip
+    render json: {ip: session[:ip]}
   end
 
 
