@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:index, :create, :update, :destroy]
 
   ## the login, logout, and user-authentication routes
-  get '/me', to: "users#show"
+  get '/me', to: "application#show"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
@@ -20,3 +20,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 end
+
+
+# ## from my ticketblaster app
+#   ## the login, logout, and user-authentication routes
+#   get '/me', to: "users#show"
+#   post '/login', to: "sessions#create"
+#   delete '/logout', to: "sessions#destroy"
