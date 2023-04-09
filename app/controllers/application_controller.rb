@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
 
-  ##! as soon as a user is logged in, or authenticated
+  ##^ as soon as a user is logged in, or authenticated
   ##! -- their IP_address is saved to the user[:ip_address]
   ##! -- their location is geocoded
 
@@ -28,6 +28,16 @@ class ApplicationController < ActionController::API
     ## check the session[:user_id] and return only that user 
     ## that's the authorization
     ## then this goes down to every level beneath 
+
+    ## this gets only the user who matches the cookies
+    ##? does this qualify as authorization? 
+    def get_user
+      user = User.find_by!(session[:user_id])
+      if user? 
+      render json: user 
+      else user.blank?
+        render json: { error: "Can't find this user." }, status: :unauthorized
+    end
 
   private 
   
