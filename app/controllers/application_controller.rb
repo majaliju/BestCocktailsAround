@@ -10,8 +10,7 @@ class ApplicationController < ActionController::API
   ##! -- their location is geocoded
 
     ## a show method that returns the user matching session[:user_id]
-    def show
-      binding.break
+    def show_user
       user = User.find_by!(id: session[:user_id])
       render json: user, status: 200
     end
