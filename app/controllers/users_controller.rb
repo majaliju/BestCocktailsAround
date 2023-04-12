@@ -6,8 +6,12 @@ class UsersController < ApplicationController
   def create
     user = User.create!(signup_user_params)
     session[:user_id] = user.id
+    session[:ip_address] = user.ip_address
     render json: user, status: :created
   end
+
+
+  # potentially write a method for auto-caching the ip_address
 
 
   ## a show method that returns the user matching session[:user_id]

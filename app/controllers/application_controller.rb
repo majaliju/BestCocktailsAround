@@ -11,21 +11,10 @@ class ApplicationController < ActionController::API
 
     ## a show method that returns the user matching session[:user_id]
     def show_user
+      # binding.break
       user = User.find_by!(id: session[:user_id])
       render json: user, status: 200
     end
-
-  ##! this model is for finding the user's location via IP or location allowed
-  def location_finder
-    session[:ip] ||= request.remote_ip
-    render json: {ip: session[:ip]}
-  end
-
-
-  def hello_world
-    session[:count] = (session[:count] || 0) + 1
-    render json: { count: session[:count] }
-  end
 
 
 
@@ -41,6 +30,21 @@ class ApplicationController < ActionController::API
 
 
 end
+
+
+
+  # ##! this model is for finding the user's location via IP or location allowed
+  # def location_finder
+  #   session[:ip] ||= request.remote_ip
+  #   render json: {ip: session[:ip]}
+  # end
+
+
+  # def hello_world
+  #   session[:count] = (session[:count] || 0) + 1
+  #   render json: { count: session[:count] }
+  # end
+
 
 
 
