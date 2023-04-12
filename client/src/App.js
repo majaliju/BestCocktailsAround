@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
+import { Router } from 'react-router-dom';
+import Header from './Header';
+import Homepage from './Homepage';
 
 function App() {
-  // const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
-  // useEffect(() => {
-  //   fetch('/hello')
-  //     .then((r) => r.json())
-  //     .then((data) => setCount(data.count));
-  // }, []);
+  useEffect(() => {
+    fetch('/hello')
+      .then((r) => r.json())
+      .then((data) => setCount(data.count));
+  }, []);
 
   useEffect(() => {
     fetch('/me').then((response) => {
@@ -24,7 +27,11 @@ function App() {
   }, []);
 
   return (
-    <div className='App'>
+    <div>
+      <Header />
+      <Router>
+        <Homepage />
+      </Router>
       <h1 className='text-5xl text-cyan-600'>Page Count: {count}</h1>
       <h1 className='text-3xl font-bold bg-cyan-400'>Hello world!</h1>
     </div>
