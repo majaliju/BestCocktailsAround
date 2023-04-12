@@ -1,15 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
+
+  // useEffect(() => {
+  //   fetch('/hello')
+  //     .then((r) => r.json())
+  //     .then((data) => setCount(data.count));
+  // }, []);
 
   useEffect(() => {
-    fetch('/hello')
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
+    fetch('/me').then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          console.log('within /me, the response is: ', user);
+          // onLogin(user);
+        });
+      } else {
+        console.log('the response failed');
+        // onLogout();
+      }
+    });
   }, []);
 
   return (
