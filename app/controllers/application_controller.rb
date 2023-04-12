@@ -17,6 +17,13 @@ class ApplicationController < ActionController::API
     end
 
 
+  def hello_world
+    session[:count] = (session[:count] || 0) + 1
+    render json: { count: session[:count] }
+  end
+
+
+
 
   private 
   
@@ -39,11 +46,6 @@ end
   #   render json: {ip: session[:ip]}
   # end
 
-
-  # def hello_world
-  #   session[:count] = (session[:count] || 0) + 1
-  #   render json: { count: session[:count] }
-  # end
 
 
 
