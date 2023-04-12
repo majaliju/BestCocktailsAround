@@ -29,9 +29,10 @@ function App() {
   return (
     <div>
       <Header />
-      <Router>
+      <Homepage />
+      {/* <Router>
         <Homepage />
-      </Router>
+      </Router> */}
       <h1 className='text-5xl text-cyan-600'>Page Count: {count}</h1>
       <h1 className='text-3xl font-bold bg-cyan-400'>Hello world!</h1>
     </div>
