@@ -14,8 +14,8 @@ function App() {
 
   return (
     <div className='App'>
-      <h1 className='text-5xl'>Page Count: {count}</h1>
-      <h1 className='text-3xl font-boldx'>Hello world!</h1>
+      <h1 className='text-5xl text-cyan-600'>Page Count: {count}</h1>
+      <h1 className='text-3xl font-bold bg-cyan-400'>Hello world!</h1>
     </div>
   );
 }
