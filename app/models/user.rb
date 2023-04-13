@@ -1,5 +1,21 @@
 class User < ApplicationRecord
   has_secure_password
+  geocoded_by :ip_address,
+  :latitude => :lat, :longitude => :lon
+after_validation :geocode
   
   has_many :reviews
+
+
+
+  ###! user's ip_address is automatically set upon log-in or enter
+  ###! however, user can manually set an address via an input-box
+  ###! this address then overrides the lat-lng of the ip_address
+
+
+  ##* ip_address we get first automatically
+  ##* ip_address sets the lat-lng
+  ##* if user enters user[:address]
+    ###^ now we override the original lat-lng
+
 end
