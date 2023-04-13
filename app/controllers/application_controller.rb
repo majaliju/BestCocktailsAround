@@ -13,6 +13,7 @@ class ApplicationController < ActionController::API
     def show_user
       # binding.break
       user = User.find_by!(id: session[:user_id])
+      session[:ip_address] = request.remote_ip
       render json: user, status: 200
     end
 
