@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './Header';
 import Homepage from './Homepage';
+import Login from './Login';
+import SignUp from './SignUp';
 
 function App() {
   const [user, setUser] = useState({});
@@ -34,9 +36,11 @@ function App() {
 
   return (
     <div>
-      <Header user={user} loggedIn={loggedIn} />
+      <Header user={user} loggedIn={loggedIn} onLogout={onLogout} />
       <Routes>
-        <Route element={<Homepage />} />
+        <Route path='/' element={<Homepage user={user} />} />
+        <Route path='/login' element={<Login onLogin={onLogin} />} />
+        <Route path='/signup' element={<SignUp onLogin={onLogin} />} />
       </Routes>
     </div>
   );
