@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
-  geocoded_by :ip_address,
-  :latitude => :lat, :longitude => :lon
-after_validation :geocode
+  geocoded_by :ip_address
+  after_validation :geocode
   
   has_many :reviews
 

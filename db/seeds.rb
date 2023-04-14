@@ -60,11 +60,11 @@ blinkys_bar_caipirinha = BarCocktail.create(bar_id: blinkys_bar.id, cocktail_id:
 blinkys_bar_long_island_ice_tea = BarCocktail.create(bar_id: blinkys_bar.id, cocktail_id: long_island_ice_tea.id)
 
 puts "----- seeding 5 users"
-user1 = User.create(username: "guy1", password: "123123123123")
-user2 = User.create(username: "guy2", password: "123123123123")
-user3 = User.create(username: "guy3", password: "123123123123")
-user4 = User.create(username: "guy4", password: "123123123123")
-user5 = User.create(username: "guy5", password: "123123123123")
+user1 = User.create!(username: "guy1", password: "123123123123")
+user2 = User.create!(username: "guy2", password: "123123123123")
+user3 = User.create!(username: "guy3", password: "123123123123")
+user4 = User.create!(username: "guy4", password: "123123123123")
+user5 = User.create!(username: "guy5", password: "123123123123")
 
 #### find a faker random comment gem
 puts "----- seeding 5 reviews"
