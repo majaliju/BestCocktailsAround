@@ -36,8 +36,8 @@ function Login({ onLogin, setLoggedIn }) {
       } else {
         response.json().then((e) => {
           console.log('e: ', e);
-          setErrorsExist(true);
-          setError(e.error);
+          // setErrorsExist(true);
+          // setError(e.error);
         });
       }
     });
@@ -67,7 +67,7 @@ function Login({ onLogin, setLoggedIn }) {
             </div>
           ) : null}
 
-          {errorsExist !== false ? (
+          {/* {errorsExist !== false ? (
             <div className='shadow-lg alert alert-warning'>
               <div>
                 <svg
@@ -86,7 +86,7 @@ function Login({ onLogin, setLoggedIn }) {
                 <span>{error}</span>
               </div>
             </div>
-          ) : null}
+          ) : null} */}
 
           <h1 className='text-2xl font-bold text-center text-white sm:text-3xl'>
             LOGIN
