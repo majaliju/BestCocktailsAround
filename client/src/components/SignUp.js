@@ -9,7 +9,6 @@ function SignUp({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [email, setEmail] = useState('');
 
   const [errorArray, setErrorArray] = useState([]);
   const [errorsExist, setErrorsExist] = useState(false);
@@ -28,7 +27,6 @@ function SignUp({ onLogin }) {
         username: username,
         password: password,
         password_confirmation: passwordConfirmation,
-        email: email,
       }),
     }).then((response) => {
       if (response.status >= 200 && response.status <= 299) {
@@ -144,32 +142,18 @@ function SignUp({ onLogin }) {
                 className='w-full max-w-xl input input-bordered input-primary'
               />
             </div>
-            <div class='form-control'>
-              <label class='label'>
-                <span class='label-text uppercase'>email</span>
-              </label>
-              <input
-                type='text'
-                id='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder='finally, type your email and hit signup!'
-                className='w-full max-w-xl input input-bordered input-primary'
-              />
-            </div>
+
             {submitted === false ? (
               username !== '' ? (
                 password !== '' ? (
                   passwordConfirmation !== '' ? (
-                    email !== '' ? (
-                      <div>
-                        <div class='form-control mt-6'>
-                          <button type='submit' class='btn btn-primary'>
-                            Sign Up!
-                          </button>
-                        </div>
+                    <div>
+                      <div class='form-control mt-6'>
+                        <button type='submit' class='btn btn-primary'>
+                          Sign Up!
+                        </button>
                       </div>
-                    ) : null
+                    </div>
                   ) : null
                 ) : null
               ) : null
