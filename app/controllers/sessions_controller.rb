@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
       user[:ip_address] = request.remote_ip
-      session[:ip_address] = request.remote_ip
+      results = Geocoder.search(request.remote_ip)
+      # binding.break
       render json: user
     else
       render json: { error: 'Wrong password but no problem, try again!' }, status: :unauthorized

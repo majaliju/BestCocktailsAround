@@ -5,6 +5,8 @@ class User < ApplicationRecord
   
   has_many :reviews
 
+  validates :username, presence: true, uniqueness: true
+  validates :password, length: { minimum: 8, maximum: 254 }
 
 
   ###! user's ip_address is automatically set upon log-in or enter

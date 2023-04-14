@@ -4,9 +4,9 @@ class UsersController < ApplicationController
 
 ####! copied from my project4 
   def create
-    user = User.create!(signup_user_params)
+    user = User.create!(user_params)
     session[:user_id] = user.id
-    session[:ip_address] = user.ip_address
+    # session[:ip_address] = user.ip_address
     render json: user, status: :created
   end
 
@@ -67,6 +67,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :password_digest, :latitude, :longitude, :address)
+      params.permit(:username, :password, :password_confirmation, :latitude, :longitude, :address, :ip_address)
     end
 end

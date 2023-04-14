@@ -14,6 +14,7 @@ class ApplicationController < ActionController::API
       # binding.break
       user = User.find_by!(id: session[:user_id])
       user[:ip_address] = request.remote_ip
+      #  how to save the update on user? does above save it to DB?
       render json: user, status: 200
     end
 
@@ -22,8 +23,6 @@ class ApplicationController < ActionController::API
     session[:count] = (session[:count] || 0) + 1
     render json: { count: session[:count] }
   end
-
-
 
 
   private 
