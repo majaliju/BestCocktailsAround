@@ -67,7 +67,7 @@ function Login({ onLogin, setLoggedIn }) {
             </div>
           ) : null}
 
-          {/* {errorsExist !== false ? (
+          {errorsExist !== false ? (
             <div className='shadow-lg alert alert-warning'>
               <div>
                 <svg
@@ -86,7 +86,7 @@ function Login({ onLogin, setLoggedIn }) {
                 <span>{error}</span>
               </div>
             </div>
-          ) : null} */}
+          ) : null}
 
           <h1 className='text-2xl font-bold text-center text-white sm:text-3xl'>
             LOGIN
@@ -154,7 +154,7 @@ function Login({ onLogin, setLoggedIn }) {
                 <Link
                   to='/signup'
                   type='submit'
-                  class='btn btn-ghost w-full font-bold form-control text-secondary-content uppercase'>
+                  class='btn btn-ghost w-full font-bold form-control text-secondary uppercase'>
                   First time here? Sign up!
                 </Link>
               </label>
