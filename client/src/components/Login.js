@@ -36,8 +36,8 @@ function Login({ onLogin, setLoggedIn }) {
       } else {
         response.json().then((e) => {
           console.log('e: ', e);
-          // setErrorsExist(true);
-          // setError(e.error);
+          setErrorsExist(true);
+          setError(e.error);
         });
       }
     });
