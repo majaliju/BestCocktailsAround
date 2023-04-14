@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       user[:ip_address] = request.remote_ip
       results = Geocoder.search(request.remote_ip)
+      user[:latitude] = results.first.coordinates[0]
+      user[:longitude] = results.first.coordinates[1]
       # binding.break
       render json: user
     else
