@@ -13,9 +13,14 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
       user[:ip_address] = request.remote_ip
+      # if user[:address] exists?
+      # then user[:lat] & user[:long] is equal to Geocoded adress
+      # if user[:address] doesn't exist
+      # then use whats below, pulling from the IP address
       results = Geocoder.search(request.remote_ip)
-      user[:latitude] ||=  results.first.coordinates[0]
-      user[:longitude] ||=  results.first.coordinates[1]
+      user[:latitude] = results.first.coordinates[0]
+      user[:longitude] = results.first.coordinates[1]
+      # binding.break
       render json: user
     else
       render json: { error: 'Wrong password but no problem, try again!' }, status: :unauthorized
