@@ -4,12 +4,14 @@ import { useState, useRef, useEffect } from 'react';
 mapboxgl.accessToken =
   'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xmaDd3Zjk2MDIzaDNxcnhkZWlreG01eCJ9.Rm4z9DrJF16ukrO8qyWIbQ';
 
-function MapboxMap() {
+function MapboxMap({ user }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-70.9);
   const [lat, setLat] = useState(42.35);
+  const [lng, setLng] = useState(-70.9);
   const [zoom, setZoom] = useState(9);
+
+  console.log('user within MapBox', user);
 
   useEffect(() => {
     map.current = new mapboxgl.Map({
