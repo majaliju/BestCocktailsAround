@@ -52,6 +52,6 @@ gem "active_model_serializers", "~> 0.10.13"
 ## for handling location, and map functions 
 gem "geocoder", "~> 1.8"
 
-## beautiful table output
-# https://github.com/arches/table_print/
-gem "table_print"
+# ## beautiful table output
+# # https://github.com/arches/table_print/
+# gem "table_print"
