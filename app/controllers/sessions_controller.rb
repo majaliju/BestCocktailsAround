@@ -13,11 +13,12 @@ def create
   if user&.authenticate(params[:password])
     session[:user_id] = user.id
     if user[:ip_address].blank?
+      user[:ip_address] = request.remote_ip
       results = Geocoder.search(request.remote_ip)
       user[:latitude] = results.first.coordinates[0]
       user[:longitude] = results.first.coordinates[1]
     end
-    # user[:ip_address] = request.remote_ip
+    
     # # if user[:address] exists?
     # # then user[:lat] & user[:long] is equal to Geocoded adress
     # # if user[:address] doesn't exist
