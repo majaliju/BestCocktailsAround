@@ -8,7 +8,7 @@ function Homepage({ user }) {
       {/* write a loading condition here
       if MapBoxMap didn't load, render <Loading />
       */}
-      <MapboxMapReddit />
+      <MapboxMapReddit user={user} />
       <h1 className='text-5xl text-primary'>search bar & mapkick here</h1>
     </div>
   );
