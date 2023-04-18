@@ -12,14 +12,16 @@ class SessionsController < ApplicationController
     user = User.find_by!(username: params[:username])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      user[:ip_address] = request.remote_ip
-      # if user[:address] exists?
-      # then user[:lat] & user[:long] is equal to Geocoded adress
-      # if user[:address] doesn't exist
-      # then use whats below, pulling from the IP address
-      results = Geocoder.search(request.remote_ip)
-      user[:latitude] = results.first.coordinates[0]
-      user[:longitude] = results.first.coordinates[1]
+      if user[:ip_address].blank?
+        results = Geocoder.search(request.remote_ip)
+        user[:latitude] = results.first.coordinates[0]
+        user[:longitude] = results.first.coordinates[1]
+      # user[:ip_address] = request.remote_ip
+      # # if user[:address] exists?
+      # # then user[:lat] & user[:long] is equal to Geocoded adress
+      # # if user[:address] doesn't exist
+      # # then use whats below, pulling from the IP address
+    
       # binding.break
       render json: user
     else

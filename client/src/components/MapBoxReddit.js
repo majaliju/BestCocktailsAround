@@ -7,7 +7,8 @@ function MapboxMapReddit({ user }) {
 
   console.log('user within MapBox', user);
   // `user` can be null now
-  const { lng, lat } = user || {};
+  const lng = user.longitude;
+  const lat = user.latitude;
 
   console.log('lat: ', lat);
   console.log('lng: ', lng);
