@@ -12,6 +12,8 @@ function MapboxMap({ user }) {
   const [zoom, setZoom] = useState(9);
 
   console.log('user within MapBox', user);
+  console.log('lat: ', lat);
+  console.log('lng: ', lng);
 
   useEffect(() => {
     map.current = new mapboxgl.Map({
