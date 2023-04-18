@@ -8,6 +8,7 @@ import SignUp from './SignUp';
 function App() {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
     fetch('/me').then((response) => {
