@@ -11,11 +11,13 @@ export default function App() {
     zoom: 10,
   });
 
-  console.log('REACT_APP_MAPBOX_TOKEN: ', REACT_APP_MAPBOX_TOKEN);
+  console.log('REACT_APP_MAPBOX_ACCESS_TOKEN: ', REACT_APP_MAPBOX_ACCESS_TOKEN);
 
   return (
     <div>
-      <ReactMapGL {...viewport} mapboxApiAccessToken={REACT_APP_MAPBOX_TOKEN}>
+      <ReactMapGL
+        {...viewport}
+        mapboxApiAccessToken={REACT_APP_MAPBOX_ACCESS_TOKEN}>
         markers here
       </ReactMapGL>
     </div>
