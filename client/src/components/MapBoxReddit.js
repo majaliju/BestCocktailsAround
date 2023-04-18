@@ -32,13 +32,15 @@ function MapboxMapReddit({ user }) {
 
   return (
     <>
-      {loading ? <span>loading...</span> : null}
-      <div
-        // hide map with CSS, but keep it in DOM so mapbox API can attach to `<div/>`
-        // style={loading ? 'display: none;' : undefined}
-        ref={mapContainer}
-        className='map-container'
-      />
+      {loading ? (
+        <span>loading...</span>
+      ) : (
+        <div
+          // hide map with CSS, but keep it in DOM so mapbox API can attach to `<div/>`
+          // style={loading ? 'display: none;' : undefined}
+          ref={mapContainer}
+          className='map-container'></div>
+      )}
     </>
   );
 }
