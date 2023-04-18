@@ -11,7 +11,7 @@ export default function App() {
     zoom: 10,
   });
 
-  console.log('what');
+  console.log('REACT_APP_MAPBOX_TOKEN: ', REACT_APP_MAPBOX_TOKEN);
 
   return (
     <div>
