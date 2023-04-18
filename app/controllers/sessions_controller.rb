@@ -8,26 +8,26 @@ class SessionsController < ApplicationController
 # authenticate the user; set session[:user_id] to their user.id
 # also set the session[:ip_address] to theirs
 # also set user[:ip_address] to theirs as well
-  def create
-    user = User.find_by!(username: params[:username])
-    if user&.authenticate(params[:password])
-      session[:user_id] = user.id
-      if user[:ip_address].blank?
-        results = Geocoder.search(request.remote_ip)
-        user[:latitude] = results.first.coordinates[0]
-        user[:longitude] = results.first.coordinates[1]
-      # user[:ip_address] = request.remote_ip
-      # # if user[:address] exists?
-      # # then user[:lat] & user[:long] is equal to Geocoded adress
-      # # if user[:address] doesn't exist
-      # # then use whats below, pulling from the IP address
-    
-      # binding.break
-      render json: user
-    else
-      render json: { error: 'Wrong password but no problem, try again!' }, status: :unauthorized
+def create
+  user = User.find_by!(username: params[:username])
+  if user&.authenticate(params[:password])
+    session[:user_id] = user.id
+    if user[:ip_address].blank?
+      results = Geocoder.search(request.remote_ip)
+      user[:latitude] = results.first.coordinates[0]
+      user[:longitude] = results.first.coordinates[1]
     end
+    # user[:ip_address] = request.remote_ip
+    # # if user[:address] exists?
+    # # then user[:lat] & user[:long] is equal to Geocoded adress
+    # # if user[:address] doesn't exist
+    # # then use whats below, pulling from the IP address
+    # binding.break
+    render json: user
+  else
+    render json: { error: 'Wrong password but no problem, try again!' }, status: :unauthorized
   end
+end
 
   # delete the user from the session
   def destroy
