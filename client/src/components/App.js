@@ -4,11 +4,11 @@ import Header from './Header';
 import Homepage from './Homepage';
 import Login from './Login';
 import SignUp from './SignUp';
-import MapboxMap from './MapboxMap';
 
 function App() {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
     fetch('/me').then((response) => {
