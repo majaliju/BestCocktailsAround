@@ -35,7 +35,7 @@ function MapboxMapReddit({ user }) {
       {loading ? <span>loading...</span> : null}
       <div
         // hide map with CSS, but keep it in DOM so mapbox API can attach to `<div/>`
-        style={loading ? 'display: none;' : undefined}
+        // style={loading ? 'display: none;' : undefined}
         ref={mapContainer}
         className='map-container'
       />
