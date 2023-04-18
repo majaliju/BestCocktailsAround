@@ -19,7 +19,7 @@ class ApplicationController < ActionController::API
         user[:latitude] = results.first.coordinates[0]
         user[:longitude] = results.first.coordinates[1]
       end
-      #  how to save the update on user? does above save it to DB?
+      #  how to save the update on user? does above save it to DB? --
       render json: user, status: 200
     end
 
