@@ -9,6 +9,9 @@ function MapboxMapReddit({ user }) {
   // `user` can be null now
   const { lng, lat } = user || {};
 
+  console.log('lat: ', lat);
+  console.log('lng: ', lng);
+
   useEffect(() => {
     if (lng !== undefined && lat !== undefined) {
       const map = new Map({
