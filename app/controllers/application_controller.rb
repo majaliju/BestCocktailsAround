@@ -13,7 +13,12 @@ class ApplicationController < ActionController::API
     def show_user
       # binding.break
       user = User.find_by!(id: session[:user_id])
-      user[:ip_address] = request.remote_ip
+      if user[:ip_address].blank?
+        user[:ip_address] = request.remote_ip
+        results = Geocoder.search(request.remote_ip)
+        user[:latitude] = results.first.coordinates[0]
+        user[:longitude] = results.first.coordinates[1]
+      end
       #  how to save the update on user? does above save it to DB?
       render json: user, status: 200
     end
