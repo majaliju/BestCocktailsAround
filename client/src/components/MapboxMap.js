@@ -2,16 +2,18 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 import { useState, useRef, useEffect } from 'react';
 
 mapboxgl.accessToken =
-  'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xmaDd3Zjk2MDIzaDNxcnhkZWlreG01eCJ9.Rm4z9DrJF16ukrO8qyWIbQ';
+  'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXcyeHA3MDU0dDNkcGhuZGU3dDd6YSJ9.2zxCLGMyqkHna0ePuWpxuw';
 
 function MapboxMap({ user }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lat, setLat] = useState(42.35);
-  const [lng, setLng] = useState(-70.9);
+  const [lat, setLat] = useState(user.latitude);
+  const [lng, setLng] = useState(user.longitude);
   const [zoom, setZoom] = useState(9);
 
   console.log('user within MapBox', user);
+  console.log('user.latitude: ', user.latitude);
+  console.log('user.longitude: ', user.longitude);
   console.log('lat: ', lat);
   console.log('lng: ', lng);
 
