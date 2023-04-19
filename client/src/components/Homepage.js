@@ -5,13 +5,13 @@ function Homepage({ user }) {
   console.log('user in HomePage', user);
   return (
     <div>
-      {user !== null ? (
+      {user === {} ? (
         <div>
-          <h1>user is not null</h1>
+          <h1>user is an empty object </h1>
         </div>
       ) : (
         <div>
-          <h1>user IS null</h1>
+          <h1>user IS populatred</h1>
         </div>
       )}
       <h1 className='text-5xl text-secondary'>Welcome back {user.username}!</h1>
