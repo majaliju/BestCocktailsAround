@@ -1,5 +1,5 @@
 class BarsController < ApplicationController
-  before_action :set_bar, only: %i[ show update destroy ]
+  # before_action :set_bar, only: %i[ show update destroy ]
 
   # GET /bars
   def index

@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-  before_action :set_cocktail, only: %i[ show update destroy ]
+  # before_action :set_cocktail, only: %i[ show update destroy ]
 
   # GET /cocktails
   def index
