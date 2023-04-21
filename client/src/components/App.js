@@ -40,6 +40,13 @@ function App() {
       <Header user={user} loggedIn={loggedIn} onLogout={onLogout} />
       <Routes>
         <Route path='/' element={<Homepage user={user} />} />
+        <Route path='/theBestList' element={<TheBestRankings />} />
+        <Route path='/bars' element={<BarsDisplay />}>
+          <Route path=':id' element={<EachBarPage />} />
+        </Route>
+        <Route path='/cocktails' element={<CocktailsDisplay />}>
+          <Route path=':id' element={<EachBarPage />} />
+        </Route>
         <Route path='/login' element={<Login onLogin={onLogin} />} />
         <Route path='/signup' element={<SignUp onLogin={onLogin} />} />
       </Routes>
