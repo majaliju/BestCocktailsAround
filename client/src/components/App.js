@@ -12,18 +12,18 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
 
-  useEffect(() => {
-    fetch('/me').then((response) => {
-      if (response.ok) {
-        response.json().then((user) => {
-          console.log('within /me, the response is: ', user);
-          onLogin(user);
-        });
-      } else {
-        onLogout();
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch('/me').then((response) => {
+  //     if (response.ok) {
+  //       response.json().then((user) => {
+  //         console.log('within /me, the response is: ', user);
+  //         onLogin(user);
+  //       });
+  //     } else {
+  //       onLogout();
+  //     }
+  //   });
+  // }, []);
 
   console.log('user in the App route: ', user);
 
@@ -42,9 +42,9 @@ function App() {
   return (
     <div>
       <UserProvider>
-        <Header user={user} loggedIn={loggedIn} onLogout={onLogout} />
+        <Header loggedIn={loggedIn} onLogout={onLogout} />
         <Routes>
-          <Route path='/' element={<Homepage user={user} />} />
+          <Route path='/' element={<Homepage />} />
           <Route path='/theBestList' element={<TheBestRankings />} />
           <Route path='/bars' element={<BarsDisplay />}>
             <Route path=':id' element={<EachBarPage />} />
