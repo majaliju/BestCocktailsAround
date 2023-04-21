@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { user, UserProvider, UserContext } from '../context/user';
 
 function SignUp({ onLogin }) {
   //todo
@@ -14,6 +15,8 @@ function SignUp({ onLogin }) {
   const [errorsExist, setErrorsExist] = useState(false);
   const [success, setSuccess] = useState('');
   const [submitted, setSubmitted] = useState(false);
+
+  const { setUser } = useContext(UserContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -32,7 +35,8 @@ function SignUp({ onLogin }) {
       if (response.status >= 200 && response.status <= 299) {
         response.json().then((newUser) => {
           console.log('newUser: ', newUser);
-          onLogin(newUser);
+          setUser(newUser);
+          setLoggedIn(true);
           setErrorArray([]);
           setErrorsExist(false);
           setSuccess('Your post has been created!');

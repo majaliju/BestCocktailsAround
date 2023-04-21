@@ -27,33 +27,39 @@ function App() {
 
   console.log('user in the App route: ', user);
 
-  //^ both for logging user in & updating values of LoggedIn & currentUser
-  function onLogin(user) {
-    setUser(user);
-    setLoggedIn(true);
-  }
+  // //^ both for logging user in & updating values of LoggedIn & currentUser
+  // function onLogin(user) {
+  //   setUser(user);
+  //   setLoggedIn(true);
+  // }
 
-  //^ to log the user out & also & updating values of LoggedIn & currentUser
-  function onLogout() {
-    setUser({});
-    setLoggedIn(false);
-  }
+  // //^ to log the user out & also & updating values of LoggedIn & currentUser
+  // function onLogout() {
+  //   setUser({});
+  //   setLoggedIn(false);
+  // }
 
   return (
     <div>
       <UserProvider>
-        <Header loggedIn={loggedIn} onLogout={onLogout} />
+        <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         <Routes>
           <Route path='/' element={<Homepage />} />
-          <Route path='/theBestList' element={<TheBestRankings />} />
+          {/* <Route path='/theBestList' element={<TheBestRankings />} />
           <Route path='/bars' element={<BarsDisplay />}>
             <Route path=':id' element={<EachBarPage />} />
           </Route>
           <Route path='/cocktails' element={<CocktailsDisplay />}>
             <Route path=':id' element={<EachBarPage />} />
-          </Route>
-          <Route path='/login' element={<Login onLogin={onLogin} />} />
-          <Route path='/signup' element={<SignUp onLogin={onLogin} />} />
+          </Route> */}
+          <Route
+            path='/login'
+            element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+          />
+          <Route
+            path='/signup'
+            element={<SignUp loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+          />
         </Routes>
       </UserProvider>
     </div>

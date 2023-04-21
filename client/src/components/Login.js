@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { user, UserProvider, UserContext } from '../context/user';
 
-function Login({ onLogin, setLoggedIn }) {
+function Login({ setLoggedIn }) {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -9,6 +10,8 @@ function Login({ onLogin, setLoggedIn }) {
   const [error, setError] = useState('');
   const [errorsExist, setErrorsExist] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const { setUser } = useContext(UserContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -26,7 +29,8 @@ function Login({ onLogin, setLoggedIn }) {
       if (response.status >= 200 && response.status <= 299) {
         response.json().then((info) => {
           console.log('response info in /login submit: ', info);
-          onLogin(info);
+          setUser(info);
+          setLoggedIn(true);
           setError('');
           setErrorsExist(false);
           setSuccess('success!');

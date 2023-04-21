@@ -1,13 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import { NavLink, Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { user, UserProvider, UserContext } from '../context/user';
 
-function Header({ loggedIn, user, onLogout }) {
+function Header({ loggedIn, setLoggedIn, user }) {
+  const { setUser } = useContext(UserContext);
   function handleLogout() {
     fetch(`/logout`, {
       method: 'DELETE',
-    }).then(() => onLogout());
+    }).then(() => {
+      setUser({});
+      setLoggedIn(false);
+    });
   }
 
   return (
