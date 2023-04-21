@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './Header';
 import Homepage from './Homepage';
 import Login from './Login';
 import SignUp from './SignUp';
-import { UserProvider } from '../context/user';
+import { user, UserProvider, UserContext } from '../context/user';
 
 function App() {
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
+  const { setUser } = useContext(UserContext);
   const [loggedIn, setLoggedIn] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
 
@@ -23,6 +24,8 @@ function App() {
       }
     });
   }, []);
+
+  console.log('user in the App route: ', user);
 
   //^ both for logging user in & updating values of LoggedIn & currentUser
   function onLogin(user) {
