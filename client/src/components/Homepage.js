@@ -1,20 +1,23 @@
 import MapboxMap from './MapboxMap';
 import MapboxMapReddit from './MapBoxReddit';
+import { useContext } from 'react';
+import { user, UserProvider, UserContext } from '../context/user';
 
-function Homepage({ user }) {
+function Homepage({}) {
+  const { user } = useContext(UserContext);
   console.log('user in HomePage', user);
   return (
     <div>
-      {user === {} ? (
+      {user ? (
         <div>
-          <h1>user is an empty object </h1>
+          <h1>user is populated!</h1>
         </div>
       ) : (
         <div>
-          <h1>user IS populated</h1>
+          <h1>user is an empty object</h1>
         </div>
       )}
-      <h1 className='text-5xl text-secondary'>Welcome back {user.username}!</h1>
+      {/* <h1 className='text-5xl text-secondary'>Welcome back {user.username}!</h1> */}
       {/* write a loading condition here
       if MapBoxMap didn't load, render <Loading />
       */}

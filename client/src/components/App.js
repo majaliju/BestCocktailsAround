@@ -8,23 +8,25 @@ import { user, UserProvider, UserContext } from '../context/user';
 
 function App() {
   // const [user, setUser] = useState({});
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [loggedIn, setLoggedIn] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
 
   //! this useEffect now is moved basically to the context/user.jsx, where it is validated there instead
-  // useEffect(() => {
-  //   fetch('/me').then((response) => {
-  //     if (response.ok) {
-  //       response.json().then((user) => {
-  //         console.log('within /me, the response is: ', user);
-  //         onLogin(user);
-  //       });
-  //     } else {
-  //       onLogout();
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    fetch('/me').then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          console.log('within /me, the response is: ', user);
+          setUser(user);
+          setLoggedIn(true);
+        });
+      } else {
+        setUser({});
+        setLoggedIn(false);
+      }
+    });
+  }, []);
 
   console.log('user in the App route: ', user);
 
@@ -42,7 +44,6 @@ function App() {
 
   return (
     <div>
-      {/* <UserProvider> */}
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
         <Route path='/' element={<Homepage />} />
@@ -56,7 +57,6 @@ function App() {
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/signup' element={<SignUp setLoggedIn={setLoggedIn} />} />
       </Routes>
-      {/* </UserProvider> */}
     </div>
   );
 }

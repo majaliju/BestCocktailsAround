@@ -2,10 +2,10 @@
 
 import { NavLink, Link } from 'react-router-dom';
 import { useEffect, useContext } from 'react';
-import { user, UserProvider, UserContext } from '../context/user';
+import { UserProvider, UserContext } from '../context/user';
 
-function Header({ loggedIn, setLoggedIn, user }) {
-  const { setUser } = useContext(UserContext);
+function Header({ loggedIn, setLoggedIn }) {
+  const { user, setUser } = useContext(UserContext);
 
   function handleLogout() {
     fetch(`/logout`, {
