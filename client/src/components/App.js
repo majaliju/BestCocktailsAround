@@ -53,13 +53,10 @@ function App() {
           <Route path='/cocktails' element={<CocktailsDisplay />}>
             <Route path=':id' element={<EachBarPage />} />
           </Route> */}
-          <Route
-            path='/login'
-            element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
-          />
+          <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
           <Route
             path='/signup'
-            element={<SignUp loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+            element={<SignUp setLoggedIn={setLoggedIn} />}
           />
         </Routes>
       </UserProvider>
