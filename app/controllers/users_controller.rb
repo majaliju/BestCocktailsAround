@@ -10,15 +10,33 @@ class UsersController < ApplicationController
     render json: user, status: :created
   end
 
-
-  # potentially write a method for auto-caching the ip_address
-
-
-  ## a show method that returns the user matching session[:user_id]
-  def show
+    # PATCH/PUT /users/1
+  def update
     user = User.find_by!(id: session[:user_id])
+    user[:address] = params[:address]
     render json: user, status: 200
   end
+
+
+  # def get_address
+  #   user = User.find_by(id: session[:user_id])
+  #   user[:address] = params[:address]
+  # # PATCH/PUT /users/1
+  # def update
+  #   if @user.update(user_params)
+  #     render json: @user
+  #   else
+  #     render json: @user.errors, status: :unprocessable_entity
+  #   end
+  # end
+    
+  # end
+
+  # ## a show method that returns the user matching session[:user_id]
+  # def show
+  #   user = User.find_by!(id: session[:user_id])
+  #   render json: user, status: 200
+  # end
 
 
 

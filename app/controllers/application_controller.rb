@@ -13,13 +13,6 @@ class ApplicationController < ActionController::API
     def show_user
       # binding.break
       user = User.find_by!(id: session[:user_id])
-      if user[:ip_address].blank?
-        user[:ip_address] = request.remote_ip
-        results = Geocoder.search(request.remote_ip)
-        user[:latitude] = results.first.coordinates[0]
-        user[:longitude] = results.first.coordinates[1]
-      end
-      #  how to save the update on user? does above save it to DB?
       render json: user, status: 200
     end
 
@@ -42,6 +35,25 @@ class ApplicationController < ActionController::API
 
 
 end
+
+
+  # ##^ as soon as a user is logged in, or authenticated
+  # ##! -- their IP_address is saved to the user[:ip_address]
+  # ##! -- their location is geocoded
+
+  #   ## a show method that returns the user matching session[:user_id]
+  #   def show_user
+  #     # binding.break
+  #     user = User.find_by!(id: session[:user_id])
+  #     if user[:ip_address].blank?
+  #       user[:ip_address] = request.remote_ip
+  #       results = Geocoder.search(request.remote_ip)
+  #       user[:latitude] = results.first.coordinates[0]
+  #       user[:longitude] = results.first.coordinates[1]
+  #     end
+  #     #  how to save the update on user? does above save it to DB?
+  #     render json: user, status: 200
+  #   end
 
 
 
