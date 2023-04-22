@@ -12,6 +12,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
 
+  //! this useEffect now is moved basically to the context/user.jsx, where it is validated there instead
   // useEffect(() => {
   //   fetch('/me').then((response) => {
   //     if (response.ok) {

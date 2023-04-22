@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { user, UserProvider, UserContext } from '../context/user';
 
-function SignUp({ onLogin }) {
+function SignUp({}) {
   //todo
   //^ stylize this page way better
 
