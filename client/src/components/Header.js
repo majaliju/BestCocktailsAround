@@ -6,6 +6,7 @@ import { user, UserProvider, UserContext } from '../context/user';
 
 function Header({ loggedIn, setLoggedIn, user }) {
   const { setUser } = useContext(UserContext);
+
   function handleLogout() {
     fetch(`/logout`, {
       method: 'DELETE',

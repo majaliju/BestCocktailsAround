@@ -11,7 +11,7 @@ function Homepage({ user }) {
         </div>
       ) : (
         <div>
-          <h1>user IS populatred</h1>
+          <h1>user IS populated</h1>
         </div>
       )}
       <h1 className='text-5xl text-secondary'>Welcome back {user.username}!</h1>
