@@ -8,7 +8,7 @@ import { user, UserProvider, UserContext } from '../context/user';
 
 function App() {
   // const [user, setUser] = useState({});
-  const { setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [loggedIn, setLoggedIn] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
 
@@ -42,24 +42,21 @@ function App() {
 
   return (
     <div>
-      <UserProvider>
-        <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-        <Routes>
-          <Route path='/' element={<Homepage />} />
-          {/* <Route path='/theBestList' element={<TheBestRankings />} />
+      {/* <UserProvider> */}
+      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Routes>
+        <Route path='/' element={<Homepage />} />
+        {/* <Route path='/theBestList' element={<TheBestRankings />} />
           <Route path='/bars' element={<BarsDisplay />}>
             <Route path=':id' element={<EachBarPage />} />
           </Route>
           <Route path='/cocktails' element={<CocktailsDisplay />}>
             <Route path=':id' element={<EachBarPage />} />
           </Route> */}
-          <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
-          <Route
-            path='/signup'
-            element={<SignUp setLoggedIn={setLoggedIn} />}
-          />
-        </Routes>
-      </UserProvider>
+        <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
+        <Route path='/signup' element={<SignUp setLoggedIn={setLoggedIn} />} />
+      </Routes>
+      {/* </UserProvider> */}
     </div>
   );
 }
