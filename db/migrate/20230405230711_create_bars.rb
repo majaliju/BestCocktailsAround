@@ -8,6 +8,7 @@ class CreateBars < ActiveRecord::Migration[7.0]
       t.string :country
       t.decimal :latitude
       t.decimal :longitude
+      t.string :image
 
       t.timestamps
     end
