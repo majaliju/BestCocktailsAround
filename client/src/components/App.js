@@ -5,6 +5,7 @@ import Homepage from './Homepage';
 import Login from './Login';
 import SignUp from './SignUp';
 import { user, UserProvider, UserContext } from '../context/user';
+import { Link } from 'react-router-dom';
 
 function App() {
   // const [user, setUser] = useState({});
