@@ -46,7 +46,7 @@ function App() {
     <div>
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
-        <Route path='/' element={<Homepage />} />
+        <Route path='/' element={<Homepage loggedIn={loggedIn} />} />
         {/* <Route path='/theBestList' element={<TheBestRankings />} />
           <Route path='/bars' element={<BarsDisplay />}>
             <Route path=':id' element={<EachBarPage />} />
