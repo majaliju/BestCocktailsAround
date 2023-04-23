@@ -46,6 +46,6 @@ class BarsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bar_params
-      params.require(:bar).permit(:name, :address, :city, :state, :country, :latitude, :longitude)
+      params.require(:bar).permit(:name, :address, :city, :state, :country, :latitude, :longitude, :image)
     end
 end
