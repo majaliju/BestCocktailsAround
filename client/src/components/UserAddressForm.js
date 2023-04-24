@@ -10,6 +10,10 @@ export default function UserAddressForm() {
 
   const [address, setAddress] = useState('');
   const [apartment, setApartment] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [country, setCountry] = useState('');
+  const [postcode, setPostcode] = useState('');
 
   console.log('address in this component: ', address);
 
@@ -31,18 +35,28 @@ export default function UserAddressForm() {
           />
         </div>
       </AddressAutofill>
-      <input
-        name='apartment'
-        placeholder='Apartment number'
-        type='text'
-        autoComplete='address-line2'
-      />
-      <input
+
+      {/* <input
         name='city'
         placeholder='City'
         type='text'
         autoComplete='address-level2'
-      />
+      /> */}
+      <div className='w-full max-w-xs form-control'>
+        <label className='label'>
+          <span className='label-text'>Enter your city</span>
+          <span className='label-text-alt'>City</span>
+        </label>
+        <input
+          name='city'
+          placeholder='City'
+          type='text'
+          onChange={(e) => setCity(e.target.value)}
+          autoComplete='address-level2'
+          className='w-full max-w-xs input input-bordered'
+        />
+      </div>
+
       <input
         name='state'
         placeholder='State'

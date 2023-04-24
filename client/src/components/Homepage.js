@@ -11,7 +11,7 @@ function Homepage({ loggedIn }) {
     <div>
       {loggedIn === true ? (
         <div>
-          <UserAddressForm />
+          <NavLink to='/addressUpdate'>SUBMIT YOUR ADDRESS</NavLink>
           <h1>loggedIn is NOT false (its true)</h1>
           <h1 className='text-4xl text-secondary'>
             Welcome back {user.username}!
