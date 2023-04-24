@@ -1,5 +1,5 @@
 import MapboxMap from './MapboxMap';
-import UserAddress from './UserAddress';
+import UserAddressForm from './UserAddress';
 import { useContext } from 'react';
 import { user, UserProvider, UserContext } from '../context/user';
 import { NavLink, Link, Navigate } from 'react-router-dom';
