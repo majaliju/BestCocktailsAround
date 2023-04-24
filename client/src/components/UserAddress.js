@@ -1,3 +1,6 @@
+// code came from this mapbox direct tutorial
+// https://docs.mapbox.com/mapbox-search-js/example/autofill-checkout-react/
+
 import React, { useState, useCallback, useEffect } from 'react';
 import {
   AddressAutofill,
