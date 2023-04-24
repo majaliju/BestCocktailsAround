@@ -8,15 +8,28 @@ import { user, UserProvider, UserContext } from '../context/user';
 export default function UserAddressForm() {
   const { user } = useContext(UserContext);
 
+  const [address, setAddress] = useState('');
+  const [apartment, setApartment] = useState('');
+
+  console.log('address in this component: ', address);
+
   return (
     <form>
       <AddressAutofill accessToken='pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA'>
-        <input
-          name='address'
-          placeholder='Address'
-          type='text'
-          autoComplete='address-line1'
-        />
+        <div className='w-full max-w-xs form-control'>
+          <label className='label'>
+            <span className='label-text'>Type in an address...</span>
+            <span className='label-text-alt'>Address</span>
+          </label>
+          <input
+            name='address'
+            placeholder='Address'
+            type='text'
+            onChange={(e) => setAddress(e.target.value)}
+            autoComplete='address-line1'
+            className='w-full max-w-xs input input-bordered'
+          />
+        </div>
       </AddressAutofill>
       <input
         name='apartment'
