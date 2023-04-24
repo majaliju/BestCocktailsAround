@@ -6,7 +6,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import { user, UserProvider, UserContext } from '../context/user';
 import { Link } from 'react-router-dom';
-import UserAddress from './UserAddress';
+import UserAddressForm from './UserAddress';
 
 function App() {
   // const [user, setUser] = useState({});
@@ -51,7 +51,7 @@ function App() {
         <Route path='/' element={<Homepage loggedIn={loggedIn} />} />
         <Route
           path='/addressUpdate'
-          element={<UserAddress loggedIn={loggedIn} />}
+          element={<UserAddressForm loggedIn={loggedIn} />}
         />
         {/* <Route path='/theBestList' element={<TheBestRankings />} />
           <Route path='/bars' element={<BarsDisplay />}>
