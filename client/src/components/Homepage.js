@@ -1,28 +1,30 @@
 import MapboxMap from './MapboxMap';
-import MapboxMapReddit from './MapBoxReddit';
+import UserAddressForm from './UserAddressForm';
 import { useContext } from 'react';
 import { user, UserProvider, UserContext } from '../context/user';
+import { NavLink, Link, Navigate } from 'react-router-dom';
 
-function Homepage({}) {
+function Homepage({ loggedIn }) {
   const { user } = useContext(UserContext);
   console.log('user in HomePage', user);
   return (
     <div>
-      {user ? (
+      {loggedIn === true ? (
         <div>
-          <h1>user is populated!</h1>
+          <UserAddressForm />
+          <h1>loggedIn is NOT false (its true)</h1>
+          <h1 className='text-4xl text-secondary'>
+            Welcome back {user.username}!
+          </h1>
+          <MapboxMap user={user} />
         </div>
       ) : (
-        <div>
-          <h1>user is an empty object</h1>
-        </div>
+        <Navigate to='/login' replace={true} />
       )}
-      {/* <h1 className='text-5xl text-secondary'>Welcome back {user.username}!</h1> */}
+
       {/* write a loading condition here
       if MapBoxMap didn't load, render <Loading />
       */}
-      <MapboxMap user={user} />
-      <h1 className='text-5xl text-primary'>search bar & mapkick here</h1>
     </div>
   );
 }
