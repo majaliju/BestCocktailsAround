@@ -22,11 +22,12 @@ class UsersController < ApplicationController
   
   
       # for whatever reason, password validation is checked here which isn't essential
-      user.update!(
+      user.update(
         latitude: results.first.coordinates[0],
         longitude: results.first.coordinates[1],
         address: full_address
       )
+      user.save(:validate => false)
       render json: user, status: 200
     end
 

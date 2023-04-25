@@ -41,14 +41,14 @@ export default function UserAddressForm() {
     }).then((response) => {
       if (response.status >= 200 && response.status <= 299) {
         response.json().then((info) => {
-          console.log('response info in /login submit: ', info);
+          console.log('response of user address form: ', info);
           // setUser(info);
           // setLoggedIn(true);
           setError('');
           setErrorsExist(false);
           setSuccess('success!');
           setSubmitted(true);
-          navigate('/');
+          // navigate('/');
         });
       } else {
         response.json().then((e) => {
