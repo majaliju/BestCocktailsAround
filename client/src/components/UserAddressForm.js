@@ -25,7 +25,7 @@ export default function UserAddressForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch('/user_location', {
+    fetch(`/users/${user.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

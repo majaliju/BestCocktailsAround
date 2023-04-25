@@ -8,19 +8,27 @@ class UsersController < ApplicationController
     render json: user, status: :created
   end
 
-  #   # PATCH/PUT /users/1
-  # def update
-  #   # this is the user patch version 
-  #   user = User.find_by!(id: params[:id]) 
-  #   # user = User.find_by!(id: session[:user_id])
-  #   # get the full address comprised in one 
-  #   results = Geocoder.search(params[:address])
-  #   user[:latitude] = results.first.coordinates[0]
-  #   user[:longitude] = results.first.coordinates[1]
-  #   user[:address] = params[:address]
-  #   render json: user, status: 200
-  # end
-
+    ## an update method that updates the address and returns lat, longitude
+    def update
+      # this is the geolocation version
+      user = User.find_by!(id: session[:user_id]) 
+      street = params[:street]
+      city = params[:city]
+      state = params[:state]
+      country = params[:country]
+      full_address = [street, city, state, country].compact.join(', ')
+      results = Geocoder.search(full_address)
+      #  save these results also to the database so they persist
+  
+  
+      # for whatever reason, password validation is checked here which isn't essential
+      user.update!(
+        latitude: results.first.coordinates[0],
+        longitude: results.first.coordinates[1],
+        address: full_address
+      )
+      render json: user, status: 200
+    end
 
   # def get_address
   #   user = User.find_by(id: session[:user_id])
