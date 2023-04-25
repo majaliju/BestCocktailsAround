@@ -30,6 +30,16 @@ function App() {
     });
   }, []);
 
+  function logUserIn(givenUser) {
+    setUser(givenUser);
+    setLoggedIn(true);
+  }
+
+  function logUserOut() {
+    setUser({});
+    setLoggedIn(false);
+  }
+
   console.log('user in the App route: ', user);
 
   // //^ both for logging user in & updating values of LoggedIn & currentUser
@@ -46,7 +56,7 @@ function App() {
 
   return (
     <div>
-      {user ? <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} /> : null}
+      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
         <Route
           path='/'

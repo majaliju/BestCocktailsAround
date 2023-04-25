@@ -46,6 +46,7 @@ export default function UserAddressForm() {
           setErrorsExist(false);
           setSuccess('success!');
           setSubmitted(true);
+          // set timeOut function to navigate after 1 second
           // navigate('/');
         });
       } else {
