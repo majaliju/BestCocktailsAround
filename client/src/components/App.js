@@ -48,11 +48,14 @@ function App() {
     <div>
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
-        <Route path='/' element={<Homepage loggedIn={loggedIn} />} />
-        {/* <Route
+        <Route
+          path='/'
+          element={<Homepage loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+        />
+        <Route
           path='/addressUpdate'
           element={<UserAddressForm loggedIn={loggedIn} />}
-        /> */}
+        />
         {/* <Route path='/theBestList' element={<TheBestRankings />} />
           <Route path='/bars' element={<BarsDisplay />}>
             <Route path=':id' element={<EachBarPage />} />

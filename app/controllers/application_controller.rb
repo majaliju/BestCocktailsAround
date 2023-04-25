@@ -11,10 +11,33 @@ class ApplicationController < ActionController::API
 
     ## a show method that returns the user matching session[:user_id]
     def show_user
-      # binding.break
       user = User.find_by!(id: session[:user_id])
       render json: user, status: 200
     end
+
+  #   ## an update method that updates the address and returns lat, longitude
+  # def user_location
+  #   # this is the geolocation version
+  #   user = User.find_by!(id: session[:user_id]) 
+  #   street = params[:street]
+  #   city = params[:city]
+  #   state = params[:state]
+  #   country = params[:country]
+  #   full_address = [street, city, state, country].compact.join(', ')
+  #   results = Geocoder.search(full_address)
+  #   #  save these results also to the database so they persist
+
+
+  #   # for whatever reason, password validation is checked here which isn't essential
+  #   user.update!(
+  #     latitude: results.first.coordinates[0],
+  #     longitude: results.first.coordinates[1],
+  #     address: full_address
+  #   )
+  #   render json: user, status: 200
+  # end
+
+
 
 
   def hello_world
