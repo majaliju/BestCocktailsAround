@@ -4,8 +4,10 @@
 import React, { useState, useCallback, useEffect, useContext } from 'react';
 import { AddressAutofill } from '@mapbox/search-js-react';
 import { user, UserProvider, UserContext } from '../context/user';
+import { useNavigate } from 'react-router-dom';
 
 export default function UserAddressForm() {
+  const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
   const [address, setAddress] = useState('');
@@ -14,10 +16,54 @@ export default function UserAddressForm() {
   const [country, setCountry] = useState('');
   const [postcode, setPostcode] = useState('');
 
+  const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
+  const [errorsExist, setErrorsExist] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
   console.log('address in this component: ', address);
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch('/user_location', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        address,
+        city,
+        state,
+        country,
+        postcode,
+      }),
+    }).then((response) => {
+      if (response.status >= 200 && response.status <= 299) {
+        response.json().then((info) => {
+          console.log('response info in /login submit: ', info);
+          // setUser(info);
+          // setLoggedIn(true);
+          setError('');
+          setErrorsExist(false);
+          setSuccess('success!');
+          setSubmitted(true);
+          navigate('/');
+        });
+      } else {
+        response.json().then((e) => {
+          console.log('e: ', e);
+          setErrorsExist(true);
+          setError(e.error);
+        });
+      }
+    });
+  }
+
   return (
-    <form>
+    <form
+      onSubmit={handleSubmit}
+      className='p-8 mt-2 mb-0 space-y-4 rounded-lg shadow-2xl'>
       <AddressAutofill accessToken='pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA'>
         <div className='w-full max-w-xs form-control'>
           <label className='label'>
@@ -112,6 +158,35 @@ export default function UserAddressForm() {
           className='w-full max-w-xs input input-bordered'
         />
       </div>
+      {submitted === false ? (
+        address !== '' ? (
+          city !== '' ? (
+            <div>
+              <div className='mt-6 form-control'>
+                <button className='btn btn-primary'>Submit Address</button>
+              </div>
+            </div>
+          ) : null
+        ) : null
+      ) : (
+        <div className='shadow-lg alert alert-success'>
+          <div>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='flex-shrink-0 w-6 h-6 stroke-current'
+              fill='none'
+              viewBox='0 0 24 24'>
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+              />
+            </svg>
+            <span>You're all set!</span>
+          </div>
+        </div>
+      )}
     </form>
   );
 }
