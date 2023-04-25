@@ -4,7 +4,7 @@ import { useContext, useEffect } from 'react';
 import { user, UserProvider, UserContext } from '../context/user';
 import { NavLink, Link, Navigate } from 'react-router-dom';
 
-function Homepage({ loggedIn, setLoggedIn }) {
+function Homepage({ bars, loggedIn, setLoggedIn }) {
   const { user } = useContext(UserContext);
 
   // useEffect(() => {
@@ -23,7 +23,7 @@ function Homepage({ loggedIn, setLoggedIn }) {
           <h1 className='text-4xl text-secondary'>
             Welcome back {user.username}!
           </h1>
-          <MapboxMap />
+          <MapboxMap bars={bars} />
         </div>
       ) : (
         <Link to='/login' replace={true}>
