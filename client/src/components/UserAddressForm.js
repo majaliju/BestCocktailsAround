@@ -83,6 +83,21 @@ export default function UserAddressForm() {
 
       <div className='w-full max-w-xs form-control'>
         <label className='label'>
+          <span className='label-text'>Enter your state</span>
+          <span className='label-text-alt'>State</span>
+        </label>
+        <input
+          name='state'
+          placeholder='State'
+          type='text'
+          onChange={(e) => setState(e.target.value)}
+          autoComplete='address-level1'
+          className='w-full max-w-xs input input-bordered'
+        />
+      </div>
+
+      <div className='w-full max-w-xs form-control'>
+        <label className='label'>
           <span className='label-text'>Enter your city</span>
           <span className='label-text-alt'>City</span>
         </label>
@@ -95,34 +110,7 @@ export default function UserAddressForm() {
           className='w-full max-w-xs input input-bordered'
         />
       </div>
-      {/* 
-      <input
-        name='state'
-        placeholder='State'
-        type='text'
-        autoComplete='address-level1'
-      /> */}
-      <div className='w-full max-w-xs form-control'>
-        <label className='label'>
-          <span className='label-text'>Enter your state</span>
-          <span className='label-text-alt'>State</span>
-        </label>
-        <input
-          name='state'
-          placeholder='State'
-          type='text'
-          onChange={(e) => setState(e.target.value)}
-          autoComplete='address-level2'
-          className='w-full max-w-xs input input-bordered'
-        />
-      </div>
 
-      {/* <input
-        name='country'
-        placeholder='Country'
-        type='text'
-        autoComplete='country'
-      /> */}
       <div className='w-full max-w-xs form-control'>
         <label className='label'>
           <span className='label-text'>Enter your country</span>
@@ -138,12 +126,6 @@ export default function UserAddressForm() {
         />
       </div>
 
-      {/* <input
-        name='postcode'
-        placeholder='Postcode'
-        type='text'
-        autoComplete='postal-code'
-      /> */}
       <div className='w-full max-w-xs form-control'>
         <label className='label'>
           <span className='label-text'>Enter your postal/zip code</span>
@@ -161,11 +143,19 @@ export default function UserAddressForm() {
       {submitted === false ? (
         address !== '' ? (
           city !== '' ? (
-            <div>
-              <div className='mt-6 form-control'>
-                <button className='btn btn-primary'>Submit Address</button>
-              </div>
-            </div>
+            state !== '' ? (
+              postcode !== '' ? (
+                country !== '' ? (
+                  <div>
+                    <div className='mt-6 form-control'>
+                      <button className='btn btn-primary'>
+                        Submit Address
+                      </button>
+                    </div>
+                  </div>
+                ) : null
+              ) : null
+            ) : null
           ) : null
         ) : null
       ) : (
