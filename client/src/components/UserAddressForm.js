@@ -10,7 +10,7 @@ export default function UserAddressForm() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
-  const [address, setAddress] = useState('');
+  const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [country, setCountry] = useState('');
@@ -21,7 +21,7 @@ export default function UserAddressForm() {
   const [errorsExist, setErrorsExist] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  console.log('address in this component: ', address);
+  console.log('street in this component: ', street);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -32,7 +32,7 @@ export default function UserAddressForm() {
         'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({
-        address,
+        street,
         city,
         state,
         country,
@@ -67,14 +67,14 @@ export default function UserAddressForm() {
       <AddressAutofill accessToken='pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA'>
         <div className='w-full max-w-xs form-control'>
           <label className='label'>
-            <span className='label-text'>Type in an address...</span>
-            <span className='label-text-alt'>Address</span>
+            <span className='label-text'>Type in a street...</span>
+            <span className='label-text-alt'>Street</span>
           </label>
           <input
-            name='address'
-            placeholder='Address'
+            name='street'
+            placeholder='Street'
             type='text'
-            onChange={(e) => setAddress(e.target.value)}
+            onChange={(e) => setStreet(e.target.value)}
             autoComplete='address-line1'
             className='w-full max-w-xs input input-bordered'
           />
@@ -141,7 +141,7 @@ export default function UserAddressForm() {
         />
       </div>
       {submitted === false ? (
-        address !== '' ? (
+        street !== '' ? (
           city !== '' ? (
             state !== '' ? (
               postcode !== '' ? (
