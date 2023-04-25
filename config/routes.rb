@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   ## the login, logout, and user-authentication routes
   get '/me', to: "application#show_user"
+  patch '/user_location', to: "application#user_location"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
