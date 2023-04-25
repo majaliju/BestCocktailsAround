@@ -1,10 +1,13 @@
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import { useState, useRef, useEffect } from 'react';
+import { user, UserProvider, UserContext } from '../context/user';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA';
 
-function MapboxMap({ user }) {
+function MapboxMap({}) {
+  const { user } = useContext(UserContext);
+
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lat, setLat] = useState(40.7125729);
