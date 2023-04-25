@@ -17,7 +17,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
 
-  //! this useEffect now is moved basically to the context/user.jsx, where it is validated there instead
   useEffect(() => {
     fetch('/me').then((response) => {
       if (response.ok) {
@@ -31,14 +30,16 @@ function App() {
         setLoggedIn(false);
       }
     });
-    
-    useEffect(() => {
-      fetch('/bars')
-        .then((r) => r.json())
-        .then((info) => setBars(info));
-    }, []);
+  }, []);
 
-    console.log("bars :", bars)
+  useEffect(() => {
+    fetch('/bars')
+      .then((r) => r.json())
+      .then((info) => setBars(info));
+  }, []);
+
+  console.log('bars : ', bars);
+  console.log('user in the App route: ', user);
 
   function logUserIn(givenUser) {
     setUser(givenUser);
@@ -50,27 +51,19 @@ function App() {
     setLoggedIn(false);
   }
 
-  console.log('user in the App route: ', user);
-
-  // //^ both for logging user in & updating values of LoggedIn & currentUser
-  // function onLogin(user) {
-  //   setUser(user);
-  //   setLoggedIn(true);
-  // }
-
-  // //^ to log the user out & also & updating values of LoggedIn & currentUser
-  // function onLogout() {
-  //   setUser({});
-  //   setLoggedIn(false);
-  // }
-
   return (
     <div>
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
         <Route
           path='/'
-          element={<Homepage bars={bars} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+          element={
+            <Homepage
+              bars={bars}
+              loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
+            />
+          }
         />
         <Route
           path='/addressUpdate'
