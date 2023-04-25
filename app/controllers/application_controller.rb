@@ -20,15 +20,17 @@ class ApplicationController < ActionController::API
   def user_location
     # this is the geolocation version
     user = User.find_by!(id: session[:user_id]) 
-    # user = User.find_by!(id: session[:user_id])
-    # get the full address comprised in one 
-    results = Geocoder.search(params[:address])
-  
+    street = params[:street]
+    city = params[:city]
+    state = params[:state]
+    country = params[:country]
+    full_address = [street, city, state, country].compact.join(', ')
+    results = Geocoder.search(full_address)
     #  save these results also to the database so they persist
     user.update!(
-      latitude: results.first.coordinates[0]
-      longitude: results.first.coordinates[1]
-      address: params[:address]
+      latitude: results.first.coordinates[0],
+      longitude: results.first.coordinates[1],
+      address: full_address
     )
     render json: user, status: 200
   end

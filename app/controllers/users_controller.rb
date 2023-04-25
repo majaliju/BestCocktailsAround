@@ -8,18 +8,18 @@ class UsersController < ApplicationController
     render json: user, status: :created
   end
 
-    # PATCH/PUT /users/1
-  def update
-    # this is the user patch version 
-    user = User.find_by!(id: params[:id]) 
-    # user = User.find_by!(id: session[:user_id])
-    # get the full address comprised in one 
-    results = Geocoder.search(params[:address])
-    user[:latitude] = results.first.coordinates[0]
-    user[:longitude] = results.first.coordinates[1]
-    user[:address] = params[:address]
-    render json: user, status: 200
-  end
+  #   # PATCH/PUT /users/1
+  # def update
+  #   # this is the user patch version 
+  #   user = User.find_by!(id: params[:id]) 
+  #   # user = User.find_by!(id: session[:user_id])
+  #   # get the full address comprised in one 
+  #   results = Geocoder.search(params[:address])
+  #   user[:latitude] = results.first.coordinates[0]
+  #   user[:longitude] = results.first.coordinates[1]
+  #   user[:address] = params[:address]
+  #   render json: user, status: 200
+  # end
 
 
   # def get_address
