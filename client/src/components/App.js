@@ -18,9 +18,9 @@ function App() {
   useEffect(() => {
     fetch('/me').then((response) => {
       if (response.ok) {
-        response.json().then((user) => {
-          console.log('within /me, the response is: ', user);
-          setUser(user);
+        response.json().then((response) => {
+          console.log('within /me, the response is: ', response);
+          setUser(response);
           setLoggedIn(true);
         });
       } else {
@@ -29,6 +29,16 @@ function App() {
       }
     });
   }, []);
+
+  function logUserIn(givenUser) {
+    setUser(givenUser);
+    setLoggedIn(true);
+  }
+
+  function logUserOut() {
+    setUser({});
+    setLoggedIn(false);
+  }
 
   console.log('user in the App route: ', user);
 
