@@ -26,9 +26,9 @@ class ApplicationController < ActionController::API
   
     #  save these results also to the database so they persist
     user.update!(
-      user[:latitude] = results.first.coordinates[0]
-      user[:longitude] = results.first.coordinates[1]
-      user[:address] = params[:address]
+      latitude: results.first.coordinates[0]
+      longitude: results.first.coordinates[1]
+      address: params[:address]
     )
     render json: user, status: 200
   end
