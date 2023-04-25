@@ -9,7 +9,6 @@ export default function UserAddressForm() {
   const { user } = useContext(UserContext);
 
   const [address, setAddress] = useState('');
-  const [apartment, setApartment] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [country, setCountry] = useState('');
@@ -36,12 +35,6 @@ export default function UserAddressForm() {
         </div>
       </AddressAutofill>
 
-      {/* <input
-        name='city'
-        placeholder='City'
-        type='text'
-        autoComplete='address-level2'
-      /> */}
       <div className='w-full max-w-xs form-control'>
         <label className='label'>
           <span className='label-text'>Enter your city</span>
@@ -56,25 +49,69 @@ export default function UserAddressForm() {
           className='w-full max-w-xs input input-bordered'
         />
       </div>
-
+      {/* 
       <input
         name='state'
         placeholder='State'
         type='text'
         autoComplete='address-level1'
-      />
-      <input
+      /> */}
+      <div className='w-full max-w-xs form-control'>
+        <label className='label'>
+          <span className='label-text'>Enter your state</span>
+          <span className='label-text-alt'>State</span>
+        </label>
+        <input
+          name='state'
+          placeholder='State'
+          type='text'
+          onChange={(e) => setState(e.target.value)}
+          autoComplete='address-level2'
+          className='w-full max-w-xs input input-bordered'
+        />
+      </div>
+
+      {/* <input
         name='country'
         placeholder='Country'
         type='text'
         autoComplete='country'
-      />
-      <input
+      /> */}
+      <div className='w-full max-w-xs form-control'>
+        <label className='label'>
+          <span className='label-text'>Enter your country</span>
+          <span className='label-text-alt'>Country</span>
+        </label>
+        <input
+          name='country'
+          placeholder='Country'
+          type='text'
+          onChange={(e) => setCountry(e.target.value)}
+          autoComplete='country'
+          className='w-full max-w-xs input input-bordered'
+        />
+      </div>
+
+      {/* <input
         name='postcode'
         placeholder='Postcode'
         type='text'
         autoComplete='postal-code'
-      />
+      /> */}
+      <div className='w-full max-w-xs form-control'>
+        <label className='label'>
+          <span className='label-text'>Enter your postal/zip code</span>
+          <span className='label-text-alt'>Postal Code</span>
+        </label>
+        <input
+          name='postcode'
+          placeholder='Postcode'
+          type='text'
+          onChange={(e) => setPostcode(e.target.value)}
+          autoComplete='postal-code'
+          className='w-full max-w-xs input input-bordered'
+        />
+      </div>
     </form>
   );
 }
