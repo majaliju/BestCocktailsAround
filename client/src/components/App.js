@@ -11,6 +11,9 @@ import UserAddressForm from './UserAddressForm';
 function App() {
   // const [user, setUser] = useState({});
   const { user, setUser } = useContext(UserContext);
+
+  const [bars, setBars] = useState({});
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
 
@@ -28,7 +31,14 @@ function App() {
         setLoggedIn(false);
       }
     });
-  }, []);
+    
+    useEffect(() => {
+      fetch('/bars')
+        .then((r) => r.json())
+        .then((info) => setBars(info));
+    }, []);
+
+    console.log("bars :", bars)
 
   function logUserIn(givenUser) {
     setUser(givenUser);
@@ -60,7 +70,7 @@ function App() {
       <Routes>
         <Route
           path='/'
-          element={<Homepage loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+          element={<Homepage bars={bars} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
         />
         <Route
           path='/addressUpdate'

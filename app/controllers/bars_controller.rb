@@ -3,9 +3,8 @@ class BarsController < ApplicationController
 
   # GET /bars
   def index
-    @bars = Bar.all
-
-    render json: @bars
+    bars = Bar.all
+    render json: bars, status: 200
   end
 
   # GET /bars/1

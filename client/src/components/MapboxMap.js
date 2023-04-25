@@ -14,7 +14,7 @@ function MapboxMap({}) {
   const [lng, setLng] = useState(user.longitude);
   // const [lat, setLat] = useState(40.7125729);
   // const [lng, setLng] = useState(-73.943824);
-  const [zoom, setZoom] = useState(9);
+  const [zoom, setZoom] = useState(12);
 
   console.log('user within MapBox', user);
   console.log('user.latitude: ', user.latitude);
