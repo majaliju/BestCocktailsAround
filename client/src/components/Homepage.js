@@ -8,9 +8,10 @@ function Homepage({ loggedIn, setLoggedIn }) {
   const { user } = useContext(UserContext);
 
   // useEffect(() => {
-  //   user && {
+  //   user ? (
+  //     console.log("loggedIn: ", loggedIn),
   //     setLoggedIn(true)
-  //   }
+  //   )
   // }, [])
 
   return (
