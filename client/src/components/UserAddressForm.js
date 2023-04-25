@@ -42,8 +42,6 @@ export default function UserAddressForm() {
       if (response.status >= 200 && response.status <= 299) {
         response.json().then((info) => {
           console.log('response of user address form: ', info);
-          // setUser(info);
-          // setLoggedIn(true);
           setError('');
           setErrorsExist(false);
           setSuccess('success!');

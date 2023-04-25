@@ -1,12 +1,18 @@
 import MapboxMap from './MapboxMap';
 import UserAddressForm from './UserAddressForm';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { user, UserProvider, UserContext } from '../context/user';
 import { NavLink, Link, Navigate } from 'react-router-dom';
 
-function Homepage({ loggedIn }) {
+function Homepage({ loggedIn, setLoggedIn }) {
   const { user } = useContext(UserContext);
-  console.log('user in HomePage', user);
+
+  // useEffect(() => {
+  //   user && {
+  //     setLoggedIn(true)
+  //   }
+  // }, [])
+
   return (
     <div>
       {loggedIn === true ? (
@@ -19,7 +25,9 @@ function Homepage({ loggedIn }) {
           <MapboxMap user={user} />
         </div>
       ) : (
-        <Navigate to='/login' replace={true} />
+        <NavLink to='/login' replace={true}>
+          Click here to log in!
+        </NavLink>
       )}
 
       {/* write a loading condition here

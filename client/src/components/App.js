@@ -48,7 +48,10 @@ function App() {
     <div>
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
-        <Route path='/' element={<Homepage loggedIn={loggedIn} />} />
+        <Route
+          path='/'
+          element={<Homepage loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+        />
         <Route
           path='/addressUpdate'
           element={<UserAddressForm loggedIn={loggedIn} />}
