@@ -4,7 +4,7 @@ import EachBarPage from './EachBarPage';
 import Loading from './Loading';
 import { bars, BarsProvider, BarsContext } from '../context/bars';
 
-function BarsDisplay({ barsAreEmpty, loggedIn, searchTerm, setSearchTerm }) {
+function BarsDisplay({ loggedIn, searchTerm, setSearchTerm }) {
   const { bars } = useContext(BarsContext);
 
   let navigate = useNavigate();
@@ -21,36 +21,37 @@ function BarsDisplay({ barsAreEmpty, loggedIn, searchTerm, setSearchTerm }) {
           <input
             type='text'
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder='Search for your favorite artists here by typing their name or their genre...'
+            placeholder='Search for any bar by typing in a name or a neighborhood or zip code...'
             class='input input-bordered w-full input-lg text-center'
           />
         </label>
       </div>
 
       <div>
-        {barsAreEmpty === false ? (
+        {bars.length > 0 ? (
           <div class='mx-auto max-w-screen-xl px-4 md:px-8'>
             <div class='mb-10 md:mb-16'>
               <h1 class='mb-4 text-center text-6xl font-thin text-primary md:mb-6 lg:text-7xl'>
                 BARS NEAR YOU
               </h1>
             </div>
-            {/* <div class='grid gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
-              {bars
-                .filter((bar) => {
-                  if (searchTerm === '') {
-                    return bar;
-                  } else if (
-                    bar.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    bar.address.toLowerCase().includes(searchTerm.toLowerCase())
-                  ) {
-                    return bar;
-                  }
+            <div class='grid gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
+              {
+                bars.filter((bar) => {
+                  // if (searchTerm === '') {
+                  //   return bar;
+                  // } else if (
+                  //   bar.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  //   bar.address.toLowerCase().includes(searchTerm.toLowerCase())
+                  // ) {
+                  //   return bar;
+                  // }
                 })
-                .map((bar) => (
-                  <EachBarPage bar={bar} />
-                ))}
-            </div> */}
+                // .map((bar) => (
+                //   <EachBarPage bar={bar} />
+                // ))
+              }
+            </div>
           </div>
         ) : (
           <Loading />

@@ -99,14 +99,14 @@ function Header({ loggedIn, setLoggedIn }) {
                 <NavLink
                   to='/bars'
                   className='font-bold uppercase border-none btn btn-outline '>
-                  <h3 className='font-bold uppercase'>all bars</h3>
+                  <h3 className='font-bold uppercase'>bars near you</h3>
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   to='/cocktails'
                   className='font-bold uppercase border-none btn btn-outline '>
-                  <h3 className='font-bold uppercase'>all cocktails</h3>
+                  <h3 className='font-bold uppercase'>the cocktail library</h3>
                 </NavLink>
               </li>
               {/* {loggedIn === true && (

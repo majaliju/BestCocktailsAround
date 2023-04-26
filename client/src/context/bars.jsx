@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 const BarsContext = React.createContext();
 
 function BarsProvider({children}){
-  const [bars, setBars] = useState({});
+  const [bars, setBars] = useState([]);
 
   useEffect(() => {
     fetch('/bars')

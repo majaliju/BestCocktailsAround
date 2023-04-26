@@ -6,7 +6,7 @@ import { bars, BarsProvider, BarsContext } from '../context/bars';
 mapboxgl.accessToken =
   'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA';
 
-function MapboxMap({ barsAreEmpty }) {
+function MapboxMap({}) {
   const { user } = useContext(UserContext);
   const { bars } = useContext(BarsContext);
 
@@ -57,7 +57,7 @@ function MapboxMap({ barsAreEmpty }) {
   return (
     <div>
       <div ref={mapContainer} className='map-container' />
-      {barsAreEmpty === false
+      {bars.length > 0
         ? bars.map((eachBar) => {
             // console.log('eachBar :', eachBar.name);
             // const marker = new mapboxgl.Marker()

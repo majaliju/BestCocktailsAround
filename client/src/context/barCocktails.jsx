@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 const BarCocktailsContext = React.createContext();
 
 function BarCocktailsProvider({children}){
-  const [barCocktails, setBarCocktails] = useState({});
+  const [barCocktails, setBarCocktails] = useState([]);
 
   useEffect(() => {
     fetch('/bar_cocktails')

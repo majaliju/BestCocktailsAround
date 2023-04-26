@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 import UserAddressForm from './UserAddressForm';
 
 function App() {
-  // const [user, setUser] = useState({});
   const { user, setUser } = useContext(UserContext);
   const { bars } = useContext(BarsContext);
 
@@ -48,21 +47,17 @@ function App() {
     setLoggedIn(false);
   }
 
-  // function to make bars isn't empty
-  // precursor to rendering bars in a map function without any bs
-  function isEmptyObj(object) {
-    return JSON.stringify(object) === '{}';
-  }
-  const barsAreEmpty = isEmptyObj(bars);
-  console.log('barsAreEmpty ?: ', barsAreEmpty);
+  // // function to make bars isn't empty
+  // // precursor to rendering bars in a map function without any bs
+  // function isEmptyObj(object) {
+  //   return JSON.stringify(object) === '[]';
+  // }
+  // const barsAreEmpty = isEmptyObj(bars);
+  // console.log('barsAreEmpty ?: ', barsAreEmpty);
 
   return (
     <div>
-      <Header
-        barsAreEmpty={barsAreEmpty}
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-      />
+      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
         <Route
           path='/'
@@ -77,7 +72,6 @@ function App() {
           path='/bars'
           element={
             <BarsDisplay
-              barsAreEmpty={barsAreEmpty}
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
             />

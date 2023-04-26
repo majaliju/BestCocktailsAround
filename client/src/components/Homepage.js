@@ -5,7 +5,7 @@ import { user, UserProvider, UserContext } from '../context/user';
 import { bars, BarsProvider, BarsContext } from '../context/bars';
 import { NavLink, Link, Navigate } from 'react-router-dom';
 
-function Homepage({ barsAreEmpty, loggedIn, setLoggedIn }) {
+function Homepage({ loggedIn, setLoggedIn }) {
   const { user } = useContext(UserContext);
   const { bars } = useContext(BarsContext);
 
@@ -21,7 +21,7 @@ function Homepage({ barsAreEmpty, loggedIn, setLoggedIn }) {
           <h1 className='text-4xl text-secondary'>
             Welcome back {user.username}!
           </h1>
-          <MapboxMap barsAreEmpty={barsAreEmpty} />
+          <MapboxMap />
         </div>
       ) : (
         <Link to='/login' replace={true}>
