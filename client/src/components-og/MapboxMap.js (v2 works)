@@ -35,8 +35,8 @@ function MapboxMap({ bars }) {
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
     map.current.on('move', () => {
-      setLng(map.current.getCenter().lng.toFixed(14));
-      setLat(map.current.getCenter().lat.toFixed(14));
+      setLng(map.current.getCenter().lng.toFixed(4));
+      setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(10));
     });
   });
@@ -61,14 +61,14 @@ function MapboxMap({ bars }) {
   return (
     <div>
       <div ref={mapContainer} className='map-container' />
-      {/* {barsAreEmpty === false
+      {barsAreEmpty === false
         ? bars.map((eachBar) => {
             console.log('eachBar :', eachBar.name);
-            // new mapboxgl.Marker()
-            //   .setLngLat([eachBar.latitude, eachBar.longitude])
-            //   .addTo(map);
+            new mapboxgl.Marker()
+              .setLngLat([eachBar.latitude, eachBar.longitude])
+              .addTo(map);
           })
-        : null} */}
+        : null}
     </div>
   );
 }
