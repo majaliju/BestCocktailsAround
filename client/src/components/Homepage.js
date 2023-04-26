@@ -9,11 +9,22 @@ function Homepage({ loggedIn, setLoggedIn }) {
   const { user } = useContext(UserContext);
   const { bars } = useContext(BarsContext);
 
+  // function to make bars isn't empty
+  // precursor to rendering bars in a map function without any bs
+  function isEmptyObj(object) {
+    return JSON.stringify(object) === '{}';
+  }
+  let barsAreEmpty = isEmptyObj(bars);
+  console.log('barsAreEmpty ?: ', barsAreEmpty);
+
   return (
     <div>
       {loggedIn === true ? (
         <div>
-          <NavLink to='/addressUpdate'>SUBMIT YOUR ADDRESS</NavLink>
+          <btn>
+            <Link to='/addressUpdate'>SUBMIT YOUR ADDRESS</Link>
+          </btn>
+
           <h1>loggedIn is NOT false (its true)</h1>
           <h1 className='text-4xl text-secondary'>
             Welcome back {user.username}!

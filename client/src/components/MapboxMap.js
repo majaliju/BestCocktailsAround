@@ -6,7 +6,7 @@ import { bars, Bars, BarsContext } from '../context/bars';
 mapboxgl.accessToken =
   'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA';
 
-function MapboxMap({}) {
+function MapboxMap({ barsAreEmpty }) {
   const { user } = useContext(UserContext);
   const { bars } = useContext(BarsContext);
 
@@ -18,11 +18,8 @@ function MapboxMap({}) {
 
   console.log('bars within mapbox: ', bars);
 
-  function isEmptyObj(object) {
-    return JSON.stringify(object) === '{}';
-  }
-  let barsAreEmpty = isEmptyObj(bars);
-  console.log('barsAreEmpty ?: ', barsAreEmpty);
+  // function to make bars isn't empty
+  // precursor to rendering bars in a map function without any bs
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -32,7 +29,7 @@ function MapboxMap({}) {
       center: [lng, lat],
       zoom: zoom,
     });
-  }, []);
+  });
 
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
@@ -65,8 +62,8 @@ function MapboxMap({}) {
       <div ref={mapContainer} className='map-container' />
       {barsAreEmpty === false
         ? bars.map((eachBar) => {
-            console.log('eachBar :', eachBar.name);
-            // new mapboxgl.Marker()
+            // console.log('eachBar :', eachBar.name);
+            // const marker = new mapboxgl.Marker()
             //   .setLngLat([eachBar.latitude, eachBar.longitude])
             //   .addTo(map);
           })
