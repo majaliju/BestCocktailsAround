@@ -8,6 +8,7 @@ import BarsDisplay from './BarsDisplay';
 import BarCocktailsDisplay from './BarCocktailsDisplay';
 import EachBarPage from './EachBarPage';
 import EachBarCocktailPage from './EachBarCocktailPage';
+import TheBestRankings from './TheBestRankings';
 import { user, UserProvider, UserContext } from '../context/user';
 import { bars, BarsProvider, BarsContext } from '../context/bars';
 import { Link } from 'react-router-dom';
@@ -70,7 +71,7 @@ function App() {
           path='/addressUpdate'
           element={<UserAddressForm loggedIn={loggedIn} />}
         />
-        {/* <Route path='/theBestList' element={<TheBestRankings />} /> */}
+        <Route path='/theBestList' element={<TheBestRankings />} />
         <Route
           path='/bars'
           element={
