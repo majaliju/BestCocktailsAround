@@ -4,7 +4,7 @@ import EachBarPage from './EachBarPage';
 import Loading from './Loading';
 import { bars, BarsProvider, BarsContext } from '../context/bars';
 
-function BarsDisplay({ loggedIn, searchTerm, setSearchTerm }) {
+function BarsDisplay({ searchTerm, setSearchTerm }) {
   const { bars } = useContext(BarsContext);
 
   let navigate = useNavigate();
@@ -21,7 +21,7 @@ function BarsDisplay({ loggedIn, searchTerm, setSearchTerm }) {
           <input
             type='text'
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder='Search for any bar by typing in a name or a neighborhood or zip code...'
+            placeholder='Search for any bar by typing in a bar name, a neighborhood,a zip code, or state initiails (NY, CA, etc.)...'
             class='input input-bordered w-full input-lg text-center'
           />
         </label>
