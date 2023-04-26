@@ -10,11 +10,11 @@ Review.delete_all
 puts "---- Now for the re-seeding..."
 
 puts "----- seeding 5 drinks"
-old_fashioned = Cocktail.create(name: "Old Fashioned", ingredients: ["Bourbon", "Whiskey", "bitters", "orange twist", "sugar"], image: "")
-cosmopolitan = Cocktail.create(name: "Cosmopolitan", ingredients: ["Vodka", "Cointreau", "cranberry juice", "fresh lime juice", "lemon twist"], image: "")
-mojito = Cocktail.create(name: "Mojito", ingredients: ["White Rum", "fresh mint", "sugar", "lime", "soda water"], image: "")
-caipirinha = Cocktail.create(name: "Caipirinha", ingredients: ["Rum", "Cachaca", "lime", "sugar"], image: "")
-long_island_ice_tea = Cocktail.create(name: "Long Island Ice Tea", ingredients: ["Vodka", "Gin", "Rum", "Tequila", "Triple Sec", "cola", "syrup", "lemon juice"], image: "")
+old_fashioned = Cocktail.create(name: "Old Fashioned", ingredients: ["Bourbon", "Whiskey", "bitters", "orange twist", "sugar"], image: "https://i.imgur.com/okx7oIZl.jpg")
+cosmopolitan = Cocktail.create(name: "Cosmopolitan", ingredients: ["Vodka", "Cointreau", "cranberry juice", "fresh lime juice", "lemon twist"], image: "https://i.imgur.com/P3kdUoSl.jpg")
+mojito = Cocktail.create(name: "Mojito", ingredients: ["White Rum", "fresh mint", "sugar", "lime", "soda water"], image: "https://i.imgur.com/px2Yg5Ul.jpg")
+caipirinha = Cocktail.create(name: "Caipirinha", ingredients: ["Rum", "Cachaca", "lime", "sugar"], image: "https://i.imgur.com/V1oRIyLl.jpg")
+long_island_ice_tea = Cocktail.create(name: "Long Island Ice Tea", ingredients: ["Vodka", "Gin", "Rum", "Tequila", "Triple Sec", "cola", "syrup", "lemon juice"], image: "https://i.imgur.com/Y7pHgbhl.jpg")
 
 
 
