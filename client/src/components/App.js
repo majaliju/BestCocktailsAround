@@ -5,6 +5,9 @@ import Homepage from './Homepage';
 import Login from './Login';
 import SignUp from './SignUp';
 import BarsDisplay from './BarsDisplay';
+import BarCocktailsDisplay from './BarCocktailsDisplay';
+import EachBarPage from './EachBarPage';
+import EachBarCocktailPage from './EachBarCocktailPage';
 import { user, UserProvider, UserContext } from '../context/user';
 import { bars, BarsProvider, BarsContext } from '../context/bars';
 import { Link } from 'react-router-dom';
@@ -76,12 +79,18 @@ function App() {
               setSearchTerm={setSearchTerm}
             />
           }>
-          {/* <Route path=':id' element={<EachBarPage />} /> */}
-        </Route>
-        {/* <Route path='/cocktails' element={<CocktailsDisplay               searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}/>}>
           <Route path=':id' element={<EachBarPage />} />
-        </Route> */}
+        </Route>
+        <Route
+          path='/bar_cocktails'
+          element={
+            <BarCocktailsDisplay
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          }>
+          <Route path=':id' element={<EachBarCocktailPage />} />
+        </Route>
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/signup' element={<SignUp setLoggedIn={setLoggedIn} />} />
       </Routes>

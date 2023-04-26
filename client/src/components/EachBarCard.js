@@ -1,5 +1,5 @@
-function EachBarPage() {
+function EachBarCard() {
   return <div></div>;
 }
 
-export default EachBarPage;
+export default EachBarCard;
