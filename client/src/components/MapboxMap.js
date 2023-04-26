@@ -14,11 +14,19 @@ function MapboxMap({ bars }) {
   const [lng, setLng] = useState(user.longitude);
   const [zoom, setZoom] = useState(12);
 
-  console.log('user within MapBox', user);
-  console.log('user.latitude: ', user.latitude);
-  console.log('user.longitude: ', user.longitude);
-  console.log('lat: ', lat);
-  console.log('lng: ', lng);
+  console.log('bars within mapbox: ', bars);
+
+  function isEmptyObj(object) {
+    return JSON.stringify(object) === '{}';
+  }
+  let barsAreEmpty = isEmptyObj(bars);
+  console.log('barsAreEmpty ?: ', barsAreEmpty);
+
+  // console.log('user within MapBox', user);
+  // console.log('user.latitude: ', user.latitude);
+  // console.log('user.longitude: ', user.longitude);
+  // console.log('lat: ', lat);
+  // console.log('lng: ', lng);
 
   useEffect(() => {
     map.current = new mapboxgl.Map({
@@ -28,17 +36,25 @@ function MapboxMap({ bars }) {
       zoom: zoom,
     });
 
-    bars.map((eachBar) => {
-      console.log('eachBar :', eachBar.name);
-      const marker = new mapboxgl.Marker()
-        .setLngLat([eachBar.latitude, eachBar.longitude])
-        .addTo(map);
-    });
+    // bars.map((eachBar) => {
+    //   console.log('eachBar :', eachBar.name);
+    //   new mapboxgl.Marker()
+    //     .setLngLat([eachBar.latitude, eachBar.longitude])
+    //     .addTo(map);
+    // });
   }, []);
 
   return (
     <div>
       <div ref={mapContainer} className='map-container' />
+      {barsAreEmpty === false
+        ? bars.map((eachBar) => {
+            console.log('eachBar :', eachBar.name);
+            // new mapboxgl.Marker()
+            //   .setLngLat([eachBar.latitude, eachBar.longitude])
+            //   .addTo(map);
+          })
+        : null}
     </div>
   );
 }
