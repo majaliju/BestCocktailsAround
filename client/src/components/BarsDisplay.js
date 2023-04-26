@@ -36,21 +36,20 @@ function BarsDisplay({ loggedIn, searchTerm, setSearchTerm }) {
               </h1>
             </div>
             <div class='grid gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
-              {
-                bars.filter((bar) => {
-                  // if (searchTerm === '') {
-                  //   return bar;
-                  // } else if (
-                  //   bar.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                  //   bar.address.toLowerCase().includes(searchTerm.toLowerCase())
-                  // ) {
-                  //   return bar;
-                  // }
+              {bars
+                .filter((bar) => {
+                  if (searchTerm === '') {
+                    return bar;
+                  } else if (
+                    bar.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    bar.address.toLowerCase().includes(searchTerm.toLowerCase())
+                  ) {
+                    return bar;
+                  }
                 })
-                // .map((bar) => (
-                //   <EachBarPage bar={bar} />
-                // ))
-              }
+                .map((bar) => (
+                  <EachBarPage bar={bar} />
+                ))}
             </div>
           </div>
         ) : (
