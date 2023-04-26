@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   
   has_many :reviews
+  has_many :bar_cocktails, through: :reviews
 
   validates :username, presence: true, uniqueness: true
   validates :password, length: { minimum: 8, maximum: 254 }
