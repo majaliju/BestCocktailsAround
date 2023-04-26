@@ -19,8 +19,7 @@ class UsersController < ApplicationController
       full_address = [street, city, state, country].compact.join(', ')
       results = Geocoder.search(full_address)
       #  save these results also to the database so they persist
-  
-  
+
       # for whatever reason, password validation is checked here which isn't essential
       user.update(
         latitude: results.first.coordinates[0],

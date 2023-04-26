@@ -9,7 +9,7 @@ function BarsProvider({children}){
     fetch('/bars')
       .then((r) => r.json())
       .then((info) => setBars(info));
-  }, []);
+  }, [])
   
   console.log("bars within user Context: ", bars)
 
