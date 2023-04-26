@@ -12,30 +12,30 @@ class BarCocktailsController < ApplicationController
     render json: @bar_cocktail
   end
 
-  # POST /bar_cocktails
-  def create
-    @bar_cocktail = BarCocktail.new(bar_cocktail_params)
+  # # POST /bar_cocktails
+  # def create
+  #   @bar_cocktail = BarCocktail.new(bar_cocktail_params)
 
-    if @bar_cocktail.save
-      render json: @bar_cocktail, status: :created, location: @bar_cocktail
-    else
-      render json: @bar_cocktail.errors, status: :unprocessable_entity
-    end
-  end
+  #   if @bar_cocktail.save
+  #     render json: @bar_cocktail, status: :created, location: @bar_cocktail
+  #   else
+  #     render json: @bar_cocktail.errors, status: :unprocessable_entity
+  #   end
+  # end
 
-  # PATCH/PUT /bar_cocktails/1
-  def update
-    if @bar_cocktail.update(bar_cocktail_params)
-      render json: @bar_cocktail
-    else
-      render json: @bar_cocktail.errors, status: :unprocessable_entity
-    end
-  end
+  # # PATCH/PUT /bar_cocktails/1
+  # def update
+  #   if @bar_cocktail.update(bar_cocktail_params)
+  #     render json: @bar_cocktail
+  #   else
+  #     render json: @bar_cocktail.errors, status: :unprocessable_entity
+  #   end
+  # end
 
-  # DELETE /bar_cocktails/1
-  def destroy
-    @bar_cocktail.destroy
-  end
+  # # DELETE /bar_cocktails/1
+  # def destroy
+  #   @bar_cocktail.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
