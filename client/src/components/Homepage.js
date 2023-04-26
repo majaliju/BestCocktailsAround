@@ -2,23 +2,21 @@ import MapboxMap from './MapboxMap';
 import UserAddressForm from './UserAddressForm';
 import { useContext, useEffect } from 'react';
 import { user, UserProvider, UserContext } from '../context/user';
+import { bars, BarsProvider, BarsContext } from '../context/bars';
 import { NavLink, Link, Navigate } from 'react-router-dom';
 
 function Homepage({ loggedIn, setLoggedIn }) {
   const { user } = useContext(UserContext);
-
-  // useEffect(() => {
-  //   user ? (
-  //     console.log("loggedIn: ", loggedIn),
-  //     setLoggedIn(true)
-  //   )
-  // }, [])
+  const { bars } = useContext(BarsContext);
 
   return (
     <div>
       {loggedIn === true ? (
         <div>
-          <NavLink to='/addressUpdate'>SUBMIT YOUR ADDRESS</NavLink>
+          <btn>
+            <Link to='/addressUpdate'>SUBMIT YOUR ADDRESS</Link>
+          </btn>
+
           <h1>loggedIn is NOT false (its true)</h1>
           <h1 className='text-4xl text-secondary'>
             Welcome back {user.username}!

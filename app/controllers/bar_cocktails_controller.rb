@@ -3,9 +3,8 @@ class BarCocktailsController < ApplicationController
 
   # GET /bar_cocktails
   def index
-    @bar_cocktails = BarCocktail.all
-
-    render json: @bar_cocktails
+    bar_cocktails = BarCocktail.all
+    render json: bar_cocktails, status: 200
   end
 
   # GET /bar_cocktails/1

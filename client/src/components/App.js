@@ -4,17 +4,21 @@ import Header from './Header';
 import Homepage from './Homepage';
 import Login from './Login';
 import SignUp from './SignUp';
+import BarsDisplay from './BarsDisplay';
 import { user, UserProvider, UserContext } from '../context/user';
+import { bars, BarsProvider, BarsContext } from '../context/bars';
 import { Link } from 'react-router-dom';
 import UserAddressForm from './UserAddressForm';
 
 function App() {
-  // const [user, setUser] = useState({});
   const { user, setUser } = useContext(UserContext);
+  const { bars } = useContext(BarsContext);
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
 
-  //! this useEffect now is moved basically to the context/user.jsx, where it is validated there instead
+  const [searchTerm, setSearchTerm] = useState('');
+
   useEffect(() => {
     fetch('/me').then((response) => {
       if (response.ok) {
@@ -30,6 +34,9 @@ function App() {
     });
   }, []);
 
+  // console.log('bars : ', bars);
+  console.log('user in the App route: ', user);
+
   function logUserIn(givenUser) {
     setUser(givenUser);
     setLoggedIn(true);
@@ -40,19 +47,13 @@ function App() {
     setLoggedIn(false);
   }
 
-  console.log('user in the App route: ', user);
-
-  // //^ both for logging user in & updating values of LoggedIn & currentUser
-  // function onLogin(user) {
-  //   setUser(user);
-  //   setLoggedIn(true);
+  // // function to make bars isn't empty
+  // // precursor to rendering bars in a map function without any bs
+  // function isEmptyObj(object) {
+  //   return JSON.stringify(object) === '[]';
   // }
-
-  // //^ to log the user out & also & updating values of LoggedIn & currentUser
-  // function onLogout() {
-  //   setUser({});
-  //   setLoggedIn(false);
-  // }
+  // const barsAreEmpty = isEmptyObj(bars);
+  // console.log('barsAreEmpty ?: ', barsAreEmpty);
 
   return (
     <div>
@@ -66,13 +67,21 @@ function App() {
           path='/addressUpdate'
           element={<UserAddressForm loggedIn={loggedIn} />}
         />
-        {/* <Route path='/theBestList' element={<TheBestRankings />} />
-          <Route path='/bars' element={<BarsDisplay />}>
-            <Route path=':id' element={<EachBarPage />} />
-          </Route>
-          <Route path='/cocktails' element={<CocktailsDisplay />}>
-            <Route path=':id' element={<EachBarPage />} />
-          </Route> */}
+        {/* <Route path='/theBestList' element={<TheBestRankings />} /> */}
+        <Route
+          path='/bars'
+          element={
+            <BarsDisplay
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          }>
+          {/* <Route path=':id' element={<EachBarPage />} /> */}
+        </Route>
+        {/* <Route path='/cocktails' element={<CocktailsDisplay               searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}/>}>
+          <Route path=':id' element={<EachBarPage />} />
+        </Route> */}
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/signup' element={<SignUp setLoggedIn={setLoggedIn} />} />
       </Routes>
