@@ -1,27 +1,24 @@
-// import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
-// const BarContext = React.createContext();
+const BarsContext = React.createContext();
 
-// function BarProvider({children}){
-//   const [bar, setBars] = useState({});
+function BarsProvider({children}){
+  const [bars, setBars] = useState({});
 
-//   useEffect(() => {
-//     fetch('/me')
-//     .then(res => {
-//       if (res.ok){
-//         res.json().then(response => setUser(response))
-//       }
-//     })
-//   }, []);
+  useEffect(() => {
+    fetch('/bars')
+      .then((r) => r.json())
+      .then((info) => setBars(info));
+  }, []);
   
-//   console.log("bar within user Context: ", bars)
+  console.log("bar within user Context: ", bars)
 
-//   return (
-//       <UserContext.Provider value={{user, setUser}}> 
-//           {children} 
-//       </UserContext.Provider> 
-//   )
+  return (
+      <BarsContext.Provider value={{bars, setBars}}> 
+          {children} 
+      </BarsContext.Provider> 
+  )
 
-// }
+}
 
-// export {BarContext, BarProvider };
+export {BarsContext, BarsProvider };

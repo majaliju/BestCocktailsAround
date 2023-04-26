@@ -12,7 +12,7 @@ function App() {
   // const [user, setUser] = useState({});
   const { user, setUser } = useContext(UserContext);
 
-  const [bars, setBars] = useState({});
+  // const [bars, setBars] = useState({});
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -32,13 +32,13 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    fetch('/bars')
-      .then((r) => r.json())
-      .then((info) => setBars(info));
-  }, []);
+  // useEffect(() => {
+  //   fetch('/bars')
+  //     .then((r) => r.json())
+  //     .then((info) => setBars(info));
+  // }, []);
 
-  console.log('bars : ', bars);
+  // console.log('bars : ', bars);
   console.log('user in the App route: ', user);
 
   function logUserIn(givenUser) {
@@ -57,13 +57,7 @@ function App() {
       <Routes>
         <Route
           path='/'
-          element={
-            <Homepage
-              bars={bars}
-              loggedIn={loggedIn}
-              setLoggedIn={setLoggedIn}
-            />
-          }
+          element={<Homepage loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
         />
         <Route
           path='/addressUpdate'

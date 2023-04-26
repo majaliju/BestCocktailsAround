@@ -6,12 +6,15 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './context/user';
+import { BarsProvider } from './context/bars';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <UserProvider>
-      <App />
+      <BarsProvider>
+        <App />
+      </BarsProvider>
     </UserProvider>
   </BrowserRouter>
 );

@@ -2,17 +2,12 @@ import MapboxMap from './MapboxMap';
 import UserAddressForm from './UserAddressForm';
 import { useContext, useEffect } from 'react';
 import { user, UserProvider, UserContext } from '../context/user';
+import { bars, Bars, BarsContext } from '../context/bars';
 import { NavLink, Link, Navigate } from 'react-router-dom';
 
-function Homepage({ bars, loggedIn, setLoggedIn }) {
+function Homepage({ loggedIn, setLoggedIn }) {
   const { user } = useContext(UserContext);
-
-  // useEffect(() => {
-  //   user ? (
-  //     console.log("loggedIn: ", loggedIn),
-  //     setLoggedIn(true)
-  //   )
-  // }, [])
+  const { bars } = useContext(BarsContext);
 
   return (
     <div>
@@ -23,7 +18,7 @@ function Homepage({ bars, loggedIn, setLoggedIn }) {
           <h1 className='text-4xl text-secondary'>
             Welcome back {user.username}!
           </h1>
-          <MapboxMap bars={bars} />
+          <MapboxMap />
         </div>
       ) : (
         <Link to='/login' replace={true}>

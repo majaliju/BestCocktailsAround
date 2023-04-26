@@ -1,12 +1,14 @@
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import { useState, useRef, useEffect, useContext } from 'react';
 import { user, UserProvider, UserContext } from '../context/user';
+import { bars, Bars, BarsContext } from '../context/bars';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA';
 
-function MapboxMap({ bars }) {
+function MapboxMap({}) {
   const { user } = useContext(UserContext);
+  const { bars } = useContext(BarsContext);
 
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -61,14 +63,14 @@ function MapboxMap({ bars }) {
   return (
     <div>
       <div ref={mapContainer} className='map-container' />
-      {/* {barsAreEmpty === false
+      {barsAreEmpty === false
         ? bars.map((eachBar) => {
             console.log('eachBar :', eachBar.name);
             // new mapboxgl.Marker()
             //   .setLngLat([eachBar.latitude, eachBar.longitude])
             //   .addTo(map);
           })
-        : null} */}
+        : null}
     </div>
   );
 }
