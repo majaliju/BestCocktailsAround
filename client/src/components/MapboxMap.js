@@ -1,7 +1,7 @@
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import { useState, useRef, useEffect, useContext } from 'react';
 import { user, UserProvider, UserContext } from '../context/user';
-import { bars, Bars, BarsContext } from '../context/bars';
+import { bars, BarsProvider, BarsContext } from '../context/bars';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA';
@@ -17,9 +17,6 @@ function MapboxMap({ barsAreEmpty }) {
   const [zoom, setZoom] = useState(12);
 
   console.log('bars within mapbox: ', bars);
-
-  // function to make bars isn't empty
-  // precursor to rendering bars in a map function without any bs
 
   useEffect(() => {
     if (map.current) return; // initialize map only once

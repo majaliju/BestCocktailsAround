@@ -2,20 +2,12 @@ import MapboxMap from './MapboxMap';
 import UserAddressForm from './UserAddressForm';
 import { useContext, useEffect } from 'react';
 import { user, UserProvider, UserContext } from '../context/user';
-import { bars, Bars, BarsContext } from '../context/bars';
+import { bars, BarsProvider, BarsContext } from '../context/bars';
 import { NavLink, Link, Navigate } from 'react-router-dom';
 
-function Homepage({ loggedIn, setLoggedIn }) {
+function Homepage({ barsAreEmpty, loggedIn, setLoggedIn }) {
   const { user } = useContext(UserContext);
   const { bars } = useContext(BarsContext);
-
-  // function to make bars isn't empty
-  // precursor to rendering bars in a map function without any bs
-  function isEmptyObj(object) {
-    return JSON.stringify(object) === '{}';
-  }
-  let barsAreEmpty = isEmptyObj(bars);
-  console.log('barsAreEmpty ?: ', barsAreEmpty);
 
   return (
     <div>
@@ -29,7 +21,7 @@ function Homepage({ loggedIn, setLoggedIn }) {
           <h1 className='text-4xl text-secondary'>
             Welcome back {user.username}!
           </h1>
-          <MapboxMap />
+          <MapboxMap barsAreEmpty={barsAreEmpty} />
         </div>
       ) : (
         <Link to='/login' replace={true}>
