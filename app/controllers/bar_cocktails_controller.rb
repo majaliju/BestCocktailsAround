@@ -7,10 +7,10 @@ class BarCocktailsController < ApplicationController
     render json: bar_cocktails, status: 200
   end
 
-  # GET /bar_cocktails/1
-  def show
-    render json: @bar_cocktail
-  end
+  # # GET /bar_cocktails/1
+  # def show
+  #   render json: @bar_cocktail
+  # end
 
   # # POST /bar_cocktails
   # def create

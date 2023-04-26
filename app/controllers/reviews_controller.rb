@@ -8,10 +8,10 @@ class ReviewsController < ApplicationController
     render json: @reviews
   end
 
-  # GET /reviews/1
-  def show
-    render json: @review
-  end
+  # # GET /reviews/1
+  # def show
+  #   render json: @review
+  # end
 
   # def create
   #   review = Review.create(review_params)
@@ -46,7 +46,8 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
-      @review = Review.find(params[:id])
+      user = User.find_by!(id: session[:user_id])
+      @review = user.review.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -2,7 +2,7 @@ class BarsController < ApplicationController
   # before_action :set_bar, only: %i[ show update destroy ]
 
   # GET /bars
-  # sort by proximity to the user
+  # sort by proximity to the user, all bars within 10,000 miles
   def index
     user = User.find_by!(id: session[:user_id])
     bars = Bar.near([user[:latitude], user[:longitude]], 10000)
@@ -10,10 +10,10 @@ class BarsController < ApplicationController
     render json: bars, status: 200
   end
 
-  # GET /bars/1
-  def show
-    render json: @bar
-  end
+  # # GET /bars/1
+  # def show
+  #   render json: @bar
+  # end
 
   # # POST /bars
   # def create
