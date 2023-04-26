@@ -11,7 +11,7 @@ function BarCocktailsProvider({children}){
       .then((info) => setBarCocktails(info));
   }, []);
   
-  console.log("barCocktails within user Context: ", barCocktails)
+  // console.log("barCocktails within barCocktails Context: ", barCocktails)
 
   return (
       <BarCocktailsContext.Provider value={{barCocktails, setBarCocktails}}> 

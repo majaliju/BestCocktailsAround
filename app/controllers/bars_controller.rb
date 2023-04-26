@@ -2,8 +2,11 @@ class BarsController < ApplicationController
   # before_action :set_bar, only: %i[ show update destroy ]
 
   # GET /bars
+  # sort by proximity to the user
   def index
-    bars = Bar.all
+    user = User.find_by!(id: session[:user_id])
+    bars = Bar.near([user[:latitude], user[:longitude]], 10000)
+    # binding.break
     render json: bars, status: 200
   end
 
