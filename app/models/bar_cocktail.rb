@@ -8,4 +8,13 @@ class BarCocktail < ApplicationRecord
     def special_name
       "#{self.cocktail.name} by #{self.bar.name}"
     end
+
+    def avg_star
+      # shows the average star
+  
+      # get all reviews for this instance
+      #  tally up the total stars
+      #  divide by how many instances
+      # save that number (decimal) to this 
+    end
 end
