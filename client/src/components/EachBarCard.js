@@ -1,6 +1,11 @@
 import Loading from './Loading';
+import { Link, useNavigate } from 'react-router-dom';
 
 function EachBarCard({ bar }) {
+  const navigate = useNavigate();
+
+  console.log('bar within EBC: ', bar);
+
   return (
     <div>
       <div className='py-6 bg-base-900 sm:py-8 lg:py-'>
@@ -11,7 +16,16 @@ function EachBarCard({ bar }) {
                 <div className='items-center text-center card-body'>
                   <h2 className='card-title'>{bar.name}</h2>
                 </div>
-                <div className='justify-end card-actions'>{bar.address}</div>
+                <div className='justify-center card-actions'>
+                  <div className='items-center text-center card-body'>
+                    {bar.address}
+                  </div>
+                  <Link
+                    to={`${bar.id}`}
+                    className='justify-center w-full btn btn-primary btn-outline'>
+                    VISIT BAR PAGE
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
