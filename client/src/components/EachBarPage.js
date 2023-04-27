@@ -5,11 +5,14 @@ function EachBarPage({}) {
   const location = useLocation();
 
   let bar = location.state.bar;
-  console.log('bar within EBC: ', bar);
+  console.log('bar within EACHBARPAGE: ', bar);
+  console.log('id within EBC: ', id);
 
+  // set contet here then find the specific bar
   return (
     <div>
       <h1>{bar.name}</h1>
+      <h1>hey this works</h1>
     </div>
   );
 }
