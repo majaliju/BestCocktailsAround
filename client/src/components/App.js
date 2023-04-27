@@ -8,6 +8,7 @@ import BarsDisplay from './BarsDisplay';
 import BarCocktailsDisplay from './BarCocktailsDisplay';
 import EachBarPage from './EachBarPage';
 import EachBarCocktailPage from './EachBarCocktailPage';
+import SubmitReviewForm from './SubmitReviewForm';
 import TheBestRankings from './TheBestRankings';
 import { user, UserProvider, UserContext } from '../context/user';
 import { bars, BarsProvider, BarsContext } from '../context/bars';
@@ -92,6 +93,7 @@ function App() {
           }>
           <Route path=':id' element={<EachBarCocktailPage />} />
         </Route>
+        <Route path='reviews/:id' element={<SubmitReviewForm />} />
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/signup' element={<SignUp setLoggedIn={setLoggedIn} />} />
       </Routes>
