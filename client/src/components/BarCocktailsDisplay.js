@@ -3,11 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import EachBarCocktailPage from './EachBarCocktailPage';
 import EachBarCocktailCard from './EachBarCocktailCard';
 import Loading from './Loading';
-import {
-  barCocktails,
-  BarCocktailsProvider,
-  BarCocktailsContext,
-} from '../context/barCocktails';
+import { barCocktails, BarCocktailsContext } from '../context/barCocktails';
 
 function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
   const { barCocktails } = useContext(BarCocktailsContext);

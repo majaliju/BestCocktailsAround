@@ -1,3 +1,5 @@
+import { barCocktails, BarCocktailsContext } from '../context/barCocktails';
+
 function EachBarCocktailCard({ barCocktail }) {
   return (
     <div>
