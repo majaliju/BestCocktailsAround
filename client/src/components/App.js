@@ -80,9 +80,10 @@ function App() {
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
             />
-          }>
-          <Route path=':id' element={<EachBarPage />} />
-        </Route>
+          }
+        />
+        <Route path='/bars/:id' element={<EachBarPage />} />
+
         <Route
           path='/bar_cocktails'
           element={

@@ -1,9 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
-function EachBarPage({ bar }) {
+function EachBarPage({}) {
   const { id } = useParams();
-  console.log('id: ', id);
+  const location = useLocation();
 
+  let bar = location.state.bar;
   console.log('bar within EBC: ', bar);
 
   return (

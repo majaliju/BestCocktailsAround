@@ -4,8 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 function EachBarCard({ bar }) {
   const navigate = useNavigate();
 
-  console.log('bar within EBC: ', bar);
-
   return (
     <div>
       <div className='py-6 bg-base-900 sm:py-8 lg:py-'>
@@ -22,6 +20,7 @@ function EachBarCard({ bar }) {
                   </div>
                   <Link
                     to={`${bar.id}`}
+                    state={bar}
                     className='justify-center w-full btn btn-primary btn-outline'>
                     VISIT BAR PAGE
                   </Link>
