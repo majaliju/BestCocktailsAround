@@ -1,6 +1,6 @@
 import { useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import EachBarPage from './EachBarPage';
+import EachBarCard from './EachBarCard';
 import Loading from './Loading';
 import { bars, BarsProvider, BarsContext } from '../context/bars';
 
@@ -48,7 +48,7 @@ function BarsDisplay({ searchTerm, setSearchTerm }) {
                   }
                 })
                 .map((bar) => (
-                  <EachBarPage bar={bar} />
+                  <EachBarCard bar={bar} />
                 ))}
             </div>
           </div>

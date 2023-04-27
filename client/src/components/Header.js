@@ -90,7 +90,7 @@ function Header({ loggedIn, setLoggedIn }) {
             <ul className='p-0 menu menu-horizontal'>
               <li>
                 <NavLink
-                  to='/best'
+                  to='/theBestList'
                   className='font-bold uppercase border-none btn btn-outline'>
                   <h3 className='font-bold uppercase'>where's the best?</h3>
                 </NavLink>
@@ -104,7 +104,7 @@ function Header({ loggedIn, setLoggedIn }) {
               </li>
               <li>
                 <NavLink
-                  to='/cocktails'
+                  to='/bar_cocktails'
                   className='font-bold uppercase border-none btn btn-outline '>
                   <h3 className='font-bold uppercase'>the cocktail library</h3>
                 </NavLink>

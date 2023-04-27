@@ -10,8 +10,8 @@ import EachBarPage from './EachBarPage';
 import EachBarCocktailPage from './EachBarCocktailPage';
 import SubmitReviewForm from './SubmitReviewForm';
 import TheBestRankings from './TheBestRankings';
-import { user, UserProvider, UserContext } from '../context/user';
-import { bars, BarsProvider, BarsContext } from '../context/bars';
+import { user, UserContext } from '../context/user';
+import { bars, BarsContext } from '../context/bars';
 import { Link } from 'react-router-dom';
 import UserAddressForm from './UserAddressForm';
 
@@ -93,7 +93,7 @@ function App() {
           }>
           <Route path=':id' element={<EachBarCocktailPage />} />
         </Route>
-        <Route path='reviews/:id' element={<SubmitReviewForm />} />
+        <Route path='/reviews/:id' element={<SubmitReviewForm />} />
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/signup' element={<SignUp setLoggedIn={setLoggedIn} />} />
       </Routes>
