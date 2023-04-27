@@ -5,24 +5,26 @@ import EachBarCocktailCard from './EachBarCocktailCard';
 import { barCocktails, BarCocktailsContext } from '../context/barCocktails';
 
 function EachBarPage({}) {
-  const { id } = useParams();
   const location = useLocation();
   const { barCocktails } = useContext(BarCocktailsContext);
-
   let bar = location.state.bar;
-  console.log('bar in eachbarpage: ', bar);
 
   const thisBarsCocktails = barCocktails.filter(
     (eachDrink) => eachDrink.bar_id === bar.id
   );
-  console.log('thisBarsCocktails: ', thisBarsCocktails);
 
   return (
     <div>
-      <div className='py-6 bg-base-900 sm:py-8 lg:py-'>{bar.name}</div>
-      {thisBarsCocktails.map((barCocktail) => (
-        <EachBarCocktailCard barCocktail={barCocktail} />
-      ))}
+      <div class='mb-10 md:mb-16'>
+        <h1 class='mb-4 text-center text-6xl font-thin uppercase text-primary md:mb-6 lg:text-7xl'>
+          {bar.name}
+        </h1>
+      </div>
+      <div class='grid gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
+        {thisBarsCocktails.map((barCocktail) => (
+          <EachBarCocktailCard barCocktail={barCocktail} />
+        ))}
+      </div>
     </div>
   );
 }
