@@ -49,6 +49,7 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
                     barCocktail.special_name
                       .toLowerCase()
                       .includes(searchTerm.toLowerCase())
+                    //! write a method here that iterates through the ingredients list
                     //   ||
                     // barCocktail.cocktail.ingredients.filter((word) =>
                     //   word.toLowerCase().includes(searchTerm.toLowerCase())
