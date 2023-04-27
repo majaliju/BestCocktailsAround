@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 function EachBarCocktailCard({ barCocktail }) {
   const navigate = useNavigate();
 
-  console.log('each barCocktail: ', barCocktail);
   return (
     <div>
       <div className='py-6 bg-base-900 sm:py-8 lg:py-'>

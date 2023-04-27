@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 function EachBarCard({ bar }) {
   const navigate = useNavigate();
 
-  console.log('in EachBarCard, (prior to send) :', bar);
   return (
     <div>
       <div className='py-6 bg-base-900 sm:py-8 lg:py-'>
