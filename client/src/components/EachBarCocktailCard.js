@@ -1,6 +1,6 @@
 import { barCocktails, BarCocktailsContext } from '../context/barCocktails';
 import Loading from './Loading';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function EachBarCocktailCard({ barCocktail }) {
   const navigate = useNavigate();
@@ -21,7 +21,13 @@ function EachBarCocktailCard({ barCocktail }) {
               <h2 className='card-title'>{barCocktail.special_name}</h2>
               <p></p>
               <div className='card-actions'>
-                <button className='btn btn-primary'>Show Reviews</button>
+                {' '}
+                <Link
+                  to={`/bar_cocktails/${barCocktail.id}`}
+                  state={{ barCocktail: barCocktail }}
+                  className='justify-center w-full btn btn-primary btn-outline'>
+                  Show Reviews
+                </Link>
               </div>
             </div>
           </div>

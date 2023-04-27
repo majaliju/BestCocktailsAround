@@ -91,9 +91,10 @@ function App() {
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
             />
-          }>
-          <Route path=':id' element={<EachBarCocktailPage />} />
-        </Route>
+          }
+        />
+        <Route path='/bar_cocktails/:id' element={<EachBarCocktailPage />} />
+
         <Route path='/reviews/:id' element={<SubmitReviewForm />} />
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/signup' element={<SignUp setLoggedIn={setLoggedIn} />} />
