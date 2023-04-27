@@ -9,6 +9,8 @@ function EachBarPage({}) {
   const { barCocktails } = useContext(BarCocktailsContext);
   let bar = location.state.bar;
 
+  console.log('ok');
+
   const thisBarsCocktails = barCocktails.filter(
     (eachDrink) => eachDrink.bar_id === bar.id
   );
