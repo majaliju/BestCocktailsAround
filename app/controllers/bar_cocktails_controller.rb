@@ -3,6 +3,9 @@ class BarCocktailsController < ApplicationController
 
   # GET /bar_cocktails
   def index
+    # user = User.find_by!(id: session[:user_id])
+    # bar_cocktails = BarCocktail.bar.near([user[:latitude], user[:longitude]], 10000)
+
     bar_cocktails = BarCocktail.all
     render json: bar_cocktails, status: 200
   end

@@ -37,7 +37,7 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
           <div class='mx-auto max-w-screen-xl px-4 md:px-8'>
             <div class='mb-10 md:mb-16'>
               <h1 class='mb-4 text-center text-6xl font-thin text-primary md:mb-6 lg:text-7xl'>
-                COCKTAILS NEAR YOU
+                THE COCKTAIL LIBRARY
               </h1>
             </div>
             <div class='grid gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
