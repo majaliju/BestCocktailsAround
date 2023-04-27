@@ -21,7 +21,8 @@ function Homepage({ loggedIn, setLoggedIn }) {
           <h1 className='text-4xl text-secondary'>
             Welcome back {user.username}!
           </h1>
-          <MapboxMap />
+          {user.longitude === null ? <null /> : <MapboxMap />}
+          {/* //&& PLACE A BUTTON OR NOTIFICATION HERE IN THE NULL ABOVE, TO PROMPT THE USER TO ENTER SOME ADDRESS MARKERS */}
         </div>
       ) : (
         <Link to='/login' replace={true}>
