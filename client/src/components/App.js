@@ -5,8 +5,13 @@ import Homepage from './Homepage';
 import Login from './Login';
 import SignUp from './SignUp';
 import BarsDisplay from './BarsDisplay';
-import { user, UserProvider, UserContext } from '../context/user';
-import { bars, BarsProvider, BarsContext } from '../context/bars';
+import BarCocktailsDisplay from './BarCocktailsDisplay';
+import EachBarPage from './EachBarPage';
+import EachBarCocktailPage from './EachBarCocktailPage';
+import SubmitReviewForm from './SubmitReviewForm';
+import TheBestRankings from './TheBestRankings';
+import { user, UserContext } from '../context/user';
+import { bars, BarsContext } from '../context/bars';
 import { Link } from 'react-router-dom';
 import UserAddressForm from './UserAddressForm';
 
@@ -67,7 +72,7 @@ function App() {
           path='/addressUpdate'
           element={<UserAddressForm loggedIn={loggedIn} />}
         />
-        {/* <Route path='/theBestList' element={<TheBestRankings />} /> */}
+        <Route path='/theBestList' element={<TheBestRankings />} />
         <Route
           path='/bars'
           element={
@@ -76,12 +81,19 @@ function App() {
               setSearchTerm={setSearchTerm}
             />
           }>
-          {/* <Route path=':id' element={<EachBarPage />} /> */}
-        </Route>
-        {/* <Route path='/cocktails' element={<CocktailsDisplay               searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}/>}>
           <Route path=':id' element={<EachBarPage />} />
-        </Route> */}
+        </Route>
+        <Route
+          path='/bar_cocktails'
+          element={
+            <BarCocktailsDisplay
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          }>
+          <Route path=':id' element={<EachBarCocktailPage />} />
+        </Route>
+        <Route path='/reviews/:id' element={<SubmitReviewForm />} />
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/signup' element={<SignUp setLoggedIn={setLoggedIn} />} />
       </Routes>

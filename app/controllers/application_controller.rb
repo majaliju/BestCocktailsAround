@@ -15,6 +15,22 @@ class ApplicationController < ActionController::API
       render json: user, status: 200
     end
 
+
+  private 
+  
+  def render_unprocessable_entity_response(invalid)
+    render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+  end
+
+  def render_not_found_response(invalid)
+    render json: { error: invalid.message }, status: :not_found
+  end
+
+
+end
+
+
+
   #   ## an update method that updates the address and returns lat, longitude
   # def user_location
   #   # this is the geolocation version
@@ -37,27 +53,6 @@ class ApplicationController < ActionController::API
   #   render json: user, status: 200
   # end
 
-
-
-
-  def hello_world
-    session[:count] = (session[:count] || 0) + 1
-    render json: { count: session[:count] }
-  end
-
-
-  private 
-  
-  def render_unprocessable_entity_response(invalid)
-    render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
-  end
-
-  def render_not_found_response(invalid)
-    render json: { error: invalid.message }, status: :not_found
-  end
-
-
-end
 
 
   # ##^ as soon as a user is logged in, or authenticated
