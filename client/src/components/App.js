@@ -9,6 +9,7 @@ import BarCocktailsDisplay from './BarCocktailsDisplay';
 import EachBarPage from './EachBarPage';
 import EachBarCocktailPage from './EachBarCocktailPage';
 import SubmitReviewForm from './SubmitReviewForm';
+import EditReviewForm from './EditReviewForm';
 import TheBestRankings from './TheBestRankings';
 import { user, UserContext } from '../context/user';
 import { bars, BarsContext } from '../context/bars';

@@ -35,6 +35,18 @@ function EachCocktailPage() {
               <h2 className='card-title'>{eachReview.stars} stars</h2>
               <p>{eachReview.comment}</p>
               <div className='justify-end card-actions'>
+                {/* create state for if this is user's post; if so 
+                then 
+                 <Link
+                  to={`/bar_cocktails/${barCocktail.id}`}
+                  state={{ barCocktail: barCocktail }}
+                  className='justify-center w-full btn btn-primary btn-outline'>
+                  Edit this Review
+                </Link>
+
+                <btn>Delete this Review</btn>
+                */}
+
                 <button className='btn'>Buy Now</button>
               </div>
             </div>
