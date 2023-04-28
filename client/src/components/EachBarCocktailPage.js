@@ -19,7 +19,14 @@ function EachCocktailPage() {
         <h1 class='mb-4 text-center text-5xl font-thin uppercase text-primary md:mb-6 lg:text-6xl'>
           {barCocktail.special_name}
         </h1>
-        <Link to='/reviews'>LEAVE A REVIEW</Link>
+
+        <div className='flex justify-center w-full input-group input-group-lg'>
+          <Link to='/reviews' replace={true}>
+            <button className='btn btn-secondary btn-outline'>
+              Submit a Review!
+            </button>
+          </Link>
+        </div>
       </div>
       <div class='grid justify-center gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
         {barCocktailReviews.map((eachReview) => (

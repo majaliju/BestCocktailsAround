@@ -149,7 +149,7 @@ export default function SubmitReviewForm() {
               <button
                 onClick={handleSubmit}
                 type='submit'
-                className='block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg'>
+                className='justify-center w-full btn btn-primary btn-outline'>
                 SUBMIT
               </button>
             ) : (
