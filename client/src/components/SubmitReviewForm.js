@@ -14,20 +14,18 @@ export default function SubmitReviewForm() {
 
   const { id } = useParams();
 
-  const [street, setStreet] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
-  const [postcode, setPostcode] = useState('');
+  const [comment, setComment] = useState('');
+  const [stars, setStars] = useState(1);
 
   const [success, setSuccess] = useState('');
+  const [errorArray, setErrorArray] = useState([]);
   const [error, setError] = useState('');
   const [errorsExist, setErrorsExist] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`/reviews/${id}`, {
+    fetch(`/reviews/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -48,189 +46,123 @@ export default function SubmitReviewForm() {
         response.json().then((e) => {
           console.log('e: ', e);
           setErrorsExist(true);
-          setError(e.error);
+          setErrorArray(e.errors);
         });
       }
     });
   }
 
-  const [stars, setStars] = useState(0);
-
-  const onOptionChange = (e) => {
-    setStars(e.target.value);
-  };
+  function handleStarsChange(e) {
+    if (e.target.value > 5) {
+      window.alert('5 is the highest rating!');
+      setStars(5);
+    }
+    if (e.target.value < 1) {
+      window.alert('1 is the lowest rating!');
+      setStars(1);
+    } else if (e.target.value > 0 && e.target.value < 6)
+      setStars(e.target.value);
+  }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className='p-8 mt-2 mb-0 space-y-4 rounded-lg shadow-2xl'>
-      <div className='w-full max-w-xs form-control'>
-        <h3>Select Star Rating</h3>
+    <div>
+      <div className='max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8'>
+        <div className='max-w-lg mx-auto'>
+          {success !== '' ? (
+            <div className='shadow-lg alert alert-success'>
+              <div>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  className='flex-shrink-0 w-6 h-6 stroke-current'
+                  fill='none'
+                  viewBox='0 0 24 24'>
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+                  />
+                </svg>
+                <span>{success}</span>
+              </div>
+            </div>
+          ) : null}
 
-        <input
-          className='mask mask-star'
-          type='radio'
-          name='rating-2'
-          value='1'
-          id='1'
-          checked={stars === '1'}
-          onChange={onOptionChange}
-        />
-        <label htmlFor='regular'>Regular</label>
+          {errorsExist !== false ? (
+            <div className='shadow-lg alert alert-warning'>
+              <div>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  className='flex-shrink-0 w-6 h-6 stroke-current'
+                  fill='none'
+                  viewBox='0 0 24 24'>
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'
+                  />
+                </svg>
+                {errorArray.map((eachError) => (
+                  <span>{eachError}</span>
+                ))}
+              </div>
+            </div>
+          ) : null}
 
-        <input
-          className='mask mask-star'
-          type='radio'
-          name='rating-2'
-          value='2'
-          id='2'
-          checked={stars === '2'}
-          onChange={onOptionChange}
-        />
-        <label htmlFor='medium'>Medium</label>
-
-        <input
-          className='mask mask-star'
-          type='radio'
-          name='rating-2'
-          value='3'
-          id='3'
-          checked={stars === '3'}
-          onChange={onOptionChange}
-        />
-        <input
-          className='mask mask-star'
-          type='radio'
-          name='rating-2'
-          value='4'
-          id='4'
-          checked={stars === '4'}
-          onChange={onOptionChange}
-        />
-        <input
-          className='mask mask-star'
-          type='radio'
-          name='rating-2'
-          value='5'
-          id='5'
-          checked={stars === '5'}
-          onChange={onOptionChange}
-        />
-        <label htmlFor='large'>Large</label>
-
-        <p>
-          Select topping <strong>{stars}</strong>
-        </p>
-        <label className='label'>
-          <span className='label-text'>Type in your comment...</span>
-          <span className='label-text-alt'>Comment</span>
-        </label>
-        <input
-          name='street'
-          placeholder='Street'
-          type='text'
-          onChange={(e) => setStreet(e.target.value)}
-          autoComplete='address-line1'
-          className='w-full max-w-xs input input-bordered'
-        />
-      </div>
-
-      <div className='w-full max-w-xs form-control'>
-        <label className='label'>
-          <span className='label-text'>Enter your state</span>
-          <span className='label-text-alt'>State</span>
-        </label>
-        <input
-          name='state'
-          placeholder='State'
-          type='text'
-          onChange={(e) => setState(e.target.value)}
-          autoComplete='address-level1'
-          className='w-full max-w-xs input input-bordered'
-        />
-      </div>
-
-      <div className='w-full max-w-xs form-control'>
-        <label className='label'>
-          <span className='label-text'>Enter your city</span>
-          <span className='label-text-alt'>City</span>
-        </label>
-        <input
-          name='city'
-          placeholder='City'
-          type='text'
-          onChange={(e) => setCity(e.target.value)}
-          autoComplete='address-level2'
-          className='w-full max-w-xs input input-bordered'
-        />
-      </div>
-
-      <div className='w-full max-w-xs form-control'>
-        <label className='label'>
-          <span className='label-text'>Enter your country</span>
-          <span className='label-text-alt'>Country</span>
-        </label>
-        <input
-          name='country'
-          placeholder='Country'
-          type='text'
-          onChange={(e) => setCountry(e.target.value)}
-          autoComplete='country'
-          className='w-full max-w-xs input input-bordered'
-        />
-      </div>
-
-      <div className='w-full max-w-xs form-control'>
-        <label className='label'>
-          <span className='label-text'>Enter your postal/zip code</span>
-          <span className='label-text-alt'>Postal Code</span>
-        </label>
-        <input
-          name='postcode'
-          placeholder='Postcode'
-          type='text'
-          onChange={(e) => setPostcode(e.target.value)}
-          autoComplete='postal-code'
-          className='w-full max-w-xs input input-bordered'
-        />
-      </div>
-      {submitted === false ? (
-        street !== '' ? (
-          city !== '' ? (
-            state !== '' ? (
-              postcode !== '' ? (
-                country !== '' ? (
-                  <div>
-                    <div className='mt-6 form-control'>
-                      <button className='btn btn-primary'>
-                        Submit Address
-                      </button>
-                    </div>
-                  </div>
-                ) : null
-              ) : null
-            ) : null
-          ) : null
-        ) : null
-      ) : (
-        <div className='shadow-lg alert alert-success'>
-          <div>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='flex-shrink-0 w-6 h-6 stroke-current'
-              fill='none'
-              viewBox='0 0 24 24'>
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+          <h1 className='text-2xl font-bold text-center text-white sm:text-3xl'>
+            LEAVE A REVIEW FOR THIS DRINK
+          </h1>
+          <form className='p-8 mt-2 mb-0 space-y-4 rounded-lg shadow-2xl'>
+            <div>
+              <label class='label'>
+                <span class='label-text text-secondary uppercase'>
+                  how many stars does this deserve?
+                </span>
+              </label>
+              <input
+                type='number'
+                id='stars'
+                value={stars}
+                onChange={(e) => handleStarsChange(e)}
+                placeholder='how many tickets?'
+                className='w-full max-w-xs input input-bordered'
               />
-            </svg>
-            <span>You're all set!</span>
-          </div>
+            </div>
+
+            <div>
+              <label class='label'>
+                <span class='label-text text-secondary uppercase'>
+                  leave a comment
+                </span>
+              </label>
+              <input
+                type='text'
+                id='comment'
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder='write your message here! price, offers, etc'
+                className='w-full max-w-xs input input-bordered'
+              />
+            </div>
+            {submitted === false ? (
+              <button
+                onClick={handleSubmit}
+                type='submit'
+                className='block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg'>
+                SUBMIT
+              </button>
+            ) : (
+              <button
+                disabled
+                type='submit'
+                className='block w-full px-5 py-3 text-sm font-medium text-white bg-black rounded-lg'>
+                SUBMITTED!
+              </button>
+            )}
+          </form>
         </div>
-      )}
-    </form>
+      </div>
+    </div>
   );
 }

@@ -95,7 +95,7 @@ function App() {
         />
         <Route path='/bar_cocktails/:id' element={<EachBarCocktailPage />} />
 
-        <Route path='/reviews/:id' element={<SubmitReviewForm />} />
+        <Route path='/reviews' element={<SubmitReviewForm />} />
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/signup' element={<SignUp setLoggedIn={setLoggedIn} />} />
       </Routes>
