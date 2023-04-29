@@ -50,6 +50,30 @@ export default function EditReviewForm() {
           });
           setUser({ ...user, reviews: updatedReviews });
 
+          const thisDrink = barCocktails.find(
+            (drink) => theUpdatedReview.bar_cocktail_id === drink.id
+          );
+
+          const updatedDrinkReviews = thisDrink.reviews.map((thisReview) => {
+            if (thisReview.id === theUpdatedReview.id) {
+              return theUpdatedReview;
+            } else {
+              return thisReview;
+            }
+          });
+          //! somehere here is then where I basically do [...thisDrink, thisDrink.reviews: updatedDrinkReviews]
+
+          // filter all other drinks except thisDrink
+          const allOtherDrinks = barCocktails.filter(
+            (eachOne) => eachOne.id !== thisDrink.id
+          );
+
+          console.log('allOtherDrinks before setting state: ', allOtherDrinks);
+          // update barCocktails with (all drinks whhere thisDrink.id !== drink.id) + (thisDrink)
+          setBarCocktails((allOtherDrinks) => {
+            return [...allOtherDrinks, thisDrink];
+          });
+
           setError('');
           setErrorsExist(false);
           setSuccess('success!');

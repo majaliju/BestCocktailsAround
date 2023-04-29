@@ -41,7 +41,6 @@ export default function SubmitReviewForm() {
     }).then((response) => {
       if (response.status >= 200 && response.status <= 299) {
         response.json().then((theNewReview) => {
-          console.log('review response: ', theNewReview);
           //& user is updated here, successfully
           setUser({
             ...user,
