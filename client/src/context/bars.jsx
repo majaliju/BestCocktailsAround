@@ -11,7 +11,6 @@ function BarsProvider({children}){
       .then((info) => setBars(info));
   }, [])
   
-  console.log("bars within user Context: ", bars)
 
   return (
       <BarsContext.Provider value={{bars, setBars}}> 

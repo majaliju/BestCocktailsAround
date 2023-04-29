@@ -17,8 +17,6 @@ function MapboxMap({}) {
   const [lng, setLng] = useState(user.longitude);
   const [zoom, setZoom] = useState(12);
 
-  console.log('bars within mapbox: ', bars);
-
   // function checkUserCoors() {
   //   if (user.latitude === null || user.longitude === null) {
   //     const [lat, setLat] = useState(40.708497166);

@@ -77,7 +77,7 @@ function Header({ loggedIn, setLoggedIn }) {
           <div className='navbar-start'>
             <div className='flex-auto p-4'>
               <Link to='/'>
-                <h3 className='text-5xl normal-case border-none btn btn-secondary btn-outline'>
+                <h3 className='text-4xl uppercase border-none text-primary btn btn-secondary btn-outline'>
                   COCKTAILS?
                 </h3>
               </Link>
@@ -85,31 +85,34 @@ function Header({ loggedIn, setLoggedIn }) {
           </div>
         </div>
 
-        <div className='navbar-center sm:flex'>
-          <div className='flex-auto'>
-            <ul className='p-0 menu menu-horizontal'>
-              <li>
-                <NavLink
-                  to='/theBestList'
-                  className='font-bold uppercase border-none btn btn-outline'>
-                  <h3 className='font-bold uppercase'>where's the best?</h3>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to='/bars'
-                  className='font-bold uppercase border-none btn btn-outline '>
-                  <h3 className='font-bold uppercase'>bars near you</h3>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to='/bar_cocktails'
-                  className='font-bold uppercase border-none btn btn-outline '>
-                  <h3 className='font-bold uppercase'>the cocktail library</h3>
-                </NavLink>
-              </li>
-              {/* {loggedIn === true && (
+        {loggedIn === true ? (
+          <div className='navbar-center sm:flex'>
+            <div className='flex-auto'>
+              <ul className='p-0 menu menu-horizontal'>
+                <li>
+                  <NavLink
+                    to='/theBestList'
+                    className='font-bold uppercase border-none btn btn-outline'>
+                    <h3 className='font-bold uppercase'>where's the best?</h3>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to='/bars'
+                    className='font-bold uppercase border-none btn btn-outline '>
+                    <h3 className='font-bold uppercase'>bars near you</h3>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to='/bar_cocktails'
+                    className='font-bold uppercase border-none btn btn-outline '>
+                    <h3 className='font-bold uppercase'>
+                      the cocktail library
+                    </h3>
+                  </NavLink>
+                </li>
+                {/* {loggedIn === true && (
                 <li>
                   <NavLink
                     to='/thisUser'
@@ -119,13 +122,23 @@ function Header({ loggedIn, setLoggedIn }) {
                   </NavLink>
                 </li>
               )} */}
-            </ul>
+              </ul>
+            </div>
           </div>
-        </div>
+        ) : (
+          <li>
+            <NavLink
+              className='text-4xl font-bold uppercase border-none btn btn-outline'
+              to='/login'>
+              LOGIN
+            </NavLink>
+          </li>
+        )}
+
         <div className='hidden navbar-end sm:flex'>
           <div className='flex-initial'>
             <ul className='float-right p-0 menu menu-horizontal'>
-              {loggedIn === false && (
+              {/* {loggedIn === false && (
                 <li>
                   <NavLink
                     className='font-bold uppercase border-none btn btn-outline'
@@ -133,7 +146,7 @@ function Header({ loggedIn, setLoggedIn }) {
                     LOGIN
                   </NavLink>
                 </li>
-              )}
+              )} */}
               {loggedIn === true && (
                 <div>
                   <li>
