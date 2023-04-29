@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useContext } from 'react';
 import { UserProvider, UserContext } from '../context/user';
 
 function Header({ loggedIn, setLoggedIn }) {
   const { user, setUser } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   function handleLogout() {
     fetch(`/logout`, {
@@ -13,6 +15,7 @@ function Header({ loggedIn, setLoggedIn }) {
     }).then(() => {
       setUser({});
       setLoggedIn(false);
+      navigate('/');
     });
   }
 
