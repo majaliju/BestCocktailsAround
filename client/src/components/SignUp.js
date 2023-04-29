@@ -1,8 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { user, UserProvider, UserContext } from '../context/user';
+import {
+  LoggedInContext,
+  loggedIn,
+  loggedInContext,
+} from '../context/loggedIn';
 
-function SignUp({ setLoggedIn }) {
+function SignUp({}) {
   //todo
   //^ stylize this page way better
 
@@ -17,6 +22,7 @@ function SignUp({ setLoggedIn }) {
   const [submitted, setSubmitted] = useState(false);
 
   const { setUser } = useContext(UserContext);
+  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
 
   function handleSubmit(e) {
     e.preventDefault();

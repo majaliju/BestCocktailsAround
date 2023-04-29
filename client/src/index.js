@@ -8,16 +8,19 @@ import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './context/user';
 import { BarsProvider } from './context/bars';
 import { BarCocktailsProvider } from './context/barCocktails';
+import { LoggedInProvider } from './context/loggedIn';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <UserProvider>
-      <BarsProvider>
-        <BarCocktailsProvider>
-          <App />
-        </BarCocktailsProvider>
-      </BarsProvider>
-    </UserProvider>
+    <LoggedInProvider>
+      <UserProvider>
+        <BarsProvider>
+          <BarCocktailsProvider>
+            <App />
+          </BarCocktailsProvider>
+        </BarsProvider>
+      </UserProvider>
+    </LoggedInProvider>
   </BrowserRouter>
 );

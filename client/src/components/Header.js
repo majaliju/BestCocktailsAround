@@ -3,9 +3,15 @@
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useContext } from 'react';
 import { UserProvider, UserContext } from '../context/user';
+import {
+  LoggedInContext,
+  loggedIn,
+  loggedInContext,
+} from '../context/loggedIn';
 
-function Header({ loggedIn, setLoggedIn }) {
+function Header({}) {
   const { user, setUser } = useContext(UserContext);
+  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
 
   const navigate = useNavigate();
 

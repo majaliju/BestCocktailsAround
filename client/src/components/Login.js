@@ -1,8 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { UserProvider, UserContext } from '../context/user';
+import {
+  LoggedInContext,
+  loggedIn,
+  loggedInContext,
+} from '../context/loggedIn';
 
-function Login({ setLoggedIn }) {
+function Login({}) {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -12,6 +17,7 @@ function Login({ setLoggedIn }) {
   const [submitted, setSubmitted] = useState(false);
 
   const { setUser } = useContext(UserContext);
+  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
 
   function handleSubmit(e) {
     e.preventDefault();

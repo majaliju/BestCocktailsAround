@@ -4,11 +4,17 @@
 import React, { useState, useCallback, useEffect, useContext } from 'react';
 import { AddressAutofill } from '@mapbox/search-js-react';
 import { user, UserProvider, UserContext } from '../context/user';
+import {
+  LoggedInContext,
+  loggedIn,
+  loggedInContext,
+} from '../context/loggedIn';
 import { useNavigate } from 'react-router-dom';
 
 export default function UserAddressForm() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
+  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
 
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');

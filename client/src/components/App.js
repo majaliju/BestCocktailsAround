@@ -12,15 +12,21 @@ import SubmitReviewForm from './SubmitReviewForm';
 import EditReviewForm from './EditReviewForm';
 import TheBestRankings from './TheBestRankings';
 import { user, UserContext } from '../context/user';
+import {
+  LoggedInContext,
+  loggedIn,
+  loggedInContext,
+} from '../context/loggedIn';
 import { bars, BarsContext } from '../context/bars';
 import { Link } from 'react-router-dom';
 import UserAddressForm from './UserAddressForm';
 
 function App() {
   const { user, setUser } = useContext(UserContext);
+  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { bars } = useContext(BarsContext);
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -63,16 +69,10 @@ function App() {
 
   return (
     <div>
-      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Header />
       <Routes>
-        <Route
-          path='/'
-          element={<Homepage loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
-        />
-        <Route
-          path='/addressUpdate'
-          element={<UserAddressForm loggedIn={loggedIn} />}
-        />
+        <Route path='/' element={<Homepage />} />
+        <Route path='/addressUpdate' element={<UserAddressForm />} />
         <Route path='/theBestList' element={<TheBestRankings />} />
         <Route
           path='/bars'
@@ -99,8 +99,8 @@ function App() {
         <Route path='/reviews' element={<SubmitReviewForm />} />
         <Route path='/reviews/:id' element={<EditReviewForm />} />
 
-        <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
-        <Route path='/signup' element={<SignUp setLoggedIn={setLoggedIn} />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<SignUp />} />
       </Routes>
     </div>
   );

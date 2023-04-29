@@ -3,10 +3,16 @@ import UserAddressForm from './UserAddressForm';
 import { useContext, useEffect } from 'react';
 import { user, UserProvider, UserContext } from '../context/user';
 import { bars, BarsProvider, BarsContext } from '../context/bars';
+import {
+  LoggedInContext,
+  loggedIn,
+  loggedInContext,
+} from '../context/loggedIn';
 import { NavLink, Link, Navigate } from 'react-router-dom';
 
-function Homepage({ loggedIn, setLoggedIn }) {
+function Homepage({}) {
   const { user } = useContext(UserContext);
+  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { bars } = useContext(BarsContext);
 
   return (
