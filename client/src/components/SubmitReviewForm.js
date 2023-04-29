@@ -40,26 +40,26 @@ export default function SubmitReviewForm() {
       }),
     }).then((response) => {
       if (response.status >= 200 && response.status <= 299) {
-        response.json().then((info) => {
-          console.log('review response: ', info);
-          //^ set the user updated
+        response.json().then((theNewReview) => {
+          console.log('review response: ', theNewReview);
+          //& user is updated here, successfully
           setUser({
             ...user,
-            reviews: [...user.reviews, info],
+            reviews: [...user.reviews, theNewReview],
           });
 
-          //!!!!! setting BarCocktails leads to an undefined bug, which blows
+          //? setting BarCocktails leads to an undefined bug, which blows
           //^ set the barcocktail specifically updated as well
+
           const thisDrink = barCocktails.find(
-            (drink) => info.bar_cocktail_id === drink.id
+            (drink) => theNewReview.bar_cocktail_id === drink.id
           );
 
-          console.log('thisDrink: ', thisDrink);
+          thisDrink.reviews.unshift(theNewReview); // add the new review to thisDrink
+          console.log('updated thisDrink: ', thisDrink);
 
-          setBarCocktails({
-            ...barCocktails,
-            thisDrink: [...thisDrink.reviews, info],
-          });
+          // filter all other drinks except thisDrink
+          // update barCocktails with (all drinks whhere thisDrink.id !== drink.id) + (thisDrink)
 
           setError('');
           setErrorsExist(false);
