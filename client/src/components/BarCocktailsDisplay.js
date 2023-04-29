@@ -14,6 +14,8 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
     setSearchTerm('');
   }, [barCocktails]);
 
+  console.log('barCocktailsDisplay.length :', barCocktails.length);
+
   return (
     <div class='bg-base-900 justify-center py-6 sm:py-8 lg:py-12'>
       <div class='form-control'>
@@ -28,6 +30,7 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
         </label>
       </div>
 
+      {/* barCocktails.length is undefined on first pass */}
       <div>
         {barCocktails.length > 0 ? (
           <div class='mx-auto max-w-screen-xl px-4 md:px-8'>

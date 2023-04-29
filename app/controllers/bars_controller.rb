@@ -4,9 +4,8 @@ class BarsController < ApplicationController
   # GET /bars
   # sort by proximity to the user, all bars within 10,000 miles
   def index
-    user = User.find_by!(id: session[:user_id])
+    user = User.find(session[:user_id])
     bars = Bar.near([user[:latitude], user[:longitude]], 10000)
-    # binding.break
     render json: bars, status: 200
   end
 
@@ -48,6 +47,6 @@ class BarsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bar_params
-      params.require(:bar).permit(:name, :address, :city, :state, :country, :latitude, :longitude)
+      params.permit(:name, :address, :city, :state, :country, :latitude, :longitude)
     end
 end

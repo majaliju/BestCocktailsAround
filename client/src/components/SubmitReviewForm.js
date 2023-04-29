@@ -47,16 +47,17 @@ export default function SubmitReviewForm() {
             ...user,
             reviews: [...user.reviews, info],
           });
-          //^ set the barcocktail specifically updated as well
-          const thisDrink = barCocktails.find(
-            (drink) => info.bar_cocktail_id !== drink.id
-          );
 
-          console.log('thisDrink: ', thisDrink);
+          // //^ set the barcocktail specifically updated as well
+          // const thisDrink = barCocktails.find(
+          //   (drink) => info.bar_cocktail_id !== drink.id
+          // );
+
+          // console.log('thisDrink: ', thisDrink);
 
           // setBarCocktails({
           //   ...barCocktails,
-          //   thisDrink,
+          //   barCocktail: [...barCocktail.reviews, info],
           // });
 
           setError('');
@@ -64,7 +65,7 @@ export default function SubmitReviewForm() {
           setSuccess('success!');
           setSubmitted(true);
           // set timeOut function to navigate after 1 second
-          // navigate('/bar_cocktails/');
+          navigate('/');
         });
       } else {
         response.json().then((e) => {

@@ -1,12 +1,19 @@
 import { useLocation, Link } from 'react-router-dom';
 import { user, UserContext } from '../context/user';
+import { barCocktails, BarCocktailsContext } from '../context/barCocktails';
 import { useContext } from 'react';
 
 function EachCocktailPage() {
   const location = useLocation();
   let barCocktail = location.state.barCocktail;
   const { user } = useContext(UserContext);
+  const { barCocktails } = useContext(BarCocktailsContext);
 
+  // the state based adjustment
+  // const thisDrink = barCocktails.find((each) => each.id === barCocktail.id);
+  // const barCocktailReviews = barCocktail.reviews;
+
+  //^ the original
   const barCocktailReviews = barCocktail.reviews;
 
   function handleDelete(review) {
