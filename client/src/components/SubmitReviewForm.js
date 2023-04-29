@@ -48,9 +48,6 @@ export default function SubmitReviewForm() {
             reviews: [...user.reviews, theNewReview],
           });
 
-          //? setting BarCocktails leads to an undefined bug, which blows
-          //^ set the barcocktail specifically updated as well
-
           const thisDrink = barCocktails.find(
             (drink) => theNewReview.bar_cocktail_id === drink.id
           );
@@ -59,7 +56,11 @@ export default function SubmitReviewForm() {
           console.log('updated thisDrink: ', thisDrink);
 
           // filter all other drinks except thisDrink
+          const allOtherDrinks = barCocktails.filter(
+            (eachOne) => eachOne.id !== thisDrink.id
+          );
           // update barCocktails with (all drinks whhere thisDrink.id !== drink.id) + (thisDrink)
+          setBarCocktails([allOtherDrinks, thisDrink]);
 
           setError('');
           setErrorsExist(false);

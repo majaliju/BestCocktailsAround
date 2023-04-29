@@ -12,7 +12,7 @@ function EachBarCocktailCard({ barCocktail }) {
           <div className='shadow-xl card w-96 bg-base-100'>
             <figure className='px-10 pt-10'>
               <img
-                src={barCocktail.cocktail.image}
+                src={barCocktail.cocktail_image}
                 alt='Shoes'
                 className='rounded-xl'
               />
