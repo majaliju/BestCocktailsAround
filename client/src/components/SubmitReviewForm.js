@@ -48,17 +48,18 @@ export default function SubmitReviewForm() {
             reviews: [...user.reviews, info],
           });
 
-          // //^ set the barcocktail specifically updated as well
-          // const thisDrink = barCocktails.find(
-          //   (drink) => info.bar_cocktail_id !== drink.id
-          // );
+          //!!!!! setting BarCocktails leads to an undefined bug, which blows
+          //^ set the barcocktail specifically updated as well
+          const thisDrink = barCocktails.find(
+            (drink) => info.bar_cocktail_id === drink.id
+          );
 
-          // console.log('thisDrink: ', thisDrink);
+          console.log('thisDrink: ', thisDrink);
 
-          // setBarCocktails({
-          //   ...barCocktails,
-          //   barCocktail: [...barCocktail.reviews, info],
-          // });
+          setBarCocktails({
+            ...barCocktails,
+            thisDrink: [...thisDrink.reviews, info],
+          });
 
           setError('');
           setErrorsExist(false);

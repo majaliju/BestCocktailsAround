@@ -31,6 +31,7 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
       </div>
 
       {/* barCocktails.length is undefined on first pass */}
+      {/* HENCE A MAJOR SOURCE OF FRUSTRATINGLY ANNOYING BUGS */}
       <div>
         {barCocktails.length > 0 ? (
           <div class='mx-auto max-w-screen-xl px-4 md:px-8'>
@@ -48,11 +49,6 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
                     barCocktail.special_name
                       .toLowerCase()
                       .includes(searchTerm.toLowerCase())
-                    //! write a method here that iterates through the ingredients list
-                    //   ||
-                    // barCocktail.cocktail.ingredients.filter((word) =>
-                    //   word.toLowerCase().includes(searchTerm.toLowerCase())
-                    // )
                   ) {
                     return barCocktail;
                   }

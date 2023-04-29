@@ -8,10 +8,7 @@ function UserReviews({ searchTerm, setSearchTerm }) {
   const { user, setUser } = useContext(UserContext);
   const { loggedIn } = useContext(LoggedInContext);
 
-  console.log('user in UserReviews: ', user);
   const userReviews = user.reviews;
-
-  console.log('userReviews: ', userReviews);
 
   useEffect(() => {
     setSearchTerm('');

@@ -43,8 +43,8 @@ function App() {
     });
   }, []);
 
-  // console.log('bars : ', bars);
-  console.log('user in the App route: ', user);
+  // // console.log('bars : ', bars);
+  // console.log('user in the App route: ', user);
 
   function logUserIn(givenUser) {
     setUser(givenUser);
