@@ -63,7 +63,7 @@ function App() {
 
   return (
     <div>
-      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      {/* <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} /> */}
       <Routes>
         <Route
           path='/'
