@@ -23,13 +23,22 @@ function Homepage({}) {
     <div>
       {loggedIn === true ? (
         <div>
-          <btn>
+          {/* <btn>
             <Link to='/addressUpdate'>SUBMIT YOUR ADDRESS</Link>
-          </btn>
-          <h1 className='text-4xl text-secondary'>
+          </btn> */}
+          <h1 className='justify-center text-4xl text-secondary'>
             Welcome back {user.username}!
           </h1>
-          {user.longitude === null ? <null /> : <MapboxMap />}
+          {user.longitude === null ? (
+            <div>
+              <btn>
+                submit your address, by clicking the button below or above, to
+                see the bars near you!
+              </btn>
+            </div>
+          ) : (
+            <MapboxMap />
+          )}
           {/* //&& PLACE A BUTTON OR NOTIFICATION HERE IN THE NULL ABOVE, TO PROMPT THE USER TO ENTER SOME ADDRESS MARKERS */}
         </div>
       ) : (

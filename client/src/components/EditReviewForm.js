@@ -117,7 +117,7 @@ export default function EditReviewForm() {
           ) : null}
 
           <h1 className='text-2xl font-bold text-center text-white sm:text-3xl'>
-            LEAVE A REVIEW FOR THIS DRINK
+            EDIT YOUR REVIEW FOR THIS DRINK
           </h1>
           <form className='p-8 mt-2 mb-0 space-y-4 rounded-lg shadow-2xl'>
             <div>
