@@ -65,7 +65,7 @@ export default function SubmitReviewForm() {
           setSuccess('success!');
           setSubmitted(true);
           // set timeOut function to navigate after 1 second
-          navigate('/');
+          // navigate('/bar_cocktails');
         });
       } else {
         response.json().then((e) => {
@@ -185,21 +185,6 @@ export default function SubmitReviewForm() {
                 SUBMITTED!
               </button>
             )}
-            {/* {submitted === true ? (
-              <button
-                // onClick={() => navigate(`/bar_cocktails/${barCocktail.id}`)}
-                type='submit'
-                className='justify-center w-full btn btn-primary btn-outline'>
-                GO BACK
-              </button>
-            ) : (
-              <button
-                disabled
-                type='submit'
-                className='block w-full px-5 py-3 text-sm font-medium text-white bg-black rounded-lg'>
-                SUBMITTED!
-              </button>
-            )} */}
           </form>
         </div>
       </div>

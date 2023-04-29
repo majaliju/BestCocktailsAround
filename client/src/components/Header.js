@@ -95,45 +95,57 @@ function Header({}) {
         </div>
 
         {loggedIn === true ? (
-          <div className='navbar-center sm:flex'>
-            <div className='flex-auto'>
-              <ul className='p-0 menu menu-horizontal'>
-                <li>
-                  <NavLink
-                    to='/theBestList'
-                    className='font-bold uppercase border-none btn btn-outline'>
-                    <h3 className='font-bold uppercase'>where's the best?</h3>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to='/bars'
-                    className='font-bold uppercase border-none btn btn-outline '>
-                    <h3 className='font-bold uppercase'>bars near you</h3>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to='/bar_cocktails'
-                    className='font-bold uppercase border-none btn btn-outline '>
-                    <h3 className='font-bold uppercase'>
-                      the cocktail library
-                    </h3>
-                  </NavLink>
-                </li>
-                {/* {loggedIn === true && (
-                <li>
-                  <NavLink
-                    to='/thisUser'
-                    state={{ thisUser: currentUser }}
-                    className='font-bold uppercase border-none btn btn-outline'>
-                    Your Activity
-                  </NavLink>
-                </li>
-              )} */}
-              </ul>
+          user.latitude !== null ? (
+            <div className='navbar-center sm:flex'>
+              <div className='flex-auto'>
+                <ul className='p-0 menu menu-horizontal'>
+                  <li>
+                    <NavLink
+                      to='/theBestList'
+                      className='font-bold uppercase border-none btn btn-outline'>
+                      <h3 className='font-bold uppercase'>where's the best?</h3>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to='/bars'
+                      className='font-bold uppercase border-none btn btn-outline '>
+                      <h3 className='font-bold uppercase'>bars near you</h3>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to='/bar_cocktails'
+                      className='font-bold uppercase border-none btn btn-outline '>
+                      <h3 className='font-bold uppercase'>
+                        the cocktail library
+                      </h3>
+                    </NavLink>
+                  </li>
+                  {/* {loggedIn === true && (
+              <li>
+                <NavLink
+                  to='/thisUser'
+                  state={{ thisUser: currentUser }}
+                  className='font-bold uppercase border-none btn btn-outline'>
+                  Your Activity
+                </NavLink>
+              </li>
+            )} */}
+                </ul>
+              </div>
             </div>
-          </div>
+          ) : (
+            <li>
+              <NavLink
+                to='/addressUpdate'
+                className='font-bold uppercase border-none btn btn-outline'>
+                <h3 className='font-bold uppercase'>
+                  SUBMIT YOUR ADDRESS TO START
+                </h3>
+              </NavLink>
+            </li>
+          )
         ) : (
           <li>
             <NavLink

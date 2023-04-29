@@ -8,12 +8,16 @@ import {
   loggedIn,
   loggedInContext,
 } from '../context/loggedIn';
-import { NavLink, Link, Navigate } from 'react-router-dom';
+import { NavLink, Link, Navigate, useNavigate } from 'react-router-dom';
 
 function Homepage({}) {
   const { user } = useContext(UserContext);
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { bars } = useContext(BarsContext);
+
+  const navigate = useNavigate();
+
+  // useEffect(() => navigate(0));
 
   return (
     <div>
@@ -22,8 +26,6 @@ function Homepage({}) {
           <btn>
             <Link to='/addressUpdate'>SUBMIT YOUR ADDRESS</Link>
           </btn>
-
-          <h1>loggedIn is NOT false (its true)</h1>
           <h1 className='text-4xl text-secondary'>
             Welcome back {user.username}!
           </h1>
