@@ -79,15 +79,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/addressUpdate' element={<UserAddressForm />} />
-        <Route
-          path='/yourReviews'
-          element={
-            <UserReviews
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
-            />
-          }
-        />
+        <Route path='/yourReviews' element={<UserReviews />} />
         <Route path='/theBestList' element={<TheBestRankings />} />
         <Route
           path='/bars'

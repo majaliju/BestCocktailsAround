@@ -6,6 +6,19 @@ class BarCocktailsController < ApplicationController
     # user = User.find_by!(id: session[:user_id])
     # bar_cocktails = BarCocktail.bar.near([user[:latitude], user[:longitude]], 10000)
 
+    # find the closest bars
+    # output each drink from the bar
+    # render the drinks in order of proximity to the user
+
+    
+    # user = User.find(session[:user_id])
+    # bars = Bar.near([user[:latitude], user[:longitude]], 10000)
+    # @@closest_bars == []
+
+    # for each_drink in bars do 
+    #   each_drink.bar
+    # end
+
     bar_cocktails = BarCocktail.all
     render json: bar_cocktails, status: 200
   end

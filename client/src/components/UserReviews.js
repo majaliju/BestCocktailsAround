@@ -4,15 +4,11 @@ import { LoggedInContext, loggedIn } from '../context/loggedIn';
 import Loading from './Loading';
 import UserReviewCard from './UserReviewCard';
 
-function UserReviews({ searchTerm, setSearchTerm }) {
+function UserReviews({}) {
   const { user, setUser } = useContext(UserContext);
   const { loggedIn } = useContext(LoggedInContext);
 
   const userReviews = user.reviews;
-
-  useEffect(() => {
-    setSearchTerm('');
-  }, [user]);
 
   return (
     <div className='py-6 bg-base-900 sm:py-8 lg:py-12'>
@@ -26,7 +22,7 @@ function UserReviews({ searchTerm, setSearchTerm }) {
             {loggedIn === true ? (
               <div className='grid gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
                 {user.reviews.map((review) => (
-                  <UserReviewCard review={review} loggedIn={loggedIn} />
+                  <UserReviewCard review={review} />
                 ))}
               </div>
             ) : null}

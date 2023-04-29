@@ -19,10 +19,12 @@ export default function EditReviewForm() {
   const [errorsExist, setErrorsExist] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  console.log('review: ', review);
+
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`/reviews/`, {
-      method: 'POST',
+    fetch(`/reviews/${review.id}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -30,16 +32,23 @@ export default function EditReviewForm() {
       body: JSON.stringify({
         comment: comment,
         stars: stars,
+        bar_cocktail_id: review.bar_cocktail_id,
+        user_id: review.user_id,
       }),
     }).then((response) => {
       if (response.status >= 200 && response.status <= 299) {
         response.json().then((theUpdatedReview) => {
           console.log('review response: ', theUpdatedReview);
-          //& user is updated here, successfully
-          setUser({
-            ...user,
-            reviews: [...user.reviews, theUpdatedReview],
+
+          //& user successfully updated
+          const updatedReviews = user.reviews.map((thisReview) => {
+            if (thisReview.id === theUpdatedReview.id) {
+              return theUpdatedReview;
+            } else {
+              return thisReview;
+            }
           });
+          setUser({ ...user, reviews: updatedReviews });
 
           setError('');
           setErrorsExist(false);
