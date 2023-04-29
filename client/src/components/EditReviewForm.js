@@ -69,9 +69,13 @@ export default function EditReviewForm() {
           );
 
           console.log('allOtherDrinks before setting state: ', allOtherDrinks);
-          // update barCocktails with (all drinks whhere thisDrink.id !== drink.id) + (thisDrink)
+          // // update barCocktails with (all drinks whhere thisDrink.id !== drink.id) + (thisDrink)
+          // setBarCocktails((allOtherDrinks) => {
+          //   return ([...allOtherDrinks, thisDrink: ...thisDrink, thisDrink.reviews: updatedDrinkReviews])
+          // });
+
           setBarCocktails((allOtherDrinks) => {
-            return [...allOtherDrinks, thisDrink];
+            return [...allOtherDrinks, thisDrink: [...thisDrink, thisDrink.reviews: updatedDrinkReviews]];
           });
 
           setError('');
