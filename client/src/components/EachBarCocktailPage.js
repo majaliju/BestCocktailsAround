@@ -21,6 +21,20 @@ function EachCocktailPage() {
     });
   }
 
+  // function handleReviewDelete(review) {
+  //   fetch(`/reviews/${review.id}`, {
+  //     method: 'DELETE',
+  //   }).then(() => {
+  //     const updatedReviews = user.reviews.filter(
+  //       (eachReview) => eachReview.id !== review.id
+  //     );
+  //     setUser({
+  //       ...user,
+  //       reviews: updatedReviews,
+  //     });
+  //   });
+  // }
+
   return (
     <div>
       <div class='mb-10 md:mb-16'>
