@@ -23,7 +23,9 @@ function EachBarCocktailCard({ barCocktail }) {
               <div className='card-actions'>
                 <Link
                   to={`/bar_cocktails/${barCocktail.id}`}
-                  state={{ barCocktail: barCocktail }}
+                  state={{
+                    barCocktail: barCocktail,
+                  }}
                   className='justify-center w-full btn btn-primary btn-outline'>
                   Show Reviews
                 </Link>

@@ -10,6 +10,20 @@ function UserReviews({}) {
 
   const userReviews = user.reviews;
 
+  function handleReviewDelete(review) {
+    fetch(`/reviews/${review.id}`, {
+      method: 'DELETE',
+    }).then(() => {
+      const updatedReviews = user.reviews.filter(
+        (eachReview) => eachReview.id !== review.id
+      );
+      setUser({
+        ...user,
+        reviews: updatedReviews,
+      });
+    });
+  }
+
   return (
     <div className='py-6 bg-base-900 sm:py-8 lg:py-12'>
       <div>
@@ -22,7 +36,10 @@ function UserReviews({}) {
             {loggedIn === true ? (
               <div className='grid gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
                 {user.reviews.map((review) => (
-                  <UserReviewCard review={review} />
+                  <UserReviewCard
+                    review={review}
+                    handleReviewDelete={handleReviewDelete}
+                  />
                 ))}
               </div>
             ) : null}

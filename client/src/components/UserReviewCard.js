@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function UserReviewCard({ review }) {
+function UserReviewCard({ review, handleReviewDelete }) {
   return (
     <div className='justify-center card w-96 bg-primary text-primary-content'>
       <div key={review.id} className='card-body'>
@@ -19,7 +19,7 @@ function UserReviewCard({ review }) {
             <div>
               <btn
                 className='justify-center w-full btn'
-                onClick={() => console.log('delete button works')}>
+                onClick={() => handleReviewDelete(review)}>
                 delete button
               </btn>
             </div>

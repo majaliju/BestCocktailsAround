@@ -10,6 +10,8 @@ export default function EditReviewForm() {
   const { user, setUser } = useContext(UserContext);
   const { barCocktails, setBarCocktails } = useContext(BarCocktailsContext);
 
+  const [updatedDrink, setUpdatedDrink] = useState({});
+
   const [comment, setComment] = useState('');
   const [stars, setStars] = useState(1);
 
@@ -61,6 +63,10 @@ export default function EditReviewForm() {
               return thisReview;
             }
           });
+
+          // console.log('updatedDrinkReviews: ', updatedDrinkReviews);
+
+          // setUpdatedDrink((thisDrink) => thisDrink, thisDrink.reviews: updatedDrinkReviews)
           //! somehere here is then where I basically do [...thisDrink, thisDrink.reviews: updatedDrinkReviews]
 
           // filter all other drinks except thisDrink
@@ -68,15 +74,13 @@ export default function EditReviewForm() {
             (eachOne) => eachOne.id !== thisDrink.id
           );
 
-          console.log('allOtherDrinks before setting state: ', allOtherDrinks);
           // // update barCocktails with (all drinks whhere thisDrink.id !== drink.id) + (thisDrink)
           // setBarCocktails((allOtherDrinks) => {
-          //   return ([...allOtherDrinks, thisDrink: ...thisDrink, thisDrink.reviews: updatedDrinkReviews])
+          //   return ([...allOtherDrinks, (thisDrink: [...thisDrink, thisDrink.reviews: updatedDrinkReviews])])
           // });
-
-          setBarCocktails((allOtherDrinks) => {
-            return [...allOtherDrinks, thisDrink: [...thisDrink, thisDrink.reviews: updatedDrinkReviews]];
-          });
+          // setBarCocktails((allOtherDrinks) => {
+          //   return [...allOtherDrinks, [...thisDrink, updatedDrinkReviews]];
+          // });
 
           setError('');
           setErrorsExist(false);
@@ -158,8 +162,8 @@ export default function EditReviewForm() {
           </h1>
           <form className='p-8 mt-2 mb-0 space-y-4 rounded-lg shadow-2xl'>
             <div>
-              <label class='label'>
-                <span class='label-text text-secondary uppercase'>
+              <label className='label'>
+                <span className='uppercase label-text text-secondary'>
                   how many stars does this deserve?
                 </span>
               </label>
@@ -174,8 +178,8 @@ export default function EditReviewForm() {
             </div>
 
             <div>
-              <label class='label'>
-                <span class='label-text text-secondary uppercase'>
+              <label className='label'>
+                <span className='uppercase label-text text-secondary'>
                   leave a comment
                 </span>
               </label>

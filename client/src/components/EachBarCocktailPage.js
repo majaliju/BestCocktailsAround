@@ -6,14 +6,15 @@ import { useContext } from 'react';
 function EachCocktailPage() {
   const location = useLocation();
   let barCocktail = location.state.barCocktail;
+
   const { user } = useContext(UserContext);
   const { barCocktails } = useContext(BarCocktailsContext);
 
   //^ the original
   const barCocktailReviews = barCocktail.reviews;
 
-  function handleDelete(review) {
-    fetch(`/reviews/${review.id}`, {
+  function handleDelete(eachReview) {
+    fetch(`/reviews/${eachReview.id}`, {
       method: 'DELETE',
     }).then(() => {
       console.log('DELETE works!');
@@ -58,7 +59,7 @@ function EachCocktailPage() {
                       <div>
                         <btn
                           className='justify-center w-full btn'
-                          onClick={() => console.log('delete button works')}>
+                          onClick={handleDelete(eachReview)}>
                           delete button
                         </btn>
                       </div>

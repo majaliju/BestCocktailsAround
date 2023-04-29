@@ -64,10 +64,24 @@ class ReviewsController < ApplicationController
     #   end
     # end
 
-  # DELETE /reviews/1
-  def destroy
-    @review.destroy
-  end
+    def destroy
+      user = User.find(session[:user_id])
+      review = user.reviews.find_by!(id: params[:id])
+      if review
+        review.destroy
+        head :no_content
+      else
+        render json: {error: 'Post doesnt exist!'}
+      end
+    end
+
+  # # DELETE /reviews/1
+  # def destroy
+  #   review = Review.find(params[:id])
+  #   review.destroy
+  # end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
