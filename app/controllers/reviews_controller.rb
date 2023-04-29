@@ -39,7 +39,7 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   def update
-      user = User.find_by!(id: session[:user_id])
+      user = User.find(session[:user_id])
       review = user.review.find(params[:id])
    
       if review[:comment] === params[:comment] && review[:stars] === params[:stars]
