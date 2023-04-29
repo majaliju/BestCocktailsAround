@@ -9,10 +9,6 @@ function EachCocktailPage() {
   const { user } = useContext(UserContext);
   const { barCocktails } = useContext(BarCocktailsContext);
 
-  // the state based adjustment
-  // const thisDrink = barCocktails.find((each) => each.id === barCocktail.id);
-  // const barCocktailReviews = barCocktail.reviews;
-
   //^ the original
   const barCocktailReviews = barCocktail.reviews;
 

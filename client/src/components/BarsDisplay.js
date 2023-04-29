@@ -13,7 +13,6 @@ function BarsDisplay({ searchTerm, setSearchTerm }) {
     setSearchTerm('');
   }, [bars]);
 
-  console.log('bars in barsdisplay: ', bars);
   return (
     <div class='bg-base-900 justify-center py-6 sm:py-8 lg:py-12'>
       <div class='form-control'>
@@ -49,7 +48,7 @@ function BarsDisplay({ searchTerm, setSearchTerm }) {
                   }
                 })
                 .map((bar) => (
-                  <EachBarCard bar={bar} />
+                  <EachBarCard key={bar.id} bar={bar} />
                 ))}
             </div>
           </div>

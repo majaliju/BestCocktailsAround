@@ -14,7 +14,7 @@ function UserProvider({children}){
     })
   }, []);
   
-  console.log("user within user Context: ", user)
+  // console.log("user within user Context: ", user)
 
   return (
       <UserContext.Provider value={{user, setUser}}> 

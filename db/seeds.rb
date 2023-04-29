@@ -22,7 +22,7 @@ puts "--- BROOKLYN BARS ----"
 puts "----- seeding 5 brooklyn bars"
 ore_bar = Bar.create!(name: "Ore Bar", address: "277 Graham Ave, Brooklyn, NY 11211")
 basik_bar = Bar.create!(name: "Basik", address: "323 Graham Ave, Brooklyn, NY 11211")
-blinkys_bar = Bar.create!(name: "Blinky's", address: "609 Grand St, Brooklyn, NY 11211")
+blinkys_bar = Bar.create!(name: "Blinkys", address: "609 Grand St, Brooklyn, NY 11211")
 clover_bar = Bar.create!(name: "Clover Bar", address: "210 Smith St, Brooklyn, NY 11201")
 sunken_harbor_club_bar = Bar.create!(name: "Sunken Harbor Club", address: "372 Fulton St, Brooklyn, NY 11201")
 
@@ -101,7 +101,7 @@ nrm_bar_long_island_ice_tea = BarCocktail.create(bar_id: nrm_bar.id, cocktail_id
 
 puts "--- QUEENS BARS ----"
 puts "----- seeding 5 queens bars"
-sekend_sun = Bar.create!(name: "Sek'end Sun", address: "68-38 Forest Ave storefront B, Queens, NY 11385")
+sekend_sun = Bar.create!(name: "Sekend Sun", address: "68-38 Forest Ave storefront B, Queens, NY 11385")
 sundown_bar = Bar.create!(name: "Sundown Bar", address: "32-11 Broadway, Queens, NY 11106")
 the_bonnie_bar = Bar.create!(name: "The Bonnie", address: "29-12 23rd Ave, Queens, NY 11105")
 sweet_afton = Bar.create!(name: "Sweet Afton", address: "30-09 34th St, Queens, NY 11103")
@@ -140,7 +140,7 @@ beer_garden_long_island_ice_tea = BarCocktail.create(bar_id: beer_garden.id, coc
 
 puts "--- CHICAGO BARS ----"
 puts "----- seeding 5 chicago bars"
-nobodys_darling_bar = Bar.create!(name: "Nobody's Darling", address: "1744 W Balmoral Ave, Chicago, IL 60640")
+nobodys_darling_bar = Bar.create!(name: "Nobodys Darling", address: "1744 W Balmoral Ave, Chicago, IL 60640")
 hopleaf_bar = Bar.create!(name: "Hopleaf Bar", address: "5148 N Clark St, Chicago, IL 60640")
 green_mill_bar = Bar.create!(name: "Green Mill Cocktail Lounge", address: "4802 N Broadway St, Chicago, IL 60640")
 carols_pub = Bar.create!(name: "Carol's Pub", address: "659 N Clark St, Chicago, IL 60640")

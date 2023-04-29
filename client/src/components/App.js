@@ -23,6 +23,7 @@ function App() {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { bars } = useContext(BarsContext);
 
+  console.log('user: ', user);
   // const [loggedIn, setLoggedIn] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
 
@@ -42,6 +43,14 @@ function App() {
       }
     });
   }, []);
+
+  // useEffect(() => {
+  //   if (user) {
+  //     setLoggedIn(true);
+  //   } else {
+  //     setLoggedIn(false);
+  //   }
+  // }, []);
 
   // // console.log('bars : ', bars);
   // console.log('user in the App route: ', user);

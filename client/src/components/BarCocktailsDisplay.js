@@ -14,7 +14,8 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
     setSearchTerm('');
   }, [barCocktails]);
 
-  console.log('barCocktailsDisplay.length :', barCocktails.length);
+  console.log('barCocktails.length: ', barCocktails.length);
+  console.log('barCocktails: ', barCocktails);
 
   return (
     <div class='bg-base-900 justify-center py-6 sm:py-8 lg:py-12'>
@@ -24,7 +25,7 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
           <input
             type='text'
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder='Search for any bar by typing in a bar name, a neighborhood,a zip code, or state initiails (NY, CA, etc.)...'
+            placeholder='Search for any bar by typing in the name of a drink or of a bar...'
             class='input input-bordered w-full input-lg text-center'
           />
         </label>
@@ -34,13 +35,13 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
       {/* HENCE A MAJOR SOURCE OF FRUSTRATINGLY ANNOYING BUGS */}
       <div>
         {barCocktails.length > 0 ? (
-          <div class='mx-auto max-w-screen-xl px-4 md:px-8'>
-            <div class='mb-10 md:mb-16'>
-              <h1 class='mb-4 text-center text-6xl font-thin text-primary md:mb-6 lg:text-7xl'>
+          <div className='max-w-screen-xl px-4 mx-auto md:px-8'>
+            <div className='mb-10 md:mb-16'>
+              <h1 className='mb-4 text-6xl font-thin text-center text-primary md:mb-6 lg:text-7xl'>
                 THE COCKTAIL LIBRARY
               </h1>
             </div>
-            <div class='grid gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
+            <div className='grid gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
               {barCocktails
                 .filter((barCocktail) => {
                   if (searchTerm === '') {
@@ -54,7 +55,10 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
                   }
                 })
                 .map((barCocktail) => (
-                  <EachBarCocktailCard barCocktail={barCocktail} />
+                  <EachBarCocktailCard
+                    key={barCocktail.id}
+                    barCocktail={barCocktail}
+                  />
                 ))}
             </div>
           </div>

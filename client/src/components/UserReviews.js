@@ -19,11 +19,7 @@ function UserReviews({ searchTerm, setSearchTerm }) {
       <div>
         {loggedIn === true ? (
           <div className='max-w-screen-xl px-4 mx-auto md:px-8'>
-            <div className='mb-10 md:mb-16'>
-              {/* <h1 className='mb-4 text-6xl font-thin text-center text-primary md:mb-6 lg:text-7xl'>
-                {user.username}
-              </h1> */}
-            </div>
+            <div className='mb-10 md:mb-16'></div>
             <h1 className='mb-4 text-6xl font-thin text-center text-primary md:mb-6 lg:text-7xl'>
               {user.username}'s drink reviews
             </h1>
