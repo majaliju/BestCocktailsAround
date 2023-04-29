@@ -12,8 +12,8 @@ export default function EditReviewForm() {
 
   const [updatedDrink, setUpdatedDrink] = useState({});
 
-  const [comment, setComment] = useState('');
-  const [stars, setStars] = useState(1);
+  const [comment, setComment] = useState(review.comment);
+  const [stars, setStars] = useState(review.stars);
 
   const [success, setSuccess] = useState('');
   const [errorArray, setErrorArray] = useState([]);
