@@ -39,14 +39,30 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   def update
-    user = User.find_by!(id: session[:user_id])
-      @review = user.review.find(params[:id])
-    if @review.update(review_params)
-      render json: @review
-    else
-      render json: @review.errors, status: :unprocessable_entity
-    end
+      user = User.find_by!(id: session[:user_id])
+      review = user.review.find(params[:id])
+   
+      if review[:comment] === params[:comment] && review[:stars] === params[:stars]
+        render json: {errors: ['Nothing was edited! Make a change at least to one of the sections here']}, status: :unprocessable_entity
+      else
+        review.update!(
+          comment: params[:comment],
+          stars: params[:stars]
+        )
+        render json: review, status: 200
+      end
   end
+
+    # # PATCH/PUT /reviews/1
+    # def update
+    #   user = User.find_by!(id: session[:user_id])
+    #     @review = user.review.find(params[:id])
+    #   if @review.update(review_params)
+    #     render json: @review
+    #   else
+    #     render json: @review.errors, status: :unprocessable_entity
+    #   end
+    # end
 
   # DELETE /reviews/1
   def destroy
@@ -66,10 +82,7 @@ class ReviewsController < ApplicationController
         render json: { error: "User isn't authorized!"},
             status: :unauthorized
       end
-    #   unless session[:user_id] === params[:user_id]
-    #     render json: { error: 'User not authorized to make edits!' },
-    #            status: :unauthorized
-    #   end
+ 
     end
 
     # Only allow a list of trusted parameters through.
