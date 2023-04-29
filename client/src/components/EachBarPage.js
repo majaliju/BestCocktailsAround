@@ -6,8 +6,8 @@ import { barCocktails, BarCocktailsContext } from '../context/barCocktails';
 
 function EachBarPage({}) {
   const location = useLocation();
-  const { barCocktails } = useContext(BarCocktailsContext);
   let bar = location.state.bar;
+  const { barCocktails } = useContext(BarCocktailsContext);
 
   console.log('ok');
 

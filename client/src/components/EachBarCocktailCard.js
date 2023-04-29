@@ -27,15 +27,6 @@ function EachBarCocktailCard({ barCocktail }) {
                   className='justify-center w-full btn btn-primary btn-outline'>
                   Show Reviews
                 </Link>
-                {/* create state for if this is user's post; if so 
-                then 
-                 <Link
-                  to={`/bar_cocktails/${barCocktail.id}`}
-                  state={{ barCocktail: barCocktail }}
-                  className='justify-center w-full btn btn-primary btn-outline'>
-                  Edit this Review
-                </Link>
-                */}
               </div>
             </div>
           </div>
