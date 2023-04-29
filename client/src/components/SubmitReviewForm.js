@@ -35,6 +35,8 @@ export default function SubmitReviewForm() {
     }).then((response) => {
       if (response.status >= 200 && response.status <= 299) {
         response.json().then((info) => {
+          //? which object is coming back?
+          //? user needs to be updated, albeit with user.reviews
           setError('');
           setErrorsExist(false);
           setSuccess('success!');
