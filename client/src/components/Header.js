@@ -99,11 +99,19 @@ function Header({}) {
             <div className='navbar-center sm:flex'>
               <div className='flex-auto'>
                 <ul className='p-0 menu menu-horizontal'>
-                  <li>
+                  {/* <li>
                     <NavLink
                       to='/theBestList'
                       className='font-bold uppercase border-none btn btn-outline'>
                       <h3 className='font-bold uppercase'>where's the best?</h3>
+                    </NavLink>
+                  </li> */}
+                  <li>
+                    <NavLink
+                      // to={`/users/${user.id}`}
+                      to='yourReviews'
+                      className='font-bold uppercase border-none btn btn-outline'>
+                      <h3 className='font-bold uppercase'>your Reviews</h3>
                     </NavLink>
                   </li>
                   <li>
