@@ -2,17 +2,18 @@
 // https://docs.mapbox.com/mapbox-search-js/example/autofill-checkout-react/
 
 import React, { useState, useCallback, useEffect, useContext } from 'react';
-import { AddressAutofill } from '@mapbox/search-js-react';
+
 import { user, UserProvider, UserContext } from '../context/user';
 import { barCocktails, BarCocktailsContext } from '../context/barCocktails';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function SubmitReviewForm() {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
-  const { barCocktails } = useContext(BarCocktailsContext);
+  const { user, setUser } = useContext(UserContext);
+  const { barCocktails, setBarCocktails } = useContext(BarCocktailsContext);
 
-  const { id } = useParams();
+  const location = useLocation();
+  let barCocktail = location.state.barCocktail;
 
   const [comment, setComment] = useState('');
   const [stars, setStars] = useState(1);
@@ -31,18 +32,39 @@ export default function SubmitReviewForm() {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
       },
-      body: JSON.stringify({}),
+      body: JSON.stringify({
+        comment: comment,
+        stars: stars,
+        bar_cocktail_id: barCocktail.id,
+        user_id: user.id,
+      }),
     }).then((response) => {
       if (response.status >= 200 && response.status <= 299) {
         response.json().then((info) => {
-          //? which object is coming back?
-          //? user needs to be updated, albeit with user.reviews
+          console.log('review response: ', info);
+          //^ set the user updated
+          setUser({
+            ...user,
+            reviews: [...user.reviews, info],
+          });
+          //^ set the barcocktail specifically updated as well
+          const thisDrink = barCocktails.find(
+            (drink) => info.bar_cocktail_id !== drink.id
+          );
+
+          console.log('thisDrink: ', thisDrink);
+
+          // setBarCocktails({
+          //   ...barCocktails,
+          //   thisDrink,
+          // });
+
           setError('');
           setErrorsExist(false);
           setSuccess('success!');
           setSubmitted(true);
           // set timeOut function to navigate after 1 second
-          // navigate('/');
+          // navigate('/bar_cocktails/');
         });
       } else {
         response.json().then((e) => {
@@ -162,6 +184,21 @@ export default function SubmitReviewForm() {
                 SUBMITTED!
               </button>
             )}
+            {/* {submitted === true ? (
+              <button
+                // onClick={() => navigate(`/bar_cocktails/${barCocktail.id}`)}
+                type='submit'
+                className='justify-center w-full btn btn-primary btn-outline'>
+                GO BACK
+              </button>
+            ) : (
+              <button
+                disabled
+                type='submit'
+                className='block w-full px-5 py-3 text-sm font-medium text-white bg-black rounded-lg'>
+                SUBMITTED!
+              </button>
+            )} */}
           </form>
         </div>
       </div>

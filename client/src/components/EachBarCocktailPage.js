@@ -25,7 +25,7 @@ function EachCocktailPage() {
         </h1>
 
         <div className='flex justify-center w-full input-group input-group-lg'>
-          <Link to='/reviews' replace={true}>
+          <Link to={'/reviews'} state={{ barCocktail: barCocktail }}>
             <button className='btn btn-secondary btn-outline'>
               Submit a Review!
             </button>

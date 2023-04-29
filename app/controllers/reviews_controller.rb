@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  # before_action :set_review, only: %i[ show update destroy ]
+  before_action :authorize_user
 
   # GET /reviews
   def index
@@ -18,21 +18,29 @@ class ReviewsController < ApplicationController
   #   render json: review, status: :created
   # end
 
-  # POST /reviews
   def create
-    @review = Review.new(review_params)
-    
-    
-
-    if @review.save
-      render json: @review, status: :created, location: @review
-    else
-      render json: @review.errors, status: :unprocessable_entity
-    end
+    user = User.find(session[:user_id])
+    review = user.reviews.create!(review_params)
+    render json: review, status: 201
   end
+
+  # # POST /reviews
+  # def create
+  #   # user = User.find_by!(id: session[:user_id])
+  #   user = User.find_by!(id: params[:user_id])
+  #   @review = user.reviews.new(review_params)
+
+  #   if @review.save
+  #     render json: @review, status: :created, location: @review
+  #   else
+  #     render json: @review.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # PATCH/PUT /reviews/1
   def update
+    user = User.find_by!(id: session[:user_id])
+      @review = user.review.find(params[:id])
     if @review.update(review_params)
       render json: @review
     else
@@ -47,13 +55,25 @@ class ReviewsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      user = User.find_by!(id: session[:user_id])
-      @review = user.review.find(params[:id])
+    # def set_review
+    #   user = User.find_by!(id: session[:user_id])
+    #   @review = user.review.find(params[:id])
+    # end
+
+    def authorize_user
+      user = User.find(session[:user_id])
+      if !user
+        render json: { error: "User isn't authorized!"},
+            status: :unauthorized
+      end
+    #   unless session[:user_id] === params[:user_id]
+    #     render json: { error: 'User not authorized to make edits!' },
+    #            status: :unauthorized
+    #   end
     end
 
     # Only allow a list of trusted parameters through.
     def review_params
-      params.require(:review).permit(:stars, :comment, :user_id, :bar_cocktail_id)
+      params.permit(:stars, :comment, :user_id, :bar_cocktail_id)
     end
 end
