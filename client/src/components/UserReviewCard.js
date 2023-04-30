@@ -15,17 +15,17 @@ function UserReviewCard({ review, handleReviewDelete }) {
     fetch(`/reviews/${review.id}`, {
       method: 'DELETE',
     }).then(() => {
-      // const remainingReviewsForDrink = user.posts.filter(
-      //   (eachReview) =>
-      //     eachReview.bar_cocktail_id === updatedDrink.id &&
-      //     eachReview.id !== review.id
-      // );
+      const remainingReviewsForDrink = user.reviews.filter(
+        (eachReview) =>
+          eachReview.bar_cocktail_id === updatedDrink.id &&
+          eachReview.id !== review.id
+      );
 
-      // if (remainingReviewsForDrink.length === 0) {
-      //   const updatedBarCocktails = user.barCocktails.filter(
-      //     (drink) => drink.id !== review.bar_cocktail_id
-      //   );
-      // }
+      if (remainingReviewsForDrink.length === 0) {
+        const updatedBarCocktails = user.barCocktails.filter(
+          (drink) => drink.id !== review.bar_cocktail_id
+        );
+      }
 
       //^ update the user.reviews
       const updatedReviews = user.reviews.filter(

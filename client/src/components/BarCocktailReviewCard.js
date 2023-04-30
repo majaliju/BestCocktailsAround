@@ -58,17 +58,22 @@ export default function BarCocktailReviewCard({ review, handleReviewDelete }) {
                 </Link>
               </div>
               <div>
-                <btn
+                <Link
+                  to={`/yourReviews`}
+                  className='justify-center w-full btn text-gray-950 bg-primary to-secondary-focus'>
+                  View more of your reviews
+                </Link>
+                {/* <btn
                   className='justify-center w-full btn'
                   onClick={() => handleReviewDelete(review)}>
                   Delete this
-                </btn>
+                </btn> */}
               </div>
             </div>
           ) : (
-            <btn className='justify-center w-full btn'>
+            <h1 className='justify-center w-full btn btn-ghost'>
               Posted by {review.posted_user}
-            </btn>
+            </h1>
           )}
         </div>
       </div>

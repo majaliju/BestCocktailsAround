@@ -47,14 +47,14 @@ export default function SubmitReviewForm() {
           );
 
           console.log('thisDrink in SRF:', thisDrink);
-          const drinkExistsWithinUsersBarCocktails = user.bar_cocktails.filter(
+          const drinkExistsWithinUsersBarCocktails = user.bar_cocktails.find(
             (drink) => drink.id === theNewReview.bar_cocktail_id
           );
           console.log(
             'drinkExistsWithinUsersBarCocktails :',
             drinkExistsWithinUsersBarCocktails
           );
-          if (drinkExistsWithinUsersBarCocktails === []) {
+          if (drinkExistsWithinUsersBarCocktails === undefined) {
             setUser({
               ...user,
               reviews: [...user.reviews, theNewReview],
