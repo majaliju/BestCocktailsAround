@@ -39,7 +39,7 @@ function UserReviewCard({ review, handleReviewDelete }) {
         const updatedBarCocktails = user.bar_cocktails.filter(
           (drink) => drink.id !== review.bar_cocktail_id
         );
-        console.log('updatedBarCocktails: ', updatedBarCocktails);
+
         setUser({
           ...user,
           reviews: updatedReviews,
