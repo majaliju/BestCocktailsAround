@@ -21,8 +21,6 @@ export default function EditReviewForm() {
   const [errorsExist, setErrorsExist] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  console.log('review in EditReviewForm: ', review);
-
   function handleSubmit(e) {
     e.preventDefault();
     fetch(`/reviews/${review.id}`, {
