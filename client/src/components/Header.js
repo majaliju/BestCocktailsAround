@@ -108,6 +108,14 @@ function Header({}) {
                   </li> */}
                   <li>
                     <NavLink
+                      to='/addressUpdate'
+                      className='font-bold uppercase border-none btn btn-outline '>
+                      <h3 className='font-bold uppercase'>CHANGE ADDRESS</h3>
+                    </NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink
                       // to={`/users/${user.id}`}
                       to='yourReviews'
                       className='font-bold uppercase border-none btn btn-outline'>

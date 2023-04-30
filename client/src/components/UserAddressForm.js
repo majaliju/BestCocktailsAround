@@ -3,18 +3,18 @@
 
 import React, { useState, useCallback, useEffect, useContext } from 'react';
 import { AddressAutofill } from '@mapbox/search-js-react';
-import { user, UserProvider, UserContext } from '../context/user';
-import {
-  LoggedInContext,
-  loggedIn,
-  loggedInContext,
-} from '../context/loggedIn';
-import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/user';
+import { LoggedInContext } from '../context/loggedIn';
+import { AddressSubmittedContext } from '../context/addressSubmitted';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function UserAddressForm() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+  const { addressSubmitted, setAddressSubmitted } = useContext(
+    AddressSubmittedContext
+  );
 
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
@@ -52,6 +52,7 @@ export default function UserAddressForm() {
           setErrorsExist(false);
           setSuccess('success!');
           setSubmitted(true);
+          setAddressSubmitted(true);
           // set timeOut function to navigate after 1 second
           // navigate('/');
         });
@@ -182,6 +183,14 @@ export default function UserAddressForm() {
           </div>
         </div>
       )}
+      {submitted === true ? (
+        <Link
+          to={'/'}
+          type='submit'
+          className='justify-center w-full btn btn-primary btn-outline'>
+          GO TO THE MAP
+        </Link>
+      ) : null}
     </form>
   );
 }

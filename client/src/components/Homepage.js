@@ -8,11 +8,18 @@ import {
   loggedIn,
   loggedInContext,
 } from '../context/loggedIn';
+import {
+  addressSubmitted,
+  AddressSubmittedContext,
+} from '../context/addressSubmitted';
 import { NavLink, Link, Navigate, useNavigate } from 'react-router-dom';
 
 function Homepage({}) {
   const { user } = useContext(UserContext);
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+  const { addressSubmitted, setAddressSubmitted } = useContext(
+    AddressSubmittedContext
+  );
   const { bars } = useContext(BarsContext);
 
   const navigate = useNavigate();
@@ -29,12 +36,15 @@ function Homepage({}) {
           <h1 className='justify-center text-4xl text-secondary'>
             Welcome back {user.username}!
           </h1>
-          {user.longitude === null ? (
+          {user.latitude === null ? (
             <div>
-              <btn>
-                submit your address, by clicking the button below or above, to
-                see the bars near you!
-              </btn>
+              <NavLink
+                to='/addressUpdate'
+                className='font-bold uppercase border-none btn '>
+                <h3 className='font-bold uppercase'>
+                  SUBMIT YOUR ADDRESS TO START!
+                </h3>
+              </NavLink>
             </div>
           ) : (
             <MapboxMap />

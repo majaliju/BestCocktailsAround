@@ -17,14 +17,21 @@ import { bars, BarsContext } from '../context/bars';
 import { Link } from 'react-router-dom';
 import UserAddressForm from './UserAddressForm';
 import UserReviews from './UserReviews';
+import {
+  addressSubmitted,
+  AddressSubmittedContext,
+} from '../context/addressSubmitted';
 
 function App() {
   const { user, setUser } = useContext(UserContext);
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
+  const { addressSubmitted, setAddressSubmitted } = useContext(
+    AddressSubmittedContext
+  );
   const { bars } = useContext(BarsContext);
 
   console.log('user: ', user);
-  // const [loggedIn, setLoggedIn] = useState(false);
+  console.log('addressSubmitted: ', addressSubmitted);
   const [mapLoaded, setMapLoaded] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -36,6 +43,9 @@ function App() {
           console.log('within /me, the response is: ', response);
           setUser(response);
           setLoggedIn(true);
+          if (user.latitude !== null) {
+            setAddressSubmitted(true);
+          }
         });
       } else {
         setUser({});
@@ -55,15 +65,15 @@ function App() {
   // // console.log('bars : ', bars);
   // console.log('user in the App route: ', user);
 
-  function logUserIn(givenUser) {
-    setUser(givenUser);
-    setLoggedIn(true);
-  }
+  // function logUserIn(givenUser) {
+  //   setUser(givenUser);
+  //   setLoggedIn(true);
+  // }
 
-  function logUserOut() {
-    setUser({});
-    setLoggedIn(false);
-  }
+  // function logUserOut() {
+  //   setUser({});
+  //   setLoggedIn(false);
+  // }
 
   // // function to make bars isn't empty
   // // precursor to rendering bars in a map function without any bs

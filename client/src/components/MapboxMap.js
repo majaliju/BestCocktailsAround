@@ -2,6 +2,7 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 import { useState, useRef, useEffect, useContext } from 'react';
 import { user, UserProvider, UserContext } from '../context/user';
 import { bars, BarsProvider, BarsContext } from '../context/bars';
+import { AddressSubmittedContext } from '../context/addressSubmitted';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA';
@@ -9,6 +10,7 @@ mapboxgl.accessToken =
 function MapboxMap({}) {
   const { user } = useContext(UserContext);
   const { bars } = useContext(BarsContext);
+  const { addressSubmitted } = useContext(AddressSubmittedContext);
 
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -16,6 +18,8 @@ function MapboxMap({}) {
   const [lat, setLat] = useState(user.latitude);
   const [lng, setLng] = useState(user.longitude);
   const [zoom, setZoom] = useState(12);
+
+  console.log('addressSubmitted in mapbox: ', addressSubmitted);
 
   // function checkUserCoors() {
   //   if (user.latitude === null || user.longitude === null) {

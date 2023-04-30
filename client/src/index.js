@@ -9,18 +9,21 @@ import { UserProvider } from './context/user';
 import { BarsProvider } from './context/bars';
 import { BarCocktailsProvider } from './context/barCocktails';
 import { LoggedInProvider } from './context/loggedIn';
+import { AddressSubmittedProvider } from './context/addressSubmitted';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <LoggedInProvider>
-      <UserProvider>
-        <BarsProvider>
-          <BarCocktailsProvider>
-            <App />
-          </BarCocktailsProvider>
-        </BarsProvider>
-      </UserProvider>
-    </LoggedInProvider>
+    <AddressSubmittedProvider>
+      <LoggedInProvider>
+        <UserProvider>
+          <BarsProvider>
+            <BarCocktailsProvider>
+              <App />
+            </BarCocktailsProvider>
+          </BarsProvider>
+        </UserProvider>
+      </LoggedInProvider>
+    </AddressSubmittedProvider>
   </BrowserRouter>
 );
