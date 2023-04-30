@@ -17,6 +17,27 @@ function Homepage({ mapLoaded, setMapLoaded }) {
 
   const navigate = useNavigate();
 
+  //^ defining the geoJSON object for the map markers
+  const geojson = {
+    type: 'FeatureCollection',
+    features: bars.map((item) => {
+      return {
+        id: item.id,
+        type: 'Feature',
+        properties: {
+          placeID: item.id,
+          name: item.name,
+          // icon: item.icon,
+          addressFormatted: item.address,
+        },
+        geometry: {
+          type: 'Point',
+          coordinates: [item.latitude, item.longitude],
+        },
+      };
+    }),
+  };
+
   return (
     <div className='flex flex-col w-full'>
       {loggedIn === true ? (
