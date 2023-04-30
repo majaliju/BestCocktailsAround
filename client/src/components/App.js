@@ -28,8 +28,6 @@ function App() {
   );
   const { bars } = useContext(BarsContext);
 
-  const [mapLoaded, setMapLoaded] = useState(false);
-
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {

@@ -63,11 +63,6 @@ export default function BarCocktailReviewCard({ review, handleReviewDelete }) {
                   className='justify-center w-full btn text-gray-950 bg-primary to-secondary-focus'>
                   View more of your reviews
                 </Link>
-                {/* <btn
-                  className='justify-center w-full btn'
-                  onClick={() => handleReviewDelete(review)}>
-                  Delete this
-                </btn> */}
               </div>
             </div>
           ) : (
