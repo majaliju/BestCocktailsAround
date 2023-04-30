@@ -1,14 +1,14 @@
 import { useLocation, Link } from 'react-router-dom';
-import { user, UserContext } from '../context/user';
-import { barCocktails, BarCocktailsContext } from '../context/barCocktails';
+import { UserContext } from '../context/user';
+import { BarCocktailsContext } from '../context/barCocktails';
 import { useContext, useState } from 'react';
 
 function EachCocktailPage() {
   const location = useLocation();
   let barCocktail = location.state.barCocktail;
 
-  const { user } = useContext(UserContext);
-  const { barCocktails } = useContext(BarCocktailsContext);
+  const { user, setUser } = useContext(UserContext);
+  const { barCocktails, setBarCocktails } = useContext(BarCocktailsContext);
 
   const [updatedDrink, setUpdatedDrink] = useState(barCocktail);
 
@@ -17,27 +17,39 @@ function EachCocktailPage() {
   //^ the original
   const barCocktailReviews = barCocktail.reviews;
 
-  function handleDelete(review) {
-    fetch(`/reviews/${review.id}`, {
-      method: 'DELETE',
-    }).then(() => {
-      console.log('DELETE works!');
-    });
-  }
-
-  // function handleReviewDelete(review) {
+  // function handleDelete(review) {
   //   fetch(`/reviews/${review.id}`, {
   //     method: 'DELETE',
   //   }).then(() => {
-  //     const updatedReviews = user.reviews.filter(
-  //       (eachReview) => eachReview.id !== review.id
-  //     );
-  //     setUser({
-  //       ...user,
-  //       reviews: updatedReviews,
-  //     });
+  //     console.log('DELETE works!');
   //   });
   // }
+
+  function handleReviewDelete(review) {
+    fetch(`/reviews/${review.id}`, {
+      method: 'DELETE',
+    }).then(() => {
+      const updatedReviews = user.reviews.filter(
+        (eachReview) => eachReview.id !== review.id
+      );
+      setUser({
+        ...user,
+        reviews: updatedReviews,
+      });
+      const updatedDrinkReviews = updatedDrink.reviews.map((givenReview) => {
+        if (givenReview.id !== review.id) {
+          return givenReview;
+        }
+      });
+      updatedDrink['reviews'] = updatedDrinkReviews;
+
+      const allOtherDrinks = barCocktails.filter(
+        (eachOne) => eachOne.id !== updatedDrink.id
+      );
+
+      setBarCocktails([...allOtherDrinks, updatedDrink]);
+    });
+  }
 
   return (
     <div>
@@ -71,14 +83,14 @@ function EachCocktailPage() {
                           to={`/reviews/${review.id}`}
                           state={{ review: review, updatedDrink: updatedDrink }}
                           className='justify-center w-full btn '>
-                          Edit this Review
+                          Edit your review
                         </Link>
                       </div>
                       <div>
                         <btn
                           className='justify-center w-full btn'
-                          onClick={() => console.log('in EBCP, delete button')}>
-                          delete button
+                          onClick={() => handleReviewDelete(review)}>
+                          Delete this
                         </btn>
                       </div>
                     </div>

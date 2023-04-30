@@ -3,7 +3,7 @@ import { BarCocktailsContext } from '../context/barCocktails';
 import { UserContext } from '../context/user';
 import { useContext, useEffect } from 'react';
 
-function UserReviewCard({ review, handleReviewDelete }) {
+export default function BarCocktailReviewCard({ review, handleReviewDelete }) {
   const { user, setUser } = useContext(UserContext);
   const { barCocktails, setBarCocktails } = useContext(BarCocktailsContext);
 
@@ -69,5 +69,3 @@ function UserReviewCard({ review, handleReviewDelete }) {
     </div>
   );
 }
-
-export default UserReviewCard;
