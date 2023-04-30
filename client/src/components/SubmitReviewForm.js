@@ -51,6 +51,8 @@ export default function SubmitReviewForm() {
             (drink) => theNewReview.bar_cocktail_id === drink.id
           );
 
+          console.log('thisDrink', thisDrink);
+
           thisDrink.reviews.unshift(theNewReview); // add the new review to thisDrink
 
           // filter all other drinks except thisDrink
@@ -58,12 +60,7 @@ export default function SubmitReviewForm() {
             (eachOne) => eachOne.id !== thisDrink.id
           );
 
-          console.log('allOtherDrinks before setting state: ', allOtherDrinks);
-          // update barCocktails with (all drinks whhere thisDrink.id !== drink.id) + (thisDrink)
-          setBarCocktails((allOtherDrinks) => {
-            return [...allOtherDrinks, thisDrink];
-          });
-          console.log('barCocktails after setting: ', barCocktails);
+          setBarCocktails([...allOtherDrinks, thisDrink]);
 
           setError('');
           setErrorsExist(false);

@@ -14,8 +14,8 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
     setSearchTerm('');
   }, [barCocktails]);
 
-  console.log('barCocktails.length: ', barCocktails.length);
-  console.log('barCocktails: ', barCocktails);
+  // console.log('barCocktails.length: ', barCocktails.length);
+  // console.log('barCocktails: ', barCocktails);
 
   return (
     <div class='bg-base-900 justify-center py-6 sm:py-8 lg:py-12'>

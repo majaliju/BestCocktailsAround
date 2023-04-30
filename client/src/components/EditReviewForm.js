@@ -21,7 +21,7 @@ export default function EditReviewForm() {
   const [errorsExist, setErrorsExist] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  console.log('review: ', review);
+  console.log('review in EditReviewForm: ', review);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -56,15 +56,13 @@ export default function EditReviewForm() {
             (drink) => theUpdatedReview.bar_cocktail_id === drink.id
           );
 
-          const updatedDrinkReviews = thisDrink.reviews.map((thisReview) => {
-            if (thisReview.id === theUpdatedReview.id) {
-              return theUpdatedReview;
-            } else {
-              return thisReview;
-            }
-          });
-
-          // console.log('updatedDrinkReviews: ', updatedDrinkReviews);
+          // const updatedDrinkReviews = thisDrink.reviews.map((thisReview) => {
+          //   if (thisReview.id === theUpdatedReview.id) {
+          //     return theUpdatedReview;
+          //   } else {
+          //     return thisReview;
+          //   }
+          // });
 
           // setUpdatedDrink((thisDrink) => thisDrink, thisDrink.reviews: updatedDrinkReviews)
           //! somehere here is then where I basically do [...thisDrink, thisDrink.reviews: updatedDrinkReviews]

@@ -39,8 +39,10 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   def update
-      user = User.find(session[:user_id])
-      review = user.reviews.find(params[:id])
+      # user = User.find(session[:user_id])
+      # review = user.reviews.find(params[:id])
+      review = Review.find(params[:id])
+      # binding.break
    
       if review[:comment] === params[:comment] && review[:stars] === params[:stars]
         render json: {errors: ['Nothing was edited! Make a change at least to one of the sections here']}, status: :unprocessable_entity
@@ -65,8 +67,9 @@ class ReviewsController < ApplicationController
     # end
 
     def destroy
-      user = User.find(session[:user_id])
-      review = user.reviews.find_by!(id: params[:id])
+      # user = User.find(session[:user_id])
+      # review = user.reviews.find_by!(id: params[:id])
+      review = Review.find(params[:id])
       if review
         review.destroy
         head :no_content

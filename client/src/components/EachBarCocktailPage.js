@@ -13,8 +13,8 @@ function EachCocktailPage() {
   //^ the original
   const barCocktailReviews = barCocktail.reviews;
 
-  function handleDelete(eachReview) {
-    fetch(`/reviews/${eachReview.id}`, {
+  function handleDelete(review) {
+    fetch(`/reviews/${review.id}`, {
       method: 'DELETE',
     }).then(() => {
       console.log('DELETE works!');
@@ -54,18 +54,18 @@ function EachCocktailPage() {
         {barCocktailReviews.length === 0 ? (
           <div>No reviews here yet! Be the first one!</div>
         ) : (
-          barCocktailReviews.map((eachReview) => (
+          barCocktailReviews.map((review) => (
             <div className='justify-center card w-96 bg-primary text-primary-content'>
-              <div key={eachReview.id} className='card-body'>
-                <h2 className='card-title'>{eachReview.stars} stars</h2>
-                <p>{eachReview.comment}</p>
+              <div key={review.id} className='card-body'>
+                <h2 className='card-title'>{review.stars} stars</h2>
+                <p>{review.comment}</p>
                 <div className='justify-end card-actions'>
-                  {parseInt(eachReview.user_id) === parseInt(user.id) ? (
+                  {parseInt(review.user_id) === parseInt(user.id) ? (
                     <div>
                       <div>
                         <Link
-                          to={`/reviews/${eachReview.id}`}
-                          state={{ review: eachReview }}
+                          to={`/reviews/${review.id}`}
+                          state={{ review: review }}
                           className='justify-center w-full btn '>
                           Edit this Review
                         </Link>
@@ -73,7 +73,7 @@ function EachCocktailPage() {
                       <div>
                         <btn
                           className='justify-center w-full btn'
-                          onClick={handleDelete(eachReview)}>
+                          onClick={() => console.log('in EBCP, delete button')}>
                           delete button
                         </btn>
                       </div>
