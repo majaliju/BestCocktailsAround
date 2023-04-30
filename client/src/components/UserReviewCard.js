@@ -15,42 +15,51 @@ function UserReviewCard({ review, handleReviewDelete }) {
     fetch(`/reviews/${review.id}`, {
       method: 'DELETE',
     }).then(() => {
+      // check if a drink has any reviews left
+      // if a given drink has 0 reviews, remove that drink
+      // otherwise, keep that drink
+      // update user's reviews, and remove the given review
+
+      //^ if remainingReviewsForDrink.length === 0 that means get rid of the drink
+      //^ else, just get rid of the review only
       const remainingReviewsForDrink = user.reviews.filter(
         (eachReview) =>
           eachReview.bar_cocktail_id === updatedDrink.id &&
           eachReview.id !== review.id
       );
 
-      if (remainingReviewsForDrink.length === 0) {
-        const updatedBarCocktails = user.barCocktails.filter(
-          (drink) => drink.id !== review.bar_cocktail_id
-        );
-      }
+      console.log('remainingReviewsForDrink: ', remainingReviewsForDrink);
 
-      //^ update the user.reviews
-      const updatedReviews = user.reviews.filter(
-        (eachReview) => eachReview.id !== review.id
-      );
-      setUser({
-        ...user,
-        reviews: updatedReviews,
-      });
+      // if (remainingReviewsForDrink.length === 0) {
+      //   const updatedBarCocktails = user.barCocktails.filter(
+      //     (drink) => drink.id !== review.bar_cocktail_id
+      //   );
+      // }
+      // else {
 
-      // //^ update the user.barCocktails
-      // const
+      // }
 
-      //^ update the barCocktail.reviews
-      const updatedDrinkReviews = updatedDrink.reviews.map((givenReview) => {
-        if (givenReview.id !== review.id) {
-          return givenReview;
-        }
-      });
-      updatedDrink['reviews'] = updatedDrinkReviews;
+      // //^ get all reviews which aren't the deleted review
+      // const updatedReviews = user.reviews.filter(
+      //   (eachReview) => eachReview.id !== review.id
+      // );
+      // setUser({
+      //   ...user,
+      //   reviews: updatedReviews,
+      // });
 
-      const allOtherDrinks = barCocktails.filter(
-        (eachOne) => eachOne.id !== updatedDrink.id
-      );
-      setBarCocktails([...allOtherDrinks, updatedDrink]);
+      // //^ update the barCocktail.reviews
+      // const updatedDrinkReviews = updatedDrink.reviews.map((givenReview) => {
+      //   if (givenReview.id !== review.id) {
+      //     return givenReview;
+      //   }
+      // });
+      // updatedDrink['reviews'] = updatedDrinkReviews;
+
+      // const allOtherDrinks = barCocktails.filter(
+      //   (eachOne) => eachOne.id !== updatedDrink.id
+      // );
+      // setBarCocktails([...allOtherDrinks, updatedDrink]);
     });
   }
 
