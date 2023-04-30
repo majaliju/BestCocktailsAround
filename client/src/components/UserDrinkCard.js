@@ -20,16 +20,7 @@ export default function UserDrinkCard({ barCocktail }) {
             <div className='items-center text-center card-body'>
               <h2 className='card-title'>{barCocktail.special_name}</h2>
               <p></p>
-              <div className='card-actions'>
-                {/* <Link
-                  to={`/bar_cocktails/${barCocktail.id}`}
-                  state={{
-                    barCocktail: barCocktail,
-                  }}
-                  className='justify-center w-full btn btn-primary btn-outline'>
-                  Show Reviews
-                </Link> */}
-              </div>
+              <div className='card-actions'></div>
             </div>
           </div>
         ) : (

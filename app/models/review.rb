@@ -8,4 +8,8 @@ class Review < ApplicationRecord
   def special_name
     self.bar_cocktail.special_name
   end
+
+  def posted_user
+    self.user.username
+  end
 end

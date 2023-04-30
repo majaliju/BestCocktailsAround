@@ -23,7 +23,7 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
             type='text'
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder='Search for any bar by typing in the name of a drink or of a bar...'
-            class='input input-bordered w-full input-lg text-center'
+            className='w-full text-center input input-bordered input-lg'
           />
         </label>
       </div>

@@ -47,23 +47,29 @@ export default function BarCocktailReviewCard({ review, handleReviewDelete }) {
         </h2>
         <p className='text-tertiary'>{review.comment}</p>
         <div className='justify-end card-actions'>
-          <div>
+          {parseInt(review.user_id) === parseInt(user.id) ? (
             <div>
-              <Link
-                to={`/reviews/${review.id}`}
-                state={{ review: review, updatedDrink: updatedDrink }}
-                className='justify-center w-full btn text-gray-950 bg-primary to-secondary-focus'>
-                Edit your review
-              </Link>
+              <div>
+                <Link
+                  to={`/reviews/${review.id}`}
+                  state={{ review: review, updatedDrink: updatedDrink }}
+                  className='justify-center w-full btn text-gray-950 bg-primary to-secondary-focus'>
+                  Edit your review
+                </Link>
+              </div>
+              <div>
+                <btn
+                  className='justify-center w-full btn'
+                  onClick={() => handleReviewDelete(review)}>
+                  Delete this
+                </btn>
+              </div>
             </div>
-            <div>
-              <btn
-                className='justify-center w-full btn'
-                onClick={() => handleReviewDelete(review)}>
-                Delete this
-              </btn>
-            </div>
-          </div>
+          ) : (
+            <btn className='justify-center w-full btn'>
+              Posted by {review.posted_user}
+            </btn>
+          )}
         </div>
       </div>
     </div>
