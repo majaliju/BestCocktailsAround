@@ -15,6 +15,18 @@ function UserReviewCard({ review, handleReviewDelete }) {
     fetch(`/reviews/${review.id}`, {
       method: 'DELETE',
     }).then(() => {
+      // const remainingReviewsForDrink = user.posts.filter(
+      //   (eachReview) =>
+      //     eachReview.bar_cocktail_id === updatedDrink.id &&
+      //     eachReview.id !== review.id
+      // );
+
+      // if (remainingReviewsForDrink.length === 0) {
+      //   const updatedBarCocktails = user.barCocktails.filter(
+      //     (drink) => drink.id !== review.bar_cocktail_id
+      //   );
+      // }
+
       //^ update the user.reviews
       const updatedReviews = user.reviews.filter(
         (eachReview) => eachReview.id !== review.id
@@ -42,7 +54,7 @@ function UserReviewCard({ review, handleReviewDelete }) {
     });
   }
 
-  console.log('updatedDrink in URC: ', updatedDrink);
+  // console.log('updatedDrink in URC: ', updatedDrink);
   return (
     <div className='justify-center text-gray-900 card w-96 bg-primary'>
       <div key={review.id} className='card-body'>
@@ -62,11 +74,11 @@ function UserReviewCard({ review, handleReviewDelete }) {
               </Link>
             </div>
             <div>
-              <btn
+              <button
                 className='justify-center w-full btn'
                 onClick={() => handleReviewDelete(review)}>
                 Delete this
-              </btn>
+              </button>
             </div>
           </div>
         </div>

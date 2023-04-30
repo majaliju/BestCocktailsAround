@@ -41,25 +41,49 @@ export default function SubmitReviewForm() {
     }).then((response) => {
       if (response.status >= 200 && response.status <= 299) {
         response.json().then((theNewReview) => {
-          //& user is updated here, successfully
-          setUser({
-            ...user,
-            reviews: [...user.reviews, theNewReview],
-          });
-
+          //& find the matching drink within BarCocktails
           const thisDrink = barCocktails.find(
             (drink) => theNewReview.bar_cocktail_id === drink.id
           );
 
-          console.log('thisDrink', thisDrink);
+          console.log('thisDrink in SRF:', thisDrink);
+          const drinkExistsWithinUsersBarCocktails = user.bar_cocktails.filter(
+            (drink) => drink.id === theNewReview.bar_cocktail_id
+          );
+          console.log(
+            'drinkExistsWithinUsersBarCocktails :',
+            drinkExistsWithinUsersBarCocktails
+          );
+          if (drinkExistsWithinUsersBarCocktails === []) {
+            setUser({
+              ...user,
+              reviews: [...user.reviews, theNewReview],
+              bar_cocktails: [...user.bar_cocktails, thisDrink],
+            });
+          } else {
+            setUser({
+              ...user,
+              reviews: [...user.reviews, theNewReview],
+            });
+          }
 
+          // //^ handling setUser
+          // //& the new review is added to user.reviews
+          // setUser({
+          //   ...user,
+          //   reviews: [...user.reviews, theNewReview],
+          // });
+
+          //^ handling setBarCocktails
+          //& add the new review to this BarCocktail
           thisDrink.reviews.unshift(theNewReview); // add the new review to thisDrink
 
-          // filter all other drinks except thisDrink
+          //& filter all other drinks except thisDrink
           const allOtherDrinks = barCocktails.filter(
             (eachOne) => eachOne.id !== thisDrink.id
           );
 
+          //& set BarCocktails to all the old drinks + the newly updated drink (with the new review)
           setBarCocktails([...allOtherDrinks, thisDrink]);
 
           setError('');

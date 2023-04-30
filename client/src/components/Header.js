@@ -110,9 +110,17 @@ function Header({}) {
                   <li>
                     <NavLink
                       // to={`/users/${user.id}`}
-                      to='yourReviews'
+                      to='/yourReviews'
                       className='font-bold uppercase border-none shadow-2xl btn btn-outline'>
                       <h3 className='font-bold uppercase'>your Reviews</h3>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      // to={`/users/${user.id}`}
+                      to='/yourBarCocktails'
+                      className='font-bold uppercase border-none shadow-2xl btn btn-outline'>
+                      <h3 className='font-bold uppercase'>your Cocktails</h3>
                     </NavLink>
                   </li>
                   <li>

@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom';
 import UserAddressForm from './UserAddressForm';
 import UserReviews from './UserReviews';
 import { AddressSubmittedContext } from '../context/addressSubmitted';
+import UserBarCocktails from './UserBarCocktails';
 
 function App() {
   const { user, setUser } = useContext(UserContext);
@@ -27,8 +28,6 @@ function App() {
   );
   const { bars } = useContext(BarsContext);
 
-  console.log('user: ', user);
-  console.log('addressSubmitted: ', addressSubmitted);
   const [mapLoaded, setMapLoaded] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -58,6 +57,7 @@ function App() {
         <Route path='/' element={<Homepage />} />
         <Route path='/addressUpdate' element={<UserAddressForm />} />
         <Route path='/yourReviews' element={<UserReviews />} />
+        <Route path='/yourBarCocktails' element={<UserBarCocktails />} />
         {/* <Route path='/theBestList' element={<TheBestRankings />} /> */}
         <Route
           path='/bars'

@@ -4,7 +4,7 @@ class BarCocktailSerializer < ActiveModel::Serializer
   belongs_to :bar, serializer: BarSerializer
   belongs_to :cocktail, serializer: CocktailSerializer
   has_many :reviews, serializer: ReviewSerializer
-  has_many :users, through: :reviews, serializer: UserSerializer
+  # has_many :users, through: :reviews, serializer: UserSerializer
 
 
 end

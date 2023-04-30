@@ -66,7 +66,7 @@ function EachBarCocktailPage() {
         </div>
       </div>
       <div class='grid justify-center gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
-        {barCocktailReviews.length !== 0 ? (
+        {barCocktailReviews.length === 0 ? (
           <div>No reviews here yet! Be the first one!</div>
         ) : (
           barCocktailReviews.map((review) => (
