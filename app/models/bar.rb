@@ -8,8 +8,7 @@ class Bar < ApplicationRecord
 
   ###! populate city, state, country from address
   ### need to set that
-
-    #^ write a method to save country, state, city etc from the geocoded information
+#^ write a method to save country, state, city etc from the geocoded information
 
   def avg_star
     # shows the average star
