@@ -137,8 +137,11 @@ export default function SubmitReviewForm() {
             </div>
           ) : null}
 
-          <h1 className='text-2xl font-bold text-center text-white sm:text-3xl'>
-            LEAVE A REVIEW FOR THIS DRINK
+          <h1 className='text-2xl text-center text-white sm:text-3xl'>
+            LEAVE A REVIEW FOR THE
+          </h1>
+          <h1 className='text-3xl italic text-center uppercase text-primary sm:text-3xl'>
+            {barCocktail.special_name}
           </h1>
           <form className='p-8 mt-2 mb-0 space-y-4 rounded-lg shadow-2xl'>
             <div>

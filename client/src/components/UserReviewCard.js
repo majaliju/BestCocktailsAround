@@ -15,6 +15,7 @@ function UserReviewCard({ review, handleReviewDelete }) {
     fetch(`/reviews/${review.id}`, {
       method: 'DELETE',
     }).then(() => {
+      //^ update the user.reviews
       const updatedReviews = user.reviews.filter(
         (eachReview) => eachReview.id !== review.id
       );
@@ -22,6 +23,11 @@ function UserReviewCard({ review, handleReviewDelete }) {
         ...user,
         reviews: updatedReviews,
       });
+
+      // //^ update the user.barCocktails
+      // const
+
+      //^ update the barCocktail.reviews
       const updatedDrinkReviews = updatedDrink.reviews.map((givenReview) => {
         if (givenReview.id !== review.id) {
           return givenReview;
@@ -32,7 +38,6 @@ function UserReviewCard({ review, handleReviewDelete }) {
       const allOtherDrinks = barCocktails.filter(
         (eachOne) => eachOne.id !== updatedDrink.id
       );
-
       setBarCocktails([...allOtherDrinks, updatedDrink]);
     });
   }

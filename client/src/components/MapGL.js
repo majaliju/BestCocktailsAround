@@ -15,7 +15,7 @@ export default function MapGL({ geojson }) {
   const { bars } = useContext(BarsContext);
   const { addressSubmitted } = useContext(AddressSubmittedContext);
 
-  console.log('bars', bars);
+  // console.log('bars', bars);
 
   return (
     <Map
