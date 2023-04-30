@@ -1,6 +1,6 @@
 import MapboxMap from './MapboxMap';
 import UserAddressForm from './UserAddressForm';
-import MapGL from '../components-og/MapGL-sketch';
+import MapGL from './MapGL';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../context/user';
 import { BarsContext } from '../context/bars';
@@ -51,7 +51,7 @@ function Homepage({ mapLoaded, setMapLoaded }) {
           <h1 className='grid h-6 italic text-1xl text-primary text-bold card bg-base-300 rounded-box place-items-center'>
             Showing bars near:
           </h1>
-          <h3 className='grid h-6 italic uppercase text-1xl text-secondary text-bold card bg-base-300 rounded-box place-items-center'>
+          <h3 className='grid h-10 italic uppercase text-1xl text-secondary text-bold card bg-base-300 rounded-box place-items-center'>
             {user.address}
           </h3>
           {user.latitude === null ? (
@@ -66,7 +66,7 @@ function Homepage({ mapLoaded, setMapLoaded }) {
             </div>
           ) : (
             // <MapboxMap geojson={geojson} />
-            <MapGL />
+            <MapGL className='flex flex-col justify-center w-full h-full' />
           )}
           {/* //&& PLACE A BUTTON OR NOTIFICATION HERE IN THE NULL ABOVE, TO PROMPT THE USER TO ENTER SOME ADDRESS MARKERS */}
         </div>
