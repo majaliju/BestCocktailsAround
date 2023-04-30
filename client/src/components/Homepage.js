@@ -1,13 +1,10 @@
 import MapboxMap from './MapboxMap';
 import UserAddressForm from './UserAddressForm';
 import { useContext, useEffect } from 'react';
-import { user, UserContext } from '../context/user';
-import { bars, BarsContext } from '../context/bars';
+import { UserContext } from '../context/user';
+import { BarsContext } from '../context/bars';
 import { LoggedInContext } from '../context/loggedIn';
-import {
-  addressSubmitted,
-  AddressSubmittedContext,
-} from '../context/addressSubmitted';
+import { AddressSubmittedContext } from '../context/addressSubmitted';
 import { NavLink, Link, Navigate, useNavigate } from 'react-router-dom';
 
 function Homepage({ mapLoaded, setMapLoaded }) {
@@ -71,7 +68,6 @@ function Homepage({ mapLoaded, setMapLoaded }) {
       <div className='divider'></div>
       {bars.map((eachBar) => {
         <h1
-          grid
           h-10
           text-2xl
           italic
