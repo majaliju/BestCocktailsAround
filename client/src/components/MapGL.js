@@ -3,6 +3,7 @@ import { Map, Marker, Popup } from 'react-map-gl';
 import { useContext, useState, useMemo, useEffect } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Pin from './Pin';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { UserContext } from '../context/user';
 import { BarsContext } from '../context/bars';
@@ -17,24 +18,39 @@ export default function MapGL({}) {
   const { bars } = useContext(BarsContext);
   const { addressSubmitted } = useContext(AddressSubmittedContext);
 
+  const navigate = useNavigate();
+
   const [popupInfo, setPopupInfo] = useState(false);
+  const [barPopUp, setBarPopUp] = useState('');
 
   const pins = useMemo(
     () =>
       bars.map((bar, index) => (
-        <Marker
-          key={`marker-${index}`}
-          longitude={bar.longitude}
-          latitude={bar.latitude}
-          anchor='bottom'
-          onClick={(e) => {
-            // If we let the click event propagates to the map, it will immediately close the popup
-            // with `closeOnClick: true`
-            e.originalEvent.stopPropagation();
-            setPopupInfo(true);
-          }}>
-          <Pin />
-        </Marker>
+        <Link to={`/bars/${bar.id}`} state={{ bar: bar }}>
+          <Marker
+            key={`marker-${index}`}
+            longitude={bar.longitude}
+            latitude={bar.latitude}
+            anchor='bottom'
+            // onClick={() => {
+            //   // e.originalEvent.stopPropagation();
+            //   // console.log('barPopUp: ', bar);
+            //   navigate(`/bars/${bar.id}`);
+            // }}
+            // onMouseOver={(e) => {
+            //   console.log('barPopUp: ', bar);
+            //   setBarPopUp(bar);
+            // }}
+            // onClick={(e) => {
+            //   // If we let the click event propagates to the map, it will immediately close the popup
+            //   // with `closeOnClick: true`
+            //   // e.originalEvent.stopPropagation();
+            //   // setPopupInfo(true);
+            // }}
+          >
+            <Pin />
+          </Marker>
+        </Link>
       )),
     []
   );
@@ -62,9 +78,7 @@ export default function MapGL({}) {
           longitude={Number(popupInfo.longitude)}
           latitude={Number(popupInfo.latitude)}
           onClose={() => setPopupInfo(false)}>
-          <div>
-            {popupInfo.bar.name} | {popupInfo.bar.address}
-          </div>
+          <div>{barPopUp}</div>
         </Popup>
       )}
     </Map>
