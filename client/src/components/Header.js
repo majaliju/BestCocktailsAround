@@ -27,7 +27,7 @@ function Header({}) {
 
   return (
     <div>
-      <div className='bg-primary navbar text-primary-content'>
+      <div className='text-gray-900 bg-primary navbar'>
         <div className='navbar-start'>
           <div className='dropdown'>
             <label tabIndex={0} className='btn btn-ghost sm:hidden'>
@@ -48,11 +48,11 @@ function Header({}) {
             <ul
               tabIndex={0}
               className='w-56 p-2 mt-3 shadow menu menu-compact dropdown-content bg-base-100 rounded-box'>
-              <li>
+              {/* <li>
                 <NavLink to='/' className='font-bold uppercase'>
                   the best
                 </NavLink>
-              </li>
+              </li> */}
               {/* <li>
                 <NavLink to='/concerts' className='font-bold uppercase'>
                   concerts
@@ -86,8 +86,8 @@ function Header({}) {
           <div className='navbar-start'>
             <div className='flex-auto p-4'>
               <Link to='/'>
-                <h3 className='text-4xl uppercase border-none text-primary btn btn-secondary btn-outline'>
-                  COCKTAILS?
+                <h3 className='text-5xl italic text-gray-900 uppercase shadow-2xl btn btn-ghost'>
+                  cocktails?
                 </h3>
               </Link>
             </div>
@@ -99,17 +99,10 @@ function Header({}) {
             <div className='navbar-center sm:flex'>
               <div className='flex-auto'>
                 <ul className='p-0 menu menu-horizontal'>
-                  {/* <li>
-                    <NavLink
-                      to='/theBestList'
-                      className='font-bold uppercase border-none btn btn-outline'>
-                      <h3 className='font-bold uppercase'>where's the best?</h3>
-                    </NavLink>
-                  </li> */}
                   <li>
                     <NavLink
                       to='/addressUpdate'
-                      className='font-bold uppercase border-none btn btn-outline '>
+                      className='font-bold uppercase border-none shadow-2xl btn btn-outline '>
                       <h3 className='font-bold uppercase'>CHANGE ADDRESS</h3>
                     </NavLink>
                   </li>
@@ -118,21 +111,21 @@ function Header({}) {
                     <NavLink
                       // to={`/users/${user.id}`}
                       to='yourReviews'
-                      className='font-bold uppercase border-none btn btn-outline'>
+                      className='font-bold uppercase border-none shadow-2xl btn btn-outline'>
                       <h3 className='font-bold uppercase'>your Reviews</h3>
                     </NavLink>
                   </li>
                   <li>
                     <NavLink
                       to='/bars'
-                      className='font-bold uppercase border-none btn btn-outline '>
+                      className='font-bold uppercase border-none shadow-2xl btn btn-outline '>
                       <h3 className='font-bold uppercase'>bars near you</h3>
                     </NavLink>
                   </li>
                   <li>
                     <NavLink
                       to='/bar_cocktails'
-                      className='font-bold uppercase border-none btn btn-outline '>
+                      className='font-bold uppercase border-none shadow-2xl btn btn-outline '>
                       <h3 className='font-bold uppercase'>
                         the cocktail library
                       </h3>
@@ -165,7 +158,7 @@ function Header({}) {
         ) : (
           <li>
             <NavLink
-              className='text-4xl font-bold uppercase border-none btn btn-outline'
+              className='text-4xl font-bold uppercase border-none shadow-2xl btn btn-outline'
               to='/login'>
               LOGIN
             </NavLink>
@@ -188,7 +181,7 @@ function Header({}) {
                 <div>
                   <li>
                     <button
-                      className='font-bold uppercase border-none btn btn-outline'
+                      className='font-bold uppercase border-none shadow-2xl btn btn-outline'
                       onClick={handleLogout}>
                       logout {user.username}
                     </button>
