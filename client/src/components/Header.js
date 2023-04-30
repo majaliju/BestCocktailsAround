@@ -158,7 +158,7 @@ function Header({}) {
         ) : (
           <li>
             <NavLink
-              className='text-4xl font-bold uppercase border-none shadow-2xl btn btn-outline'
+              className='text-4xl font-bold text-gray-900 uppercase border-none shadow-2xl btn btn-outline'
               to='/login'>
               LOGIN
             </NavLink>
@@ -168,15 +168,6 @@ function Header({}) {
         <div className='hidden navbar-end sm:flex'>
           <div className='flex-initial'>
             <ul className='float-right p-0 menu menu-horizontal'>
-              {/* {loggedIn === false && (
-                <li>
-                  <NavLink
-                    className='font-bold uppercase border-none btn btn-outline'
-                    to='/login'>
-                    LOGIN
-                  </NavLink>
-                </li>
-              )} */}
               {loggedIn === true && (
                 <div>
                   <li>
