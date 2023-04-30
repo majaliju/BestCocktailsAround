@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   
   has_many :reviews
-  has_many :bar_cocktails, through: :reviews
+  has_many :bar_cocktails, -> { distinct }, through: :reviews
 
 
 

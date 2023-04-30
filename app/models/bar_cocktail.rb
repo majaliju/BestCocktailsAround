@@ -1,6 +1,6 @@
 class BarCocktail < ApplicationRecord
-  belongs_to :bar
-  belongs_to :cocktail
+  belongs_to :bar, -> { distinct }
+  belongs_to :cocktail, -> { distinct }
   has_many :reviews
   has_many :users, through: :reviews
 
