@@ -9,12 +9,12 @@ function EachBarCocktailCard({ barCocktail }) {
     <div>
       <div className='py-6 bg-base-900 sm:py-8 lg:py-'>
         {barCocktail !== undefined ? (
-          <div className='shadow-xl card w-96 bg-base-100'>
-            <figure className='px-10 pt-10'>
+          <div className='bg-gray-900 shadow-xl card w-96'>
+            <figure className='px-10 '>
               <img
                 src={barCocktail.cocktail_image}
                 alt='Shoes'
-                className='rounded-xl'
+                className='mask mask-parallelogram'
               />
             </figure>
             <div className='items-center text-center card-body'>
