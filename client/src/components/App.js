@@ -10,7 +10,7 @@ import EachBarPage from './EachBarPage';
 import EachBarCocktailPage from './EachBarCocktailPage';
 import SubmitReviewForm from './SubmitReviewForm';
 import EditReviewForm from './EditReviewForm';
-import TheBestRankings from './TheBestRankings';
+
 import { UserContext } from '../context/user';
 import { LoggedInContext } from '../context/loggedIn';
 import { BarsContext } from '../context/bars';
@@ -56,7 +56,7 @@ function App() {
         <Route path='/addressUpdate' element={<UserAddressForm />} />
         <Route path='/yourReviews' element={<UserReviews />} />
         <Route path='/yourBarCocktails' element={<UserBarCocktails />} />
-        {/* <Route path='/theBestList' element={<TheBestRankings />} /> */}
+
         <Route
           path='/bars'
           element={

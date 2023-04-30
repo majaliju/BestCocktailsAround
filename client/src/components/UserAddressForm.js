@@ -27,7 +27,7 @@ export default function UserAddressForm() {
   const [errorsExist, setErrorsExist] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  console.log('street in this component: ', street);
+  //^ NOTE: FOR FUTURE, LOOK INTO IMPLEMENTING REACT-MAP-GL'S GEOCODER AS OPPOSED TO ADDRESS AUTOFILL
 
   function handleSubmit(e) {
     e.preventDefault();

@@ -1,6 +1,6 @@
 import MapboxMap from './MapboxMap';
 import UserAddressForm from './UserAddressForm';
-import MapGL from './MapGL';
+import MapGL from '../components-og/MapGL-sketch';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../context/user';
 import { BarsContext } from '../context/bars';

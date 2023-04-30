@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Map, Marker } from 'react-map-gl';
 import { useContext } from 'react';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { UserContext } from '../context/user';
 import { BarsContext } from '../context/bars';
@@ -28,13 +29,16 @@ export default function MapGL({}) {
       mapStyle='mapbox://styles/mapbox/dark-v11'
       mapboxAccessToken={MAPBOX_TOKEN}>
       <Marker longitude={user.longitude} latitude={user.latitude} color='red' />
-      {/* {bars.map((bar) => {
-        <Marker
-          longitude={bar.longitude}
-          latitude={bar.latitude}
-          color='red'
-        />;
-      })} */}
+      {addressSubmitted === true
+        ? bars.map((bar) => {
+            <Marker
+              longitude={bar.longitude}
+              latitude={bar.latitude}
+              color='red'
+            />;
+            console.log('bar: ', bar);
+          })
+        : null}
     </Map>
   );
 }
