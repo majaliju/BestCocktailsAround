@@ -1,5 +1,6 @@
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import { useState, useRef, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { user, UserProvider, UserContext } from '../context/user';
 import { bars, BarsProvider, BarsContext } from '../context/bars';
 import { AddressSubmittedContext } from '../context/addressSubmitted';
@@ -11,6 +12,8 @@ function MapboxMap({}) {
   const { user } = useContext(UserContext);
   const { bars } = useContext(BarsContext);
   const { addressSubmitted } = useContext(AddressSubmittedContext);
+
+  const navigate = useNavigate();
 
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -32,6 +35,8 @@ function MapboxMap({}) {
   // }
 
   // useEffect(() => checkUserCoors());
+
+  // useEffect(() => navigate(0), []);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once

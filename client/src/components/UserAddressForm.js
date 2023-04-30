@@ -54,7 +54,6 @@ export default function UserAddressForm() {
           setSubmitted(true);
           setAddressSubmitted(true);
           // set timeOut function to navigate after 1 second
-          // navigate('/');
         });
       } else {
         response.json().then((e) => {
