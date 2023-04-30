@@ -34,6 +34,15 @@ function MapboxMap({}) {
   //   }
   // }
 
+  // useEffect(() => {
+  //   if (mapLoaded === false) {
+  //     navigate(0);
+  //     setMapLoaded(true);
+  //   } else {
+  //     return;
+  //   }
+  // }, []);
+
   // useEffect(() => checkUserCoors());
 
   // useEffect(() => navigate(0), []);

@@ -54,35 +54,6 @@ function App() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     setLoggedIn(true);
-  //   } else {
-  //     setLoggedIn(false);
-  //   }
-  // }, []);
-
-  // // console.log('bars : ', bars);
-  // console.log('user in the App route: ', user);
-
-  // function logUserIn(givenUser) {
-  //   setUser(givenUser);
-  //   setLoggedIn(true);
-  // }
-
-  // function logUserOut() {
-  //   setUser({});
-  //   setLoggedIn(false);
-  // }
-
-  // // function to make bars isn't empty
-  // // precursor to rendering bars in a map function without any bs
-  // function isEmptyObj(object) {
-  //   return JSON.stringify(object) === '[]';
-  // }
-  // const barsAreEmpty = isEmptyObj(bars);
-  // console.log('barsAreEmpty ?: ', barsAreEmpty);
-
   return (
     <div>
       <Header />
@@ -90,7 +61,7 @@ function App() {
         <Route path='/' element={<Homepage />} />
         <Route path='/addressUpdate' element={<UserAddressForm />} />
         <Route path='/yourReviews' element={<UserReviews />} />
-        <Route path='/theBestList' element={<TheBestRankings />} />
+        {/* <Route path='/theBestList' element={<TheBestRankings />} /> */}
         <Route
           path='/bars'
           element={

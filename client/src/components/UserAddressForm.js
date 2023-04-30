@@ -184,6 +184,7 @@ export default function UserAddressForm() {
       )}
       {submitted === true ? (
         <Link
+          reloadDocument
           to={'/'}
           type='submit'
           className='justify-center w-full btn btn-primary btn-outline'>

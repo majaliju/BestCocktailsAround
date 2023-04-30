@@ -14,7 +14,7 @@ import {
 } from '../context/addressSubmitted';
 import { NavLink, Link, Navigate, useNavigate } from 'react-router-dom';
 
-function Homepage({}) {
+function Homepage({ mapLoaded, setMapLoaded }) {
   const { user } = useContext(UserContext);
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
   const { addressSubmitted, setAddressSubmitted } = useContext(
@@ -23,8 +23,6 @@ function Homepage({}) {
   const { bars } = useContext(BarsContext);
 
   const navigate = useNavigate();
-
-  // useEffect(() => navigate(0));
 
   return (
     <div>
@@ -47,7 +45,7 @@ function Homepage({}) {
               </NavLink>
             </div>
           ) : (
-            <MapboxMap />
+            <MapboxMap mapLoaded={mapLoaded} setMapLoaded={setMapLoaded} />
           )}
           {/* //&& PLACE A BUTTON OR NOTIFICATION HERE IN THE NULL ABOVE, TO PROMPT THE USER TO ENTER SOME ADDRESS MARKERS */}
         </div>
