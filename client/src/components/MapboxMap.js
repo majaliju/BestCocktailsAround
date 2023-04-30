@@ -8,7 +8,7 @@ import { AddressSubmittedContext } from '../context/addressSubmitted';
 mapboxgl.accessToken =
   'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA';
 
-function MapboxMap({}) {
+function MapboxMap({ geojson }) {
   const { user } = useContext(UserContext);
   const { bars } = useContext(BarsContext);
   const { addressSubmitted } = useContext(AddressSubmittedContext);
@@ -55,6 +55,17 @@ function MapboxMap({}) {
       center: [lng, lat],
       zoom: zoom,
     });
+    // add markers to map
+    for (const feature of geojson.features) {
+      // create a HTML element for each feature
+      const el = document.createElement('div');
+      el.className = 'marker';
+      // console.log('feature: ', feature);
+      // make a marker for each feature and add to the map
+      new mapboxgl.Marker(el)
+        .setLngLat(feature.geometry.coordinates)
+        .addTo(map);
+    }
   });
 
   useEffect(() => {

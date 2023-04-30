@@ -38,6 +38,8 @@ function Homepage({ mapLoaded, setMapLoaded }) {
     }),
   };
 
+  console.log('geojson: ', geojson);
+
   return (
     <div className='flex flex-col w-full'>
       {loggedIn === true ? (
@@ -62,7 +64,7 @@ function Homepage({ mapLoaded, setMapLoaded }) {
               </NavLink>
             </div>
           ) : (
-            <MapboxMap />
+            <MapboxMap geojson={geojson} />
           )}
           {/* //&& PLACE A BUTTON OR NOTIFICATION HERE IN THE NULL ABOVE, TO PROMPT THE USER TO ENTER SOME ADDRESS MARKERS */}
         </div>
