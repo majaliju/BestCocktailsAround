@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       results = Geocoder.search(full_address)
     if results.empty?
       postcode_search = Geocoder.search(postcode)
-      # binding.break
+     
       if !postcode_search.empty?
         lat_long = postcode_search.first.coordinates
       end
