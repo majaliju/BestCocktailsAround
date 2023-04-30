@@ -1,7 +1,7 @@
 import { useLocation, Link } from 'react-router-dom';
 import { user, UserContext } from '../context/user';
 import { barCocktails, BarCocktailsContext } from '../context/barCocktails';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 function EachCocktailPage() {
   const location = useLocation();
@@ -9,6 +9,10 @@ function EachCocktailPage() {
 
   const { user } = useContext(UserContext);
   const { barCocktails } = useContext(BarCocktailsContext);
+
+  const [updatedDrink, setUpdatedDrink] = useState(barCocktail);
+
+  console.log('updatedDrink in EBCP: ', updatedDrink);
 
   //^ the original
   const barCocktailReviews = barCocktail.reviews;
@@ -65,7 +69,7 @@ function EachCocktailPage() {
                       <div>
                         <Link
                           to={`/reviews/${review.id}`}
-                          state={{ review: review }}
+                          state={{ review: review, updatedDrink: updatedDrink }}
                           className='justify-center w-full btn '>
                           Edit this Review
                         </Link>

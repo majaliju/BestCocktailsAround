@@ -1,6 +1,15 @@
 import { Link } from 'react-router-dom';
+import { BarCocktailsContext } from '../context/barCocktails';
+import { useContext, useEffect } from 'react';
 
 function UserReviewCard({ review, handleReviewDelete }) {
+  const { barCocktails, setBarCocktails } = useContext(BarCocktailsContext);
+
+  const updatedDrink = barCocktails.find(
+    (drink) => drink.id === review.bar_cocktail_id
+  );
+
+  console.log('updatedDrink in URC: ', updatedDrink);
   return (
     <div className='justify-center text-gray-900 card w-96 bg-primary'>
       <div key={review.id} className='card-body'>
@@ -14,7 +23,7 @@ function UserReviewCard({ review, handleReviewDelete }) {
             <div>
               <Link
                 to={`/reviews/${review.id}`}
-                state={{ review: review }}
+                state={{ review: review, updatedDrink: updatedDrink }}
                 className='justify-center w-full btn text-gray-950 bg-primary to-secondary-focus'>
                 Edit your review
               </Link>

@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
-import { user, UserContext } from '../context/user';
-import { LoggedInContext, loggedIn } from '../context/loggedIn';
+import { UserContext } from '../context/user';
+import { LoggedInContext } from '../context/loggedIn';
+import { BarCocktailsContext } from '../context/barCocktails';
 import Loading from './Loading';
 import UserReviewCard from './UserReviewCard';
 

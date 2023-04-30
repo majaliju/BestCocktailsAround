@@ -6,11 +6,11 @@ import { useState, useContext } from 'react';
 export default function EditReviewForm() {
   const location = useLocation();
   let review = location.state.review;
+  let updatedDrink = location.state.updatedDrink;
+
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
   const { barCocktails, setBarCocktails } = useContext(BarCocktailsContext);
-
-  const [updatedDrink, setUpdatedDrink] = useState({});
 
   const [comment, setComment] = useState(review.comment);
   const [stars, setStars] = useState(review.stars);
@@ -38,9 +38,7 @@ export default function EditReviewForm() {
     }).then((response) => {
       if (response.status >= 200 && response.status <= 299) {
         response.json().then((theUpdatedReview) => {
-          console.log('review response: ', theUpdatedReview);
-
-          //& user successfully updated
+          //& user successfully updates
           const updatedReviews = user.reviews.map((thisReview) => {
             if (thisReview.id === theUpdatedReview.id) {
               return theUpdatedReview;
@@ -50,25 +48,32 @@ export default function EditReviewForm() {
           });
           setUser({ ...user, reviews: updatedReviews });
 
-          const thisDrink = barCocktails.find(
-            (drink) => theUpdatedReview.bar_cocktail_id === drink.id
+          // const thisDrink = barCocktails.find(
+          //   (drink) => theUpdatedReview.bar_cocktail_id === drink.id
+          // );
+          // setUpdatedDrink(thisDrink);
+
+          const updatedDrinkReviews = updatedDrink.reviews.map(
+            (givenReview) => {
+              if (givenReview.id === theUpdatedReview.id) {
+                return theUpdatedReview;
+              } else {
+                return givenReview;
+              }
+            }
           );
 
-          // const updatedDrinkReviews = thisDrink.reviews.map((thisReview) => {
-          //   if (thisReview.id === theUpdatedReview.id) {
-          //     return theUpdatedReview;
-          //   } else {
-          //     return thisReview;
-          //   }
-          // });
+          //* here is where updatedDrink needs inidividual updating of the reviews
 
           // setUpdatedDrink((thisDrink) => thisDrink, thisDrink.reviews: updatedDrinkReviews)
           //! somehere here is then where I basically do [...thisDrink, thisDrink.reviews: updatedDrinkReviews]
 
           // filter all other drinks except thisDrink
           const allOtherDrinks = barCocktails.filter(
-            (eachOne) => eachOne.id !== thisDrink.id
+            (eachOne) => eachOne.id !== updatedDrink.id
           );
+
+          //* here is where i update barCocktails itself with the old drinks + the newly updated drink
 
           // // update barCocktails with (all drinks whhere thisDrink.id !== drink.id) + (thisDrink)
           // setBarCocktails((allOtherDrinks) => {
@@ -153,8 +158,11 @@ export default function EditReviewForm() {
             </div>
           ) : null}
 
-          <h1 className='text-2xl font-bold text-center text-white sm:text-3xl'>
-            EDIT YOUR REVIEW FOR THIS DRINK
+          <h1 className='text-2xl italic text-center text-secondary sm:text-1xl'>
+            edit your review for
+          </h1>
+          <h1 className='text-3xl italic text-center uppercase text-primary sm:text-3xl'>
+            {review.special_name}
           </h1>
           <form className='p-8 mt-2 mb-0 space-y-4 rounded-lg shadow-2xl'>
             <div>
