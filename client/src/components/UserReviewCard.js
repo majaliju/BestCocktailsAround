@@ -30,36 +30,40 @@ function UserReviewCard({ review, handleReviewDelete }) {
 
       console.log('remainingReviewsForDrink: ', remainingReviewsForDrink);
 
-      // if (remainingReviewsForDrink.length === 0) {
-      //   const updatedBarCocktails = user.barCocktails.filter(
-      //     (drink) => drink.id !== review.bar_cocktail_id
-      //   );
-      // }
-      // else {
+      //^ get all reviews which aren't the deleted review
+      const updatedReviews = user.reviews.filter(
+        (eachReview) => eachReview.id !== review.id
+      );
 
-      // }
+      if (remainingReviewsForDrink.length === 0) {
+        const updatedBarCocktails = user.bar_cocktails.filter(
+          (drink) => drink.id !== review.bar_cocktail_id
+        );
+        console.log('updatedBarCocktails: ', updatedBarCocktails);
+        setUser({
+          ...user,
+          reviews: updatedReviews,
+          bar_cocktails: updatedBarCocktails,
+        });
+      } else {
+        setUser({
+          ...user,
+          reviews: updatedReviews,
+        });
+      }
 
-      // //^ get all reviews which aren't the deleted review
-      // const updatedReviews = user.reviews.filter(
-      //   (eachReview) => eachReview.id !== review.id
-      // );
-      // setUser({
-      //   ...user,
-      //   reviews: updatedReviews,
-      // });
+      //^ update the barCocktail.reviews
+      const updatedDrinkReviews = updatedDrink.reviews.map((givenReview) => {
+        if (givenReview.id !== review.id) {
+          return givenReview;
+        }
+      });
+      updatedDrink['reviews'] = updatedDrinkReviews;
 
-      // //^ update the barCocktail.reviews
-      // const updatedDrinkReviews = updatedDrink.reviews.map((givenReview) => {
-      //   if (givenReview.id !== review.id) {
-      //     return givenReview;
-      //   }
-      // });
-      // updatedDrink['reviews'] = updatedDrinkReviews;
-
-      // const allOtherDrinks = barCocktails.filter(
-      //   (eachOne) => eachOne.id !== updatedDrink.id
-      // );
-      // setBarCocktails([...allOtherDrinks, updatedDrink]);
+      const allOtherDrinks = barCocktails.filter(
+        (eachOne) => eachOne.id !== updatedDrink.id
+      );
+      setBarCocktails([...allOtherDrinks, updatedDrink]);
     });
   }
 

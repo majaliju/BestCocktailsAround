@@ -30,11 +30,10 @@ function UserReviews({}) {
               <div>
                 <div className='grid gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
                   {user.reviews.map((review) => (
-                    <UserReviewCard review={review} />
+                    <UserReviewCard key={review.id} review={review} />
                   ))}
                 </div>
               </div>
-              )
             </div>
             <div className='max-w-screen-xl px-4 mx-auto md:px-8'>
               <div className='mb-10 md:mb-16'></div>
@@ -44,7 +43,10 @@ function UserReviews({}) {
               <div>
                 <div className='grid gap-8 mx-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 '>
                   {userBarCocktails.map((barCocktail) => (
-                    <UserDrinkCard barCocktail={barCocktail} />
+                    <UserDrinkCard
+                      key={barCocktail.id}
+                      barCocktail={barCocktail}
+                    />
                   ))}
                 </div>
               </div>
