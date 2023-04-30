@@ -48,11 +48,6 @@ export default function EditReviewForm() {
           });
           setUser({ ...user, reviews: updatedReviews });
 
-          // const thisDrink = barCocktails.find(
-          //   (drink) => theUpdatedReview.bar_cocktail_id === drink.id
-          // );
-          // setUpdatedDrink(thisDrink);
-
           const updatedDrinkReviews = updatedDrink.reviews.map(
             (givenReview) => {
               if (givenReview.id === theUpdatedReview.id) {
@@ -63,10 +58,10 @@ export default function EditReviewForm() {
             }
           );
 
+          console.log('updatedDrinkReviews :', updatedDrinkReviews);
           //* here is where updatedDrink needs inidividual updating of the reviews
-
-          // setUpdatedDrink((thisDrink) => thisDrink, thisDrink.reviews: updatedDrinkReviews)
-          //! somehere here is then where I basically do [...thisDrink, thisDrink.reviews: updatedDrinkReviews]
+          updatedDrink['reviews'] = updatedDrinkReviews;
+          console.log('updatedDrink after the update: ', updatedDrink);
 
           // filter all other drinks except thisDrink
           const allOtherDrinks = barCocktails.filter(
@@ -76,12 +71,9 @@ export default function EditReviewForm() {
           //* here is where i update barCocktails itself with the old drinks + the newly updated drink
 
           // // update barCocktails with (all drinks whhere thisDrink.id !== drink.id) + (thisDrink)
-          // setBarCocktails((allOtherDrinks) => {
-          //   return ([...allOtherDrinks, (thisDrink: [...thisDrink, thisDrink.reviews: updatedDrinkReviews])])
-          // });
-          // setBarCocktails((allOtherDrinks) => {
-          //   return [...allOtherDrinks, [...thisDrink, updatedDrinkReviews]];
-          // });
+          setBarCocktails([...allOtherDrinks, updatedDrink]);
+
+          console.log('barCocktails after all updates: ', barCocktails);
 
           setError('');
           setErrorsExist(false);

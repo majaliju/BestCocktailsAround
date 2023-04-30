@@ -12,7 +12,7 @@ function EachCocktailPage() {
 
   const [updatedDrink, setUpdatedDrink] = useState(barCocktail);
 
-  console.log('updatedDrink in EBCP: ', updatedDrink);
+  // console.log('updatedDrink in EBCP: ', updatedDrink);
 
   //^ the original
   const barCocktailReviews = barCocktail.reviews;
