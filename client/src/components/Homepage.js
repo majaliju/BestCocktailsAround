@@ -18,28 +18,28 @@ function Homepage({ mapLoaded, setMapLoaded }) {
 
   const navigate = useNavigate();
 
-  //^ defining the geoJSON object for the map markers
-  const geojson = {
-    type: 'FeatureCollection',
-    features: bars.map((item) => {
-      return {
-        id: item.id,
-        type: 'Feature',
-        properties: {
-          placeID: item.id,
-          name: item.name,
-          // icon: item.icon,
-          addressFormatted: item.address,
-        },
-        geometry: {
-          type: 'Point',
-          coordinates: [item.latitude, item.longitude],
-        },
-      };
-    }),
-  };
+  // //^ defining the geoJSON object for the map markers
+  // const geojson = {
+  //   type: 'FeatureCollection',
+  //   features: bars.map((item) => {
+  //     return {
+  //       id: item.id,
+  //       type: 'Feature',
+  //       properties: {
+  //         placeID: item.id,
+  //         name: item.name,
+  //         // icon: item.icon,
+  //         addressFormatted: item.address,
+  //       },
+  //       geometry: {
+  //         type: 'Point',
+  //         coordinates: [item.latitude, item.longitude],
+  //       },
+  //     };
+  //   }),
+  // };
 
-  console.log('geojson: ', geojson);
+  // console.log('geojson: ', geojson);
 
   return (
     <div className='flex flex-col w-full'>
@@ -66,7 +66,7 @@ function Homepage({ mapLoaded, setMapLoaded }) {
             </div>
           ) : (
             // <MapboxMap geojson={geojson} />
-            <MapGL geojson={geojson} />
+            <MapGL />
           )}
           {/* //&& PLACE A BUTTON OR NOTIFICATION HERE IN THE NULL ABOVE, TO PROMPT THE USER TO ENTER SOME ADDRESS MARKERS */}
         </div>
@@ -91,7 +91,7 @@ function Homepage({ mapLoaded, setMapLoaded }) {
         </Link>
       )}
       <div className='divider'></div>
-      {bars.map((eachBar) => {
+      {/* {bars.map((eachBar) => {
         <h1
           h-10
           text-2xl
@@ -105,7 +105,7 @@ function Homepage({ mapLoaded, setMapLoaded }) {
           place-items-center>
           {eachBar.name}
         </h1>;
-      })}
+      })} */}
     </div>
   );
 }

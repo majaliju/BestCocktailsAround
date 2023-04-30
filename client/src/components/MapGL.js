@@ -10,7 +10,7 @@ const MAPBOX_TOKEN =
   'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA';
 // Set your mapbox token here
 
-export default function MapGL({ geojson }) {
+export default function MapGL({}) {
   const { user } = useContext(UserContext);
   const { bars } = useContext(BarsContext);
   const { addressSubmitted } = useContext(AddressSubmittedContext);
@@ -28,13 +28,13 @@ export default function MapGL({ geojson }) {
       mapStyle='mapbox://styles/mapbox/dark-v11'
       mapboxAccessToken={MAPBOX_TOKEN}>
       <Marker longitude={user.longitude} latitude={user.latitude} color='red' />
-      {bars.map((bar) => {
+      {/* {bars.map((bar) => {
         <Marker
           longitude={bar.longitude}
           latitude={bar.latitude}
           color='red'
         />;
-      })}
+      })} */}
     </Map>
   );
 }
