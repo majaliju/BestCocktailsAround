@@ -1,5 +1,6 @@
 import MapboxMap from './MapboxMap';
 import UserAddressForm from './UserAddressForm';
+import MapGL from './MapGL';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../context/user';
 import { BarsContext } from '../context/bars';
@@ -64,7 +65,8 @@ function Homepage({ mapLoaded, setMapLoaded }) {
               </NavLink>
             </div>
           ) : (
-            <MapboxMap geojson={geojson} />
+            // <MapboxMap geojson={geojson} />
+            <MapGL geojson={geojson} />
           )}
           {/* //&& PLACE A BUTTON OR NOTIFICATION HERE IN THE NULL ABOVE, TO PROMPT THE USER TO ENTER SOME ADDRESS MARKERS */}
         </div>

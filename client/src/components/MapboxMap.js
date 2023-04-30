@@ -55,17 +55,17 @@ function MapboxMap({ geojson }) {
       center: [lng, lat],
       zoom: zoom,
     });
-    // add markers to map
-    for (const feature of geojson.features) {
-      // create a HTML element for each feature
-      const el = document.createElement('div');
-      el.className = 'marker';
-      // console.log('feature: ', feature);
-      // make a marker for each feature and add to the map
-      new mapboxgl.Marker(el)
-        .setLngLat(feature.geometry.coordinates)
-        .addTo(map);
-    }
+    // // add markers to map
+    // for (const feature of geojson.features) {
+    //   // create a HTML element for each feature
+    //   const el = document.createElement('div');
+    //   el.className = 'marker';
+    //   // console.log('feature: ', feature);
+    //   // make a marker for each feature and add to the map
+    //   new mapboxgl.Marker(el)
+    //     .setLngLat(feature.geometry.coordinates)
+    //     .addTo(map);
+    // }
   });
 
   useEffect(() => {
