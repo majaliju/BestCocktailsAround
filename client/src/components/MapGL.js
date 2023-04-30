@@ -17,7 +17,7 @@ export default function MapGL({}) {
   const { bars } = useContext(BarsContext);
   const { addressSubmitted } = useContext(AddressSubmittedContext);
 
-  const [popupInfo, setPopupInfo] = useState(null);
+  const [popupInfo, setPopupInfo] = useState(false);
 
   const pins = useMemo(
     () =>
@@ -31,9 +31,8 @@ export default function MapGL({}) {
             // If we let the click event propagates to the map, it will immediately close the popup
             // with `closeOnClick: true`
             e.originalEvent.stopPropagation();
-            setPopupInfo(bar);
+            setPopupInfo(true);
           }}>
-          {console.log('bar: ', bar)}
           <Pin />
         </Marker>
       )),
@@ -50,7 +49,11 @@ export default function MapGL({}) {
       style={{ width: 1000, height: 800 }}
       mapStyle='mapbox://styles/mapbox/dark-v11'
       mapboxAccessToken={MAPBOX_TOKEN}>
-      <Marker longitude={user.longitude} latitude={user.latitude} color='red' />
+      <Marker
+        longitude={user.longitude}
+        latitude={user.latitude}
+        color='blue'
+      />
       {pins}
 
       {popupInfo && (
@@ -58,7 +61,7 @@ export default function MapGL({}) {
           anchor='top'
           longitude={Number(popupInfo.longitude)}
           latitude={Number(popupInfo.latitude)}
-          onClose={() => setPopupInfo(null)}>
+          onClose={() => setPopupInfo(false)}>
           <div>
             {popupInfo.bar.name} | {popupInfo.bar.address}
           </div>

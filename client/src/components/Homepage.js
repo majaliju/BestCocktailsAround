@@ -65,8 +65,20 @@ function Homepage({ mapLoaded, setMapLoaded }) {
               </NavLink>
             </div>
           ) : (
-            // <MapboxMap geojson={geojson} />
-            <MapGL className='flex flex-col justify-center w-full h-full' />
+            <div>
+              <MapGL className='flex flex-col justify-center w-full h-full' />
+              {bars.map((eachBar) => {
+                <div className='card w-96 bg-primary text-primary-content'>
+                  <div className='card-body'>
+                    <h2 className='card-title'>{eachBar.name}</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <div className='justify-end card-actions'>
+                      <button className='btn'>Buy Now</button>
+                    </div>
+                  </div>
+                </div>;
+              })}
+            </div>
           )}
           {/* //&& PLACE A BUTTON OR NOTIFICATION HERE IN THE NULL ABOVE, TO PROMPT THE USER TO ENTER SOME ADDRESS MARKERS */}
         </div>
@@ -91,21 +103,6 @@ function Homepage({ mapLoaded, setMapLoaded }) {
         </Link>
       )}
       <div className='divider'></div>
-      {/* {bars.map((eachBar) => {
-        <h1
-          h-10
-          text-2xl
-          italic
-          uppercase
-          text-primary
-          text-bold
-          card
-          bg-base-300
-          rounded-box
-          place-items-center>
-          {eachBar.name}
-        </h1>;
-      })} */}
     </div>
   );
 }
