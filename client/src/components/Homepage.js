@@ -28,9 +28,6 @@ function Homepage({ mapLoaded, setMapLoaded }) {
     <div>
       {loggedIn === true ? (
         <div>
-          {/* <btn>
-            <Link to='/addressUpdate'>SUBMIT YOUR ADDRESS</Link>
-          </btn> */}
           <h1 className='justify-center text-4xl text-secondary'>
             Welcome back {user.username}!
           </h1>
@@ -45,7 +42,7 @@ function Homepage({ mapLoaded, setMapLoaded }) {
               </NavLink>
             </div>
           ) : (
-            <MapboxMap mapLoaded={mapLoaded} setMapLoaded={setMapLoaded} />
+            <MapboxMap />
           )}
           {/* //&& PLACE A BUTTON OR NOTIFICATION HERE IN THE NULL ABOVE, TO PROMPT THE USER TO ENTER SOME ADDRESS MARKERS */}
         </div>
