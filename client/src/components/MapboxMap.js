@@ -86,14 +86,6 @@ function MapboxMap({}) {
   return (
     <div>
       <div ref={mapContainer} className='map-container' />
-      {bars.length > 0
-        ? bars.map((eachBar) => {
-            // console.log('eachBar :', eachBar.name);
-            // const marker = new mapboxgl.Marker()
-            //   .setLngLat([eachBar.latitude, eachBar.longitude])
-            //   .addTo(map);
-          })
-        : null}
     </div>
   );
 }

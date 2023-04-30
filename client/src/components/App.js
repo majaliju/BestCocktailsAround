@@ -11,16 +11,13 @@ import EachBarCocktailPage from './EachBarCocktailPage';
 import SubmitReviewForm from './SubmitReviewForm';
 import EditReviewForm from './EditReviewForm';
 import TheBestRankings from './TheBestRankings';
-import { user, UserContext } from '../context/user';
-import { LoggedInContext, loggedIn } from '../context/loggedIn';
-import { bars, BarsContext } from '../context/bars';
+import { UserContext } from '../context/user';
+import { LoggedInContext } from '../context/loggedIn';
+import { BarsContext } from '../context/bars';
 import { Link } from 'react-router-dom';
 import UserAddressForm from './UserAddressForm';
 import UserReviews from './UserReviews';
-import {
-  addressSubmitted,
-  AddressSubmittedContext,
-} from '../context/addressSubmitted';
+import { AddressSubmittedContext } from '../context/addressSubmitted';
 
 function App() {
   const { user, setUser } = useContext(UserContext);

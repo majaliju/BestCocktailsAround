@@ -1,11 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
-import { UserProvider, UserContext } from '../context/user';
-import {
-  LoggedInContext,
-  loggedIn,
-  loggedInContext,
-} from '../context/loggedIn';
+import { UserContext } from '../context/user';
+import { LoggedInContext } from '../context/loggedIn';
 
 function Login({}) {
   const navigate = useNavigate();

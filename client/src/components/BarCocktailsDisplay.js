@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import EachBarCocktailPage from './EachBarCocktailPage';
 import EachBarCocktailCard from './EachBarCocktailCard';
 import Loading from './Loading';
-import { barCocktails, BarCocktailsContext } from '../context/barCocktails';
+import { BarCocktailsContext } from '../context/barCocktails';
 
 function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
   const { barCocktails } = useContext(BarCocktailsContext);
@@ -13,9 +13,6 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
   useEffect(() => {
     setSearchTerm('');
   }, [barCocktails]);
-
-  // console.log('barCocktails.length: ', barCocktails.length);
-  // console.log('barCocktails: ', barCocktails);
 
   return (
     <div class='bg-base-900 justify-center py-6 sm:py-8 lg:py-12'>
@@ -31,8 +28,6 @@ function BarCocktailsDisplay({ searchTerm, setSearchTerm }) {
         </label>
       </div>
 
-      {/* barCocktails.length is undefined on first pass */}
-      {/* HENCE A MAJOR SOURCE OF FRUSTRATINGLY ANNOYING BUGS */}
       <div>
         {barCocktails.length > 0 ? (
           <div className='max-w-screen-xl px-4 mx-auto md:px-8'>
