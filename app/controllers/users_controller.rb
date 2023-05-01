@@ -21,6 +21,7 @@ class UsersController < ApplicationController
       full_address = [street, city, state, country].compact.join(', ')
 
       results = Geocoder.search(full_address)
+      binding.break
     if results.empty?
       postcode_search = Geocoder.search(postcode)
      

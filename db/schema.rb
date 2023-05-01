@@ -56,6 +56,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_26_234610) do
     t.string "password_digest"
     t.decimal "latitude"
     t.decimal "longitude"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.integer "postcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"

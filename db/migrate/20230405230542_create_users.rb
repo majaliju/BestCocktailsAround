@@ -5,6 +5,11 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :password_digest
       t.decimal :latitude
       t.decimal :longitude
+      t.string :street
+      t.string :city
+      t.string :state
+      t.string :country
+      t.integer :postcode
 
       t.timestamps
     end
