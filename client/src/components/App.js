@@ -10,6 +10,7 @@ import EachBarPage from './EachBarPage';
 import EachBarCocktailPage from './EachBarCocktailPage';
 import SubmitReviewForm from './SubmitReviewForm';
 import EditReviewForm from './EditReviewForm';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { UserContext } from '../context/user';
 import { LoggedInContext } from '../context/loggedIn';
