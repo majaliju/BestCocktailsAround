@@ -58,10 +58,10 @@ export default function EditReviewForm() {
             }
           );
 
-          console.log('updatedDrinkReviews :', updatedDrinkReviews);
-          //* here is where updatedDrink needs inidividual updating of the reviews
+          // console.log('updatedDrinkReviews :', updatedDrinkReviews);
+          // //* here is where updatedDrink needs inidividual updating of the reviews
           updatedDrink['reviews'] = updatedDrinkReviews;
-          console.log('updatedDrink after the update: ', updatedDrink);
+          // console.log('updatedDrink after the update: ', updatedDrink);
 
           // filter all other drinks except thisDrink
           const allOtherDrinks = barCocktails.filter(

@@ -67,17 +67,6 @@ function Homepage({ mapLoaded, setMapLoaded }) {
           ) : (
             <div>
               <MapGL className='flex flex-col justify-center w-full h-full' />
-              {bars.map((eachBar) => {
-                <div className='card w-96 bg-primary text-primary-content'>
-                  <div className='card-body'>
-                    <h2 className='card-title'>{eachBar.name}</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <div className='justify-end card-actions'>
-                      <button className='btn'>Buy Now</button>
-                    </div>
-                  </div>
-                </div>;
-              })}
             </div>
           )}
           {/* //&& PLACE A BUTTON OR NOTIFICATION HERE IN THE NULL ABOVE, TO PROMPT THE USER TO ENTER SOME ADDRESS MARKERS */}

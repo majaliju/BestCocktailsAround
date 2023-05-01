@@ -1,8 +1,8 @@
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import { useState, useRef, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { user, UserProvider, UserContext } from '../context/user';
-import { bars, BarsProvider, BarsContext } from '../context/bars';
+import { UserContext } from '../context/user';
+import { BarsContext } from '../context/bars';
 import { AddressSubmittedContext } from '../context/addressSubmitted';
 
 mapboxgl.accessToken =
