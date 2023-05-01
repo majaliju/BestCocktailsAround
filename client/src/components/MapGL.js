@@ -14,7 +14,6 @@ import { AddressSubmittedContext } from '../context/addressSubmitted';
 
 const MAPBOX_TOKEN =
   'pk.eyJ1IjoibWFqYWxpanUiLCJhIjoiY2xnbXZ5MjR4MDl3cDNzcWFvN3Nsc3F0aSJ9.eDrOKKxTWcKvQfdCuDIiFA';
-// Set your mapbox token here
 
 export default function MapGL({}) {
   const { user } = useContext(UserContext);
@@ -88,5 +87,5 @@ export default function MapGL({}) {
   );
 }
 
-mapboxgl.workerClass =
-  require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+// mapboxgl.workerClass =
+//   require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
