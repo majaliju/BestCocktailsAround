@@ -4,6 +4,9 @@ import { useContext, useState, useMemo, useEffect } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Pin from './Pin';
 import { useNavigate, Link } from 'react-router-dom';
+/* eslint-disable import/no-webpack-loader-syntax */
+import mapboxgl from 'mapbox-gl';
+// @ts-ignore
 
 import { UserContext } from '../context/user';
 import { BarsContext } from '../context/bars';
@@ -84,3 +87,6 @@ export default function MapGL({}) {
     </Map>
   );
 }
+
+mapboxgl.workerClass =
+  require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
