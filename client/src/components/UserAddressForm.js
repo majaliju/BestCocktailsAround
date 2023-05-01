@@ -16,11 +16,10 @@ export default function UserAddressForm() {
     AddressSubmittedContext
   );
 
-  const [street, setStreet] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
-  const [postcode, setPostcode] = useState('');
+  const [street, setStreet] = useState(user.address);
+  const [city, setCity] = useState(user.city);
+  const [state, setState] = useState(user.state);
+  const [postcode, setPostcode] = useState(user.postcode);
 
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
@@ -28,6 +27,15 @@ export default function UserAddressForm() {
   const [submitted, setSubmitted] = useState(false);
 
   //^ NOTE: FOR FUTURE, LOOK INTO IMPLEMENTING REACT-MAP-GL'S GEOCODER AS OPPOSED TO ADDRESS AUTOFILL
+
+  function validZipcode(postcode) {
+    const regexp = /^[0-9]{5}(?:-[0-9]{4})?$/;
+    if (regexp.test(postcode)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -41,7 +49,6 @@ export default function UserAddressForm() {
         street,
         city,
         state,
-        country,
         postcode,
       }),
     }).then((response) => {
@@ -53,7 +60,6 @@ export default function UserAddressForm() {
           setSuccess('success!');
           setSubmitted(true);
           setAddressSubmitted(true);
-          // set timeOut function to navigate after 1 second
         });
       } else {
         response.json().then((e) => {
@@ -77,7 +83,7 @@ export default function UserAddressForm() {
           </label>
           <input
             name='street'
-            placeholder='Street'
+            placeholder={`${user.address}`}
             type='text'
             onChange={(e) => setStreet(e.target.value)}
             autoComplete='address-line1'
@@ -93,7 +99,7 @@ export default function UserAddressForm() {
         </label>
         <input
           name='state'
-          placeholder='State'
+          placeholder={`${user.state}`}
           type='text'
           onChange={(e) => setState(e.target.value)}
           autoComplete='address-level1'
@@ -108,25 +114,10 @@ export default function UserAddressForm() {
         </label>
         <input
           name='city'
-          placeholder='City'
+          placeholder={`${user.city}`}
           type='text'
           onChange={(e) => setCity(e.target.value)}
           autoComplete='address-level2'
-          className='w-full max-w-xs input input-bordered'
-        />
-      </div>
-
-      <div className='w-full max-w-xs form-control'>
-        <label className='label'>
-          <span className='label-text'>Enter your country</span>
-          <span className='label-text-alt'>Country</span>
-        </label>
-        <input
-          name='country'
-          placeholder='Country'
-          type='text'
-          onChange={(e) => setCountry(e.target.value)}
-          autoComplete='country'
           className='w-full max-w-xs input input-bordered'
         />
       </div>
@@ -138,7 +129,7 @@ export default function UserAddressForm() {
         </label>
         <input
           name='postcode'
-          placeholder='Postcode'
+          placeholder={`${user.postcode}`}
           type='text'
           onChange={(e) => setPostcode(e.target.value)}
           autoComplete='postal-code'
@@ -150,7 +141,7 @@ export default function UserAddressForm() {
           city !== '' ? (
             state !== '' ? (
               postcode !== '' ? (
-                country !== '' ? (
+                validZipcode(postcode) === true ? (
                   <div>
                     <div className='mt-6 form-control'>
                       <button className='btn btn-primary'>
