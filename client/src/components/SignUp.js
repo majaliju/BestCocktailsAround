@@ -144,7 +144,7 @@ function SignUp({}) {
                 <span class='label-text uppercase'>password confirmation</span>
               </label>
               <input
-                type='passwordConfirmation'
+                type='password'
                 id='passwordConfirmation'
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
